@@ -19,6 +19,7 @@ import VennAnimation from "./componenets/vennAnimation.svelte";
 <main>
 	<SpeechAnimation msg="Hi!"/>
 	<h1>My name is Zach. I’m an integrative designer, animator and front-end developer.</h1>
+	<VennAnimation />
 	<h2>
 		My curiousity and appetite for learning new tricks have left me with a versatile set of skills fit for use in solving modern communication problems.
 	</h2>

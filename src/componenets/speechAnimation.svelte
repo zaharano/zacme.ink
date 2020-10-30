@@ -2,10 +2,11 @@
   export let msg = 'whut';
 </script>
 
-
-<div class="speech">
+<!-- style="padding-bottom: 112.5%" -->
+	
+  <div class="scaling-svg speech">
   <svg 
-    class="bubble" 
+    class="scaling-svg bubble" 
     width="100%" 
     viewBox="0 0 312 351" 
     fill="none" 

@@ -1,28 +1,3 @@
-<script> 
-  import { onMount } from 'svelte';
-  import { gsap } from "gsap";
-
-  // gsap.registerPlugin(ScrollTrigger);
-
-  onMount(() => {
-    const tl = gsap.timeline();
-    const duration = 1;
-
-    tl.from('.circle1', {
-      duration,
-      opacity: 0,
-      y: -100,
-    })
-    .from('.circle2', {
-      duration,
-      opacity: 0,
-      y: 50,
-      x: -70,
-    }, duration)
-  })
-  
-</script>
-
 <svg width="636" height="601" viewBox="0 0 636 601" fill="none"
   xmlns="http://www.w3.org/2000/svg">
   <g id="venn">
@@ -126,4 +101,3 @@
     </g>
   </g>
 </svg>
-
