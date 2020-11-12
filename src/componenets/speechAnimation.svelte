@@ -1,5 +1,27 @@
-<script>
+<script>  
+  import { onMount } from 'svelte';
+  import { gsap } from "gsap";
+
+  // prop msg
   export let msg = 'whut';
+
+  // animate speech bubble
+  onMount(() => {
+    const tl = gsap.timeline({});
+    tl.from('.speech', {
+      delay: 1,
+      transformOrigin: "center bottom",
+      scale: 0,
+      duration: 1,
+      ease: "elastic.out(1, 0.3)",
+    })
+    .from('.speech', {
+      duration: 3,
+      transformOrigin: "center bottom",
+      rotate: 40,
+      ease: "elastic.out(1, 0.12)",
+    }, "<")
+  });
 </script>
 
 <!-- style="padding-bottom: 112.5%" -->
@@ -26,7 +48,7 @@
       class="speech-inner"
       d="M37.6 8.8C22.3 6.3 8.5 18.1 8.5 33.5V241.8C8.5 254.7 18.3 265.5 31.1 266.7L112.5 274.4L142 330L161.6 279L276.1 290C290.8 291.4 303.5 279.9 303.5 265.1V73.8C303.5 61.6 294.6 51.1 282.6 49.1L37.6 8.8Z" 
       fill="white" 
-      stroke-width="3"
+      stroke-width="1"
     />
     <text 
       x="50" 
@@ -40,8 +62,9 @@
 
 <style>
   .speech {
-    width: clamp(250px, 30vw, 600px);
-    margin: auto;
+    /* safari can't handle the clamps!!! */
+    width: 30vw;
+    width: clamp(250px, 30vw, 400px);
   }
   .speech-exclaim {
     color: var(--gray);
