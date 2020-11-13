@@ -7,7 +7,7 @@
 
   const delay = .18,
         duration = 0,
-        nudgeAmount = 10,
+        nudgeAmount = 25,
         nudges = {x:0, y:0};
 
   onMount(() => {
@@ -161,8 +161,8 @@
       ease: "none"
     }, "<")
     .to('.code-em', {
-      delay: .2,
-      duration: .2,
+      delay: .1,
+      duration: .1,
       skewX: -20,
       ease: "ease-out"
     })

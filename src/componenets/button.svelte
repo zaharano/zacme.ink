@@ -1,11 +1,9 @@
 <script>
-  export let info = {
-    txt: "Let's do it",
-    href: "http://www.beep.com"
-  };
+  export let href = "http://www.beep.com";
+  export let txt = "Let's do it!";
 </script>
 
-<a class="button" href={info.href}>{info.txt}<span></span></a>
+<a class="button" href={href}>{txt}<span></span></a>
 
 <style>
   a.button {

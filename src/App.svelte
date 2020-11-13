@@ -28,7 +28,9 @@ import Button from "./componenets/button.svelte";
 	<h2>
 		Check out some of my work!
 	</h2>
-	<Button info={{href: "http://www.google.com", txt: "Butts"}} />
+
+	<ProjectSection />
+	<!-- <Button info={{href: "http://www.google.com", txt: "Butts"}} /> -->
 
 <!-- <ProjectSection projects /> -->
 
