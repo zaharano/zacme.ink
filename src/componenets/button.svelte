@@ -3,10 +3,10 @@
   export let txt = "Let's do it!";
 </script>
 
-<a class="button" href={href}>{txt}<span></span></a>
+<a href={href}>{txt}<span></span></a>
 
 <style>
-  a.button {
+  a {
     text-decoration: none;
     margin-top: 1rem;
     font-family: 'Vollkorn SC', serif;
@@ -17,7 +17,7 @@
     font-weight: 600;
     background: #FFFFFF;
     border: var(--border);
-    box-sizing: border-box;
+    width: 100%;
     border-radius: 5px;
     font-size: 1.2rem;
     line-height: var(--btnHeight);
@@ -42,13 +42,13 @@
     width: calc(100% - 50px);
   } */
 
-  a.button:hover {
+  a:hover {
     transform: translate(3px,-3px);
     box-shadow: -3px 3px 0px var(--acct);
     cursor: pointer;
   }
 
-  a.button span {
+  a span {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='24' height='6' viewBox='0 0 24 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24 3L19 0.113249V5.88675L24 3ZM0 3.5H19.5V2.5H0V3.5Z' fill='%23454545'/%3E%3C/svg%3E");
     background-position: right center;
     background-repeat: no-repeat;
@@ -56,7 +56,7 @@
     height: var(--btnHeight);
   }
 
-  a.button:hover span {
+  a:hover span {
     animation: boing 1500ms linear both;
   }
 
