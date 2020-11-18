@@ -5,13 +5,14 @@
 
   gsap.registerPlugin(TextPlugin);
 
-  const delay = .18,
-        duration = 0,
+  const delay = .02,
+        duration = .01,
         nudgeAmount = 25,
         nudges = {x:0, y:0};
 
   onMount(() => {
-    const tlc = gsap.timeline({repeat: 1, repeatDelay: 10, delay: 3});
+    // repeat: 1, repeatDelay: 10
+    const tlc = gsap.timeline({delay: 2});
     const desTL = gsap.timeline({repeat: 1, repeatDelay: 1, yoyo: true}),
           animTL = gsap.timeline({}),
           codeTL = gsap.timeline({});
@@ -194,7 +195,7 @@
       <span class="designer">
         designer,
       </span>
-      <div class="guide-wrap" style="right: 20%;bottom: .3em;">
+      <div class="guide-wrap" style="right: 70%;bottom: .3em;">
         <div class="guide-y-ends">
           <div class="guide-y-line"></div>
         </div>

@@ -2,30 +2,115 @@
   import { onMount } from 'svelte';
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { DrawSVGPlugin } from 'gsap/all';
 
   gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(DrawSVGPlugin);
+
+  
+
+
 
   onMount(() => {
     const tl = gsap.timeline();
+    const designIconTL = gsap.timeline();
+    const designIconWiggle = gsap.timeline();
+    const animateIconTL = gsap.timeline();
+
+    const transformOrigin = "50% 50%";
+
+    const iconEase = 'power4.out',
+          iconDur = .4,
+          iconOverlap = '-=.2';
+
+    designIconTL.from('#design-icon-ruler', {
+      x: -40,
+      y: 40,
+      opacity: 0,
+      duration: iconDur,
+      ease: iconEase,
+    })
+    .from('#design-icon-pencil', {
+      x: 40,
+      y: 40, 
+      opacity: 0,
+      duration: iconDur,
+      ease: iconEase,
+    }, iconOverlap)
+    .from ('#design-word', {
+      opacity: 0,
+      duration: 1,
+      ease: iconEase,
+    });
+
+    animateIconTL.set('#animate-icon-circle', {
+      x: -20,
+      opacity: 0,
+    })
+    .set('.animate-icon-line', {
+      drawSVG: '0%',
+      opacity: 0
+    }, "0")
+    .to('#animate-icon-circle', {
+      x: -10,
+      opacity: 1,
+      scaleX: .8,
+      duration: iconDur,
+      ease: iconEase,
+    })
+    .to('#animate-icon-circle', {
+      x:0,
+      duration: iconDur*2,
+      ease: iconEase,
+    })
+    .to('#animate-icon-circle', {
+      scaleX: 1.2,
+      duration: iconDur,
+    }, `<`)
+    .to('#animate-icon-circle', {
+      scaleX: 1,
+      duration: iconDur,
+    }, `>${iconDur}`)
+    
+    .from('animate-icon-line', {
+      opacity: 0,
+      stagger: .2,
+      duration: iconDur,
+    })
+    .to('.animate-icon-line', {
+      drawSVG: '100%',
+      stagger: .2,
+      duration: iconDur,
+      ease: iconEase,
+    }, '<')
+    .from('#animate-icon-ghost1', {
+      opacity: 0,
+      duration: 0,
+    })
+    .from('#animate-icon-ghost2', {
+      opacity: 0,
+      duration: 0,
+    });
+
     const duration = .8,
           durPop = 1.2,
           delay = .3,
-          popOffset = "-=.8";
+          popOffset = "-=.2";
 
     tl.from('.circle-design', {
       duration,
       opacity: 0,
     })
-    .from('.whole-design', {
+    .from('.circle-design', {
       duration: durPop,
       scale: .1,
       transformOrigin: "50% 50%",
       ease: "elastic.out(1, 0.3)",
     }, "<")
-    .from('#design-set', {
-      duration,
-      opacity: 0
+    .set('#design-set', {
+      transformOrigin,
     }, "<")
+    .add(designIconTL)
     .from('.circle-animate', {
       duration,
       opacity: 0,
@@ -33,13 +118,13 @@
     .from('.whole-animate', {
       duration: durPop,
       scale: .1,
-      transformOrigin: "50% 50%",
+      transformOrigin,
       ease: "elastic.out(1, 0.3)",
     }, "<")
-    .from('#animate-set', {
-      duration,
-      opacity: 0
+    .set('#animate-set', {
+      transformOrigin,
     }, "<")
+    .add(animateIconTL)
     .from('.circle-develop', {
       duration,
       opacity: 0,
@@ -47,7 +132,7 @@
     .from('.whole-develop', {
       duration: durPop,
       scale: .1,
-      transformOrigin: "50% 50%",
+      transformOrigin,
       ease: "elastic.out(1, 0.3)",
     }, "<")
     .from('#develop-set', {
@@ -87,9 +172,7 @@
       duration,
       delay,
       opacity: 0,
-    })
-
-    ;
+    });
   });
 </script>
 
@@ -184,13 +267,14 @@
       </g>
       <g id="animate-set" class="whole-animate">
         <g id="animate-icon">
-          <path id="animate-icon-circle" d="M240 531C240 543.171 230.354 553 218.5 553C206.646 553 197 543.171 197 531C197 518.829 206.646 509 218.5 509C230.354 509 240 518.829 240 531Z" stroke="#454545" stroke-width="2"/>
+          
           <path id="animate-icon-ghost1" d="M203 512C195.374 515.139 190 522.688 190 531.5C190 540.312 195.374 547.861 203 551" stroke="#454545" stroke-width="2" stroke-linecap="round"/>
           <path id="animate-icon-ghost2" d="M197 512C189.374 515.139 184 522.688 184 531.5C184 540.312 189.374 547.861 197 551" stroke="#454545" stroke-width="2" stroke-linecap="round"/>
-          <g id="animate-icon-lines">
-            <path id="Line 22" d="M180 532L161 532" stroke="#454545" stroke-width="2" stroke-linecap="round"/>
-            <path id="Line 23" d="M181 525L168 525" stroke="#454545" stroke-width="2" stroke-linecap="round"/>
-            <path id="Line 24" d="M181 540L171 540" stroke="#454545" stroke-width="2" stroke-linecap="round"/>
+          <path id="animate-icon-circle" d="M240 531C240 543.171 230.354 553 218.5 553C206.646 553 197 543.171 197 531C197 518.829 206.646 509 218.5 509C230.354 509 240 518.829 240 531Z" fill="white" stroke="#454545" stroke-width="2" />
+          <g>
+            <path class="animate-icon-line" d="M180 532L161 532" stroke="#454545" stroke-width="2" stroke-linecap="round"/>
+            <path class="animate-icon-line" d="M181 525L168 525" stroke="#454545" stroke-width="2" stroke-linecap="round"/>
+            <path class="animate-icon-line" d="M181 540L171 540" stroke="#454545" stroke-width="2" stroke-linecap="round"/>
           </g>
         </g>
         <g id="animate-word">

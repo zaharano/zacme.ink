@@ -3,7 +3,7 @@
   import { gsap } from "gsap";
 
   // prop msg
-  export let msg = 'whut';
+  export let msg = 'who';
 
   // animate speech bubble
   onMount(() => {
@@ -68,7 +68,9 @@
   }
   .speech-exclaim {
     color: var(--gray);
-    font-size: 150px;
+    font-size: 9rem;
+    /* skew the word */
+    transform: translate(0px, -50px) skew(0deg, 6deg) scaleY(1.2);
     width: 100%;
     fill: var(--gray);
     font-family: Shackleton, serif;
