@@ -23,6 +23,15 @@
           iconDur = .4,
           iconOverlap = '-=.2';
 
+    const iconWord = {
+      opacity: 0,
+      duration: .2,
+      transformOrigin,
+      scale: 5,
+      ease: "power1.out"
+    }
+
+    // pop-in animation for Design icon
     designIconTL.from('#design-icon-ruler', {
       x: -40,
       y: 40,
@@ -37,12 +46,9 @@
       duration: iconDur,
       ease: iconEase,
     }, iconOverlap)
-    .from ('#design-word', {
-      opacity: 0,
-      duration: 1,
-      ease: iconEase,
-    });
+    .from ('#design-word', iconWord);
 
+    // pop-in animation for Animate icon
     animateIconTL
     .set('.animate-icon-line', {
       drawSVG: '0',
@@ -73,8 +79,8 @@
     }, "circleStart")
     .to('.animate-icon-line', {
       drawSVG: "0 100%",
-      stagger: .2,
-      duration: iconDur,
+      stagger: .1,
+      duration: .3,
     }, "circleStart")
     .to('#animate-icon-circle', {
       scaleX: 1.2,
@@ -92,11 +98,7 @@
       opacity: 0,
       duration: .1,
     }, `circleStart+=${(iconDur/3)*2}`)
-    .from('#animate-word', {
-      opacity: 0,
-      duration: iconDur,
-      ease: iconEase,
-    });
+    .from('#animate-word', iconWord);
 
     const duration = .8,
           durPop = 1.2,
@@ -113,10 +115,7 @@
       transformOrigin: "50% 50%",
       ease: "elastic.out(1, 0.3)",
     }, "<")
-    .set('#design-set', {
-      transformOrigin,
-    }, "<")
-    .add(designIconTL)
+    .add(designIconTL, "-=.5")
     .from('.circle-animate', {
       duration,
       opacity: 0,
@@ -125,16 +124,13 @@
       duration,
       opacity: 0,
     }, "<")
-    .from('.whole-animate', {
+    .from('.circle-animate', {
       duration: durPop,
       scale: .1,
       transformOrigin,
       ease: "elastic.out(1, 0.3)",
     }, "<")
-    .set('#animate-set', {
-      transformOrigin,
-    }, "<")
-    .add(animateIconTL)
+    .add(animateIconTL, "-=.5")
     .from('.circle-develop', {
       duration,
       opacity: 0,
