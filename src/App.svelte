@@ -41,7 +41,7 @@ import Button from "./componenets/button.svelte";
 	main {
 		text-align: center;
 		padding: 1em;
-		max-width: 1400px;
+		max-width: 1000px;
 		margin: auto;
 	}
 

@@ -43,59 +43,65 @@
       ease: iconEase,
     });
 
-    animateIconTL.set('#animate-icon-circle', {
-      x: -20,
-      opacity: 0,
-    })
+    animateIconTL
     .set('.animate-icon-line', {
-      drawSVG: '0%',
-      opacity: 0
+      drawSVG: '0',
+      opacity: 0,
     }, "0")
+    .set('#animate-icon-circle', {
+      x: -40,
+    })
+    .from('#animate-icon-circle', {
+      opacity: 0,
+      duration: iconDur,
+      ease: iconEase,
+    })
     .to('#animate-icon-circle', {
-      x: -10,
-      opacity: 1,
+      x: -50,
       scaleX: .8,
       duration: iconDur,
       ease: iconEase,
+    }, "<")
+    .from('.animate-icon-line', {
+      opacity: 0,
+      duration: .1,
     })
     .to('#animate-icon-circle', {
       x:0,
-      duration: iconDur*2,
+      duration: (iconDur*2),
       ease: iconEase,
-    })
+    }, "circleStart")
+    .to('.animate-icon-line', {
+      drawSVG: "0 100%",
+      stagger: .2,
+      duration: iconDur,
+    }, "circleStart")
     .to('#animate-icon-circle', {
       scaleX: 1.2,
-      duration: iconDur,
-    }, `<`)
+      duration: (iconDur/2),
+    }, "circleStart")
     .to('#animate-icon-circle', {
       scaleX: 1,
-      duration: iconDur,
-    }, `>${iconDur}`)
-    
-    .from('animate-icon-line', {
-      opacity: 0,
-      stagger: .2,
-      duration: iconDur,
-    })
-    .to('.animate-icon-line', {
-      drawSVG: '100%',
-      stagger: .2,
-      duration: iconDur,
-      ease: iconEase,
-    }, '<')
+      duration: (iconDur/2),
+    }, `<-=${iconDur}`)
     .from('#animate-icon-ghost1', {
       opacity: 0,
-      duration: 0,
-    })
+      duration: .1,
+    }, `circleStart+=${iconDur/3}`)
     .from('#animate-icon-ghost2', {
       opacity: 0,
-      duration: 0,
+      duration: .1,
+    }, `circleStart+=${(iconDur/3)*2}`)
+    .from('#animate-word', {
+      opacity: 0,
+      duration: iconDur,
+      ease: iconEase,
     });
 
     const duration = .8,
           durPop = 1.2,
           delay = .3,
-          popOffset = "-=.2";
+          popOffset = "-=.8";
 
     tl.from('.circle-design', {
       duration,
@@ -115,6 +121,10 @@
       duration,
       opacity: 0,
     }, popOffset)
+    .from('#animate-set', {
+      duration,
+      opacity: 0,
+    }, "<")
     .from('.whole-animate', {
       duration: durPop,
       scale: .1,
@@ -293,9 +303,9 @@
 
 <style>
   .venn {
-    width: 90vw;
+    width: 100vw;
     min-width: 600px;
-    max-width: 1400px;
+    max-width: 1000px;
     margin: auto;
     /* width: clamp() */
   }
