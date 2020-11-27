@@ -15,26 +15,23 @@
     GSDevTools
   );
 
+  // pin and scrub? removed for build
+
   onMount(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
       trigger: ".venn",
-      scrub: .5,
-      pin: true,
-      start: "top top",
-      end: "+=100%"
+      markers: true,
+      start: "-40% top",
     }});
     const designIconTL = gsap.timeline();
     const designIconWiggle = gsap.timeline();
     const animateIconTL = gsap.timeline();
     const developIconTL = gsap.timeline();
     const magicIconTL = gsap.timeline();
+    const petalSplosion = gsap.timeline();
 
     const transformOrigin = "50% 50%";
-    const centered = {
-      transformOrigin: "50% 50%"
-    }
-
     const iconEase = 'power4.out',
           iconDur = .4,
           iconOverlap = '-=.2';
@@ -198,17 +195,35 @@
           popOffset = "+=.2",
           iconDelay = "-=.2";
 
-    tl.from('.circle-design', {
-      duration,
+    tl.fromTo('#orange-1', {
       opacity: 0,
+      scale: .4,
+      transformOrigin: "50% 50%",
+    }, {
+      duration: 2,
+      opacity: 1,
+      scale: 1,
+      rotate: 360,
+      transformOrigin: "50% 50%",
+      ease: "power1.inOut",
+    })
+    .to('#orange-1', {
+      rotate: 360,
     })
     .from('.circle-design', {
+      opacity: 0,
       duration: durPop,
-      scale: .1,
+      scale: .5,
       transformOrigin: "50% 50%",
-      ease: "elastic.out(1, 0.3)",
-    }, "<")
+      ease: "power1.out",
+    }, "-=.4")
     .add(designIconTL, iconDelay)
+    .to('#orange-1', {
+      scale: 1.4,
+      opacity: 0,
+      ease: 'power1.in',
+      duration: .4,
+    })
     .from('.circle-animate', {
       duration,
       opacity: 0,
@@ -239,7 +254,7 @@
       ease: "elastic.out(1, 0.3)",
     }, "<")
     .add(developIconTL, iconDelay)
-    .to('.whole-design', {
+    .to('.circle-design', {
       duration,
       delay: 1.2,
       y: 80,
@@ -248,7 +263,7 @@
       duration,
       y: -8
     }, "<")
-    .to('.whole-animate', {
+    .to('.circle-animate', {
       duration,
       y: -80,
       x: 95
@@ -258,7 +273,7 @@
       y: -20,
       x: 40
     }, "<")
-    .to('.whole-develop', {
+    .to('.circle-develop', {
       duration,
       y: -80,
       x: -95
@@ -273,16 +288,12 @@
       delay,
       opacity: 0,
     })
-    .add(magicIconTL, iconDelay);
+    .add(magicIconTL, iconDelay)
+    .timeScale(1.2);
 
-    ScrollTrigger.create({
-    trigger: ".venn",
-    start: "top top", 
-    end: "bottom 150px",
-    pin: "#orange-content"
-    });
+    
 
-    GSDevTools.create({animation: tl})
+    // GSDevTools.create({animation: tl})
   });
 </script>
 
@@ -292,15 +303,21 @@
     xmlns="http://www.w3.org/2000/svg">
     <rect width="836" height="761" />
     <g id="venn-total">
-      <circle class="circle-animate whole-animate" id="fill-2" cx="208" cy="553" r="200" fill="white"/>
-      <circle class="circle-develop whole-develop" id="fill-3" cx="628" cy="553" r="200" fill="white"/>
-      <circle class="circle-design whole-design" id="fill-1" cx="418" cy="208" r="200" fill="white"/>
-      <circle class="circle-animate whole-animate" id="line-2" cx="208" cy="553" r="199.5" stroke="#454545"/>
-      <circle class="circle-animate whole-animate" id="orange-2" cx="208" cy="553" r="207.5" stroke="#FFAF66" stroke-dasharray="10 4"/>
-      <circle class="circle-develop whole-develop" id="line-3" cx="628" cy="553" r="199.5" stroke="#454545"/>
-      <circle class="circle-develop whole-develop" id="orange-3" cx="628" cy="553" r="207.5" stroke="#FFAF66" stroke-dasharray="10 4"/>
-      <circle class="circle-design whole-design" id="line-1" cx="418" cy="208" r="199.5" stroke="#454545"/>
-      <circle class="circle-design whole-design" id="orange-1" cx="418" cy="208" r="207.5" stroke="#FFAF66" stroke-dasharray="10 4"/>
+      <circle class="circle-animate whole-animate" id="fill-2" cx="208" vector-effect="non-scaling-stroke" cy="553" r="200" fill="white"/>
+      <circle class="circle-develop whole-develop" id="fill-3" cx="628" vector-effect="non-scaling-stroke" cy="553" r="200" fill="white"/>
+      <circle class="circle-design whole-design" id="fill-1" cx="418" cy="208" vector-effect="non-scaling-stroke" r="200" fill="white"/>
+      <circle class="circle-animate whole-animate" id="line-2" cx="208" vector-effect="non-scaling-stroke" cy="553" r="199.5" stroke="#454545"/>
+      <circle class="whole-animate crawling-line" id="orange-2" vector-effect="non-scaling-stroke" cx="208" cy="553" r="207.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 4"
+      stroke-dashoffset="14px"
+      stroke-width="2"/>
+      <circle class="circle-develop whole-develop" id="line-3" cx="628" vector-effect="non-scaling-stroke" cy="553" r="199.5" stroke="#454545"/>
+      <circle class="whole-develop crawling-line" id="orange-3" vector-effect="non-scaling-stroke" cx="628" cy="553" r="207.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 4"
+      stroke-dashoffset="14px"
+      stroke-width="2"/>
+      <circle class="circle-design whole-design" id="line-1" cx="418" cy="208" vector-effect="non-scaling-stroke" r="199.5" stroke="#454545"/>
+      <circle class="whole-design crawling-line" id="orange-1" vector-effect="non-scaling-stroke" cx="418" cy="208" r="207.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 4"
+      stroke-dashoffset="14px"
+      stroke-width="2"/>
       <g id="design-set" class="whole-design">
         <g id="design-icon">
           <g id="design-icon-ruler">
@@ -384,7 +401,7 @@
       <g id="develop-set" class="whole-develop">
         <g id="develop-icon">
           <path id="develop-icon-slash" d="M639.477 513.119L625.597 545.97" stroke="#454545" stroke-width="2"/>
-          <rect id="develop-icon-screenbox" vector-effect="non-scaling-stroke" x="596.06" y="497" width="73.8806" height="60" rx="4" stroke="#454545" stroke-width="2"/>
+          <rect id="develop-icon-screenbox" x="596.06" y="497" width="73.8806" height="60" rx="4" stroke="#454545" stroke-width="2"/>
           <line id="develop-icon-menuline" x1="595.06" y1="505.179" x2="670.94" y2="505.179" stroke="#454545" stroke-width="2"/>
           <circle id="develop-icon-dot1" cx="601.075" cy="501.089" r="1.38806" fill="#454545"/>
           <circle id="develop-icon-dot2" cx="606.627" cy="501.089" r="1.38806" fill="#454545"/>
@@ -428,11 +445,13 @@
 </section>
 
 <style>
-  .venn {
-    width: 100vw;
-    min-width: 600px;
-    max-width: 1000px;
-    margin: auto;
-    /* width: clamp() */
+  section {
+    margin-top: -10%;
+  }
+
+  svg {
+    height: auto;
+    width: 90vw;
+    max-height: 100vh;
   }
 </style>

@@ -2,8 +2,6 @@
   import Button from "./button.svelte";
   
   import { fade, fly } from 'svelte/transition';
-  let show = true;
-  
 
   export let img = "./assets/Enterprise_HD.jpg";
   export let alt = "The Starship Enterprise";
@@ -15,33 +13,29 @@
       href: "http://www.startrek.com"
   };
 
-  const delim = " // ";
+  let hide = true;
 
 </script>
 
-<article 
-  on:click="{() => show = !show}">
-  <div class="background {show === true ? 'blur' : ''}">
-    <img src="{img}" alt="{alt}">
-  </div>
-  {#if show}
-    <div 
-      transition:fade
-      class="infotainer">
-      <div class="tags">
-        {#each tags as tag, i}
-          <h3>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;//&nbsp;&nbsp;{/if}</h3>
-        {/each}
-      </div>
-      <h2 class="title">{title}</h2>
-      <p class="body">{body}</p>
-      {#if show}
-        <div class="bottom" transition:fly="{{ y: 100, duration: 300 }}">
-          <Button {...button} />
-        </div>
-      {/if}
+<article
+  on:mouseenter={() => hide = false}
+	on:mouseleave={() => hide = true}
+>
+  <div style="background-image: url('{img}'" class="background {hide === false ? 'blur' : ''}" /> 
+  <div 
+    class="infotainer"
+    class:hide={hide}>
+    <div class="tags">
+      {#each tags as tag, i}
+        <h3>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;//&nbsp;&nbsp;{/if}</h3>
+      {/each}
     </div>
-  {/if}
+    <h2 class="title">{title}</h2>
+    <p class="body">{body}</p>
+    <div class="bottom" class:hide={hide}>
+      <Button {...button} />
+    </div>
+  </div>
 </article>
 
 <style>
@@ -53,40 +47,54 @@
     width: 48%;
     overflow: hidden;
     text-align: left;
+    margin-bottom: 4%;
+  }
+
+  @media (max-width: 640px) {
+    article {
+      width: 95%;
+    }
   }
 
   .background {
     position: relative;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
     top: 0;
     left: 0;
-  }
-
-  .background img {
-    width: 105%;
-    margin: auto;
   }
 
   .blur {
     filter: blur(4px);
-    border-bottom: 4px solid var(--gray);
   }
 
   .infotainer {
     box-sizing: border-box;
-    position: absolute;
-    top: 0;
+    position: relative;
+    top: -102%;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 102%;
     z-index: 2;
-    background-color: rgba(255,255,255,.9);
-    padding: 2rem;
+    background-color: rgba(255,255,255,.85);
+    padding: 5%;
+    padding-bottom: 2rem;
+    transition: opacity .2s linear;
+    opacity: 1;
+    border-bottom: 4px solid var(--gray);
+
   }
 
-  .tags {
-    margin-bottom: .5rem;
+  .infotainer.hide {
+    opacity: 0;
   }
-  .tags h3 {
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  h3 {
     font-size: 1.3rem;
     display: inline-block;
     color: var(--acct);
@@ -95,10 +103,18 @@
     -moz-font-feature-settings: "smcp";
     -webkit-font-feature-settings: "smcp";
     font-feature-settings: "smcp";
+    margin-bottom: .5rem;
+
   }
 
   .bottom {
     position: relative;
-    bottom: 0;
+    bottom: -1rem;
+    display: block;
+    transition: transform .2s .2s ease-out;
+  }
+
+  .bottom.hide {
+    transform: translateY(100px);
   }
 </style>

@@ -17,6 +17,7 @@
     font-weight: 600;
     background: #FFFFFF;
     border: var(--border);
+    box-sizing: border-box;
     width: 100%;
     border-radius: 5px;
     font-size: 1.2rem;

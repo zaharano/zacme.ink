@@ -1,9 +1,10 @@
 <script>
 import Header from "./componenets/header.svelte";
 import ProjectSection from "./componenets/projectSection.svelte";
-import SpeechAnimation from "./componenets/speechAnimation.svelte";
-import TextAnimation from "./componenets/textAnimation.svelte";
+import Hero from "./componenets/hero.svelte";
 import VennAnimation from "./componenets/vennAnimation.svelte";
+import Footer from "./componenets/footer.svelte";
+
 import Button from "./componenets/button.svelte";
 
 // const { projects } = content;
@@ -17,13 +18,10 @@ import Button from "./componenets/button.svelte";
 <Header />
 
 <main>
-	<section class="hero">
-		<SpeechAnimation msg="Hi!"/>
-		<TextAnimation />
-	</section>
+	<Hero />
 	<VennAnimation />
 	<h2>
-		My curiousity and appetite for learning new tricks have left me with a versatile set of skills fit for use in solving modern communication problems.
+		My curiousity and appetite for learning new skills have left me with a versatile set of skills fit for use in solving modern communication problems.
 	</h2>
 	<h2>
 		Check out some of my work!
@@ -34,22 +32,20 @@ import Button from "./componenets/button.svelte";
 
 <!-- <ProjectSection projects /> -->
 
-<!-- <Footer /> -->
 </main>
+<Footer />
+
 
 <style>
 	main {
 		text-align: center;
-		padding: 1em;
-		max-width: 1000px;
+		/* padding: 1em; */
 		margin: auto;
 	}
 
-	.hero {
-		min-height: 100vh;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+	h2 {
+		margin-left: auto;
+		margin-right: auto;
+		max-width: 1000px;
 	}
 </style>

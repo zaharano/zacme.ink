@@ -25,6 +25,7 @@
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1;
   }
   
   .header-container {
@@ -34,10 +35,11 @@
   }
 
   .header-logo {
-    z-index: 3;
+    z-index: 8;
     height: 120px;
     left: 1.3em;
     top: 1em;
+    position: relative;
     transition-property: transform, filter;
     transition-duration: .4s;
     transition-timing-function: var(--timing);

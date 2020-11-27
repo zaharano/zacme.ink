@@ -5,18 +5,73 @@
 
   gsap.registerPlugin(TextPlugin);
 
+  // prop msg
+  // export let msg = 'who';
+
   const delay = .02,
         duration = .01,
+        // define nudge size for 'designer'
         nudgeAmount = 25,
         nudges = {x:0, y:0};
 
   onMount(() => {
-    // repeat: 1, repeatDelay: 10
-    const tlc = gsap.timeline({delay: 2});
+    // text animation TLs
+    const tlc = gsap.timeline({
+    //   scrollTrigger: {
+    //   trigger: "section",
+    //   markers: true,
+    //   start: "top top",
+    //   end: "+=170%",
+    //   scrub: 1,
+    //   pin: true,
+    // }
+  });
     const desTL = gsap.timeline({repeat: 1, repeatDelay: 1, yoyo: true}),
           animTL = gsap.timeline({}),
           codeTL = gsap.timeline({});
+    const speechTL = gsap.timeline({delay: 1});
 
+    // animate speech bubble
+    speechTL.from('.speech', {
+      opacity: 0,
+      duration: .2,
+    })
+    .from('.speech', {
+      transformOrigin: "center bottom",
+      scale: .3,
+      duration: .8,
+      ease: "elastic.out(1, 0.3)",
+    }, "<")
+    .from('.speech', {
+      duration: 3,
+      transformOrigin: "center bottom",
+      rotate: 40,
+      ease: "elastic.out(1, 0.12)",
+    }, "<")
+    .from('.hi', {
+      opacity: 0,
+      duration: .5,
+      scale: .2,
+      ease: "power4.out",
+      transformOrigin: "50%, 50%"
+    }, "-=2.6")
+    .fromTo('.bang', {
+      opacity: 0,
+      scale: .8,
+      rotate: 45,
+      transformOrigin: "50%, 50%"
+    }, {
+      duration: .5,
+      opacity: 1,
+      rotate: 15,
+      scale: 1.3,
+      x: 10,
+      y: 0,
+      ease: "power4.out",
+      transformOrigin: "50%, 50%"
+    }, "-=2.2");
+
+    // keep track of nudge count by dimension
     const nudge = function(dim) {
       nudges[dim]++;
     }
@@ -184,37 +239,120 @@
       ease: "ease-out"
     })
 
-    tlc.add(desTL).add(animTL, ">-.5").add(codeTL, ">-.5")
+    tlc.add(desTL).add(animTL, ">-.5").add(codeTL, ">-.5").timeScale(2);
 
   });
 </script>
 
-<h1>
-  My name is Zach. I’m an integrative 
-    <span class="designer-contain">
-      <span class="designer">
-        designer,
-      </span>
-      <div class="guide-wrap" style="right: 70%;bottom: .3em;">
-        <div class="guide-y-ends">
-          <div class="guide-y-line"></div>
+<section>
+  <div class="speech">
+    <svg 
+      class="bubble" 
+      width="100%" 
+      viewBox="0 0 312 351" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path 
+        vector-effect="non-scaling-stroke"
+        class="speech-outer crawling-line"
+        d="M107.5 282L30.4 274.7C13.4 273.1 0.5 259 0.5 241.8V33.5C0.5 15.3 15.3 0.5 33.4 0.5C35.2 0.5 37 0.6 38.8 0.9L283.8 41.2C299.8 43.8 311.4 57.5 311.4 73.8V265.1C311.4 274 307.9 282.3 301.7 288.5C295.5 294.7 287.2 298.1 278.5 298.1C277.5 298.1 276.4 298 275.3 297.9L166.8 287.6L143.1 349.3L107.5 282Z" 
+        stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 4"
+        stroke-dashoffset="14px"
+        stroke-width="2"
+      />
+      <path
+        vector-effect="non-scaling-stroke"
+        class="speech-inner"
+        d="M37.6 8.8C22.3 6.3 8.5 18.1 8.5 33.5V241.8C8.5 254.7 18.3 265.5 31.1 266.7L112.5 274.4L142 330L161.6 279L276.1 290C290.8 291.4 303.5 279.9 303.5 265.1V73.8C303.5 61.6 294.6 51.1 282.6 49.1L37.6 8.8Z" 
+        fill="white" 
+        stroke-width="1"
+      />
+      <g class="speech-exclaim">
+        <text x="50" y="210" class="hi">
+          Hi
+        </text>
+        <text x="205" y="210" class="bang">
+          !
+        </text>
+      </g>
+      
+      <text></text>
+    </svg>
+  </div>
+
+  <h1>
+    My name is Zach. I’m an integrative 
+      <span class="designer-contain">
+        <span class="designer">
+          designer,
+        </span>
+        <div class="guide-wrap" style="right: 70%;bottom: .3em;">
+          <div class="guide-y-ends">
+            <div class="guide-y-line"></div>
+          </div>
         </div>
-      </div>
-      <div class="guide-wrap" style="right: .1em;bottom: 80%;">
-        <div class="guide-x-ends">
-          <div class="guide-x-line"></div>
-      </div>
-    </span> 
-    <span class="animator">
-      animator
-    </span> and 
-    <span class="code">
-      <span class="code-open"></span><span class="code-em">front-end developer</span><span class="code-close"></span>
-    </span>.
-</h1>
+        <div class="guide-wrap" style="right: .1em;bottom: 80%;">
+          <div class="guide-x-ends">
+            <div class="guide-x-line"></div>
+        </div>
+      </span> 
+      <span class="animator">
+        animator
+      </span> and 
+      <span class="code">
+        <span class="code-open"></span><span class="code-em">front-end developer</span><span class="code-close"></span>
+      </span>.
+  </h1>
+</section>
+
 
 <style>
-  span {
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  h1 {
+    margin-left: auto;
+		margin-right: auto;
+		max-width: 1200px;
+  }
+  
+  /* SPEECH STYLES */
+  .speech {
+    /* safari can't handle the clamps!!! */
+    width: 30vw;
+    width: clamp(250px, 30vw, 400px);
+  }
+  .speech-exclaim {
+    color: var(--gray);
+    font-size: 9rem;
+    /* skew the word */
+    transform: translate(0px, -50px) skew(0deg, 6deg) scaleY(1.2);
+    width: 100%;
+    fill: var(--gray);
+    font-family: Shackleton, serif;
+  }
+  .speech-inner {
+    stroke: var(--gray);
+  }
+  :global(.crawling-line) {
+    stroke: var(--acct);
+    /* animation: stroke 0.2s linear infinite; */
+  }
+  @keyframes -global-stroke {
+    to { 
+      stroke-dashoffset: 0;
+    }
+  }
+  
+
+  /* TEXT STYLES */
+  h1 span {
     position: relative;
     display: inline-block;
   }
@@ -241,7 +379,6 @@
     opacity: 0;
   }
 
-  /* figure out getting nudgeAmount into base width/height of thing */
   .guide-x-line {
     border-top: var(--guides);
     width: 10px;
@@ -262,10 +399,13 @@
 
   .code-open, .code-close {
     font-family:'Courier New', Courier, monospace;
-    color: purple;
+    color: rgb(193, 89, 214);
+    background-color: rgba(46, 72, 102, 0.9);
     font-weight: 500;
-    font-size: 50%;
-    background-color: rgb(230, 230, 230);
+    font-size: 35%;
+    line-height: 1.5;
+    vertical-align: 40%;
     border-radius: 15px;
+    margin: .4rem;
   }
 </style>

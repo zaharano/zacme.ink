@@ -7,8 +7,8 @@
 
   // animate speech bubble
   onMount(() => {
-    const tl = gsap.timeline({});
-    tl.from('.speech', {
+    const speechTL = gsap.timeline({});
+    speechTL.from('.speech', {
       delay: 1,
       transformOrigin: "center bottom",
       scale: 0,
@@ -26,7 +26,7 @@
 
 <!-- style="padding-bottom: 112.5%" -->
 	
-  <div class="scaling-svg speech">
+<div class="scaling-svg speech">
   <svg 
     class="scaling-svg bubble" 
     width="100%" 
@@ -34,7 +34,6 @@
     fill="none" 
     xmlns="http://www.w3.org/2000/svg"
   >
-    
     <path 
       vector-effect="non-scaling-stroke"
       class="speech-outer"
