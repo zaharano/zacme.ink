@@ -1,3 +1,7 @@
+<script>
+  import Menu from './menu.svelte';
+</script>
+
 <header>
   <div class="header-container">
     <a aria-label=”Home” href="/">
@@ -16,8 +20,9 @@
        </g>
      </svg>
     </a>
+    <Menu />
   </div>
- </header>
+</header>
 
  <style>
   header {
@@ -32,6 +37,9 @@
     padding: 1rem;
     max-width: 1600px;
     margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .header-logo {

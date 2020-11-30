@@ -1,5 +1,9 @@
+<script>
+  import Button from './button.svelte'
+</script>
+
 <footer>
-  This is the footer.
+  <Button />
 </footer>
 
 <style>
@@ -10,5 +14,8 @@
     border-radius: 10px 10px 0 0;
     padding: 2rem;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 </style>

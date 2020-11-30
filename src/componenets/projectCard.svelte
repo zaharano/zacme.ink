@@ -1,8 +1,6 @@
 <script>
   import Button from "./button.svelte";
   
-  import { fade, fly } from 'svelte/transition';
-
   export let img = "./assets/Enterprise_HD.jpg";
   export let alt = "The Starship Enterprise";
   export let tags = ["these", "are", "voyages"];
@@ -83,7 +81,6 @@
     transition: opacity .2s linear;
     opacity: 1;
     border-bottom: 4px solid var(--gray);
-
   }
 
   .infotainer.hide {
@@ -95,7 +92,7 @@
   }
 
   h3 {
-    font-size: 1.3rem;
+    font-size: 1rem;
     display: inline-block;
     color: var(--acct);
     font-family: 'Vollkorn SC', serif;

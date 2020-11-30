@@ -40,13 +40,9 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
+/* a:hover {
 	text-decoration: underline;
-}
-
-a:visited {
-	color: rgb(170, 113, 60);
-}
+} */
 
 h1 {
 	font-size: clamp(2rem, 4vw, 5rem);
