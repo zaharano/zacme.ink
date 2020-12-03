@@ -3,10 +3,37 @@
   import { gsap } from "gsap";
   import { fly } from 'svelte/transition';
 
-  let open = true;
+  let open = false;
 
   function handleClick(){
-    open = !open
+    open = !open;
+    if (open) {
+      const tl = gsap.timeline();
+      tl.to('#line1', {
+        rotate: 225,
+        y: 12,
+      })
+      .to('#line3', {
+        rotate: -225,
+        y: -12,
+      }, "<")
+      .to('#line2', {
+        opacity: 0,
+      }, "<");
+    } else {
+      const tl = gsap.timeline();
+      tl.to('#line1', {
+        rotate: 0,
+        y: 0,
+      })
+      .to('#line3', {
+        rotate: 0,
+        y: 0,
+      }, "<")
+      .to('#line2', {
+        opacity: 1,
+      }, "<");
+    }
   }
 
   function playWiggle(){
@@ -14,26 +41,59 @@
   }
 
   onMount(() => {
-    const hamTL = gsap.timeline();
-    const wiggleTL = gsap.timeline();
+    gsap.set('#line1', {
+      transformOrigin: "50% 50%",
+    });
+    gsap.set('#line3', {
+      transformOrigin: "50% 50%",
+    });
   });
+
+  const menu = [
+    {
+      txt: "Home",
+      href: "#"
+    },
+    {
+      txt: "Work",
+      href: "#"
+    },
+    {
+      txt: "Contact",
+      href: "#"
+    }
+  ]
 </script>
 
 <div class="container">
   {#if open}
     <nav class="menu" transition:fly="{{ y: 50, duration: 120 }}">
       <ul on:click={handleClick}>
-        <li><a href="/">Home</a></li>
-        <li><a href="/">My Work</a></li>
-        <li><a href="/">Contact</a></li>
+        {#each menu as {txt,href},i}
+          {#if open}
+            <li in:fly="{{y: -35,duration: 100,delay:i*50+100 }}">
+              <a {href}>{txt}</a>
+            </li>
+          {/if}
+        {/each}
       </ul>
     </nav>
   {/if}
-  <div class="hamburguesa" on:click={handleClick} on:mouseenter={playWiggle}>
-    X
+  <button 
+    class="hamburguesa" 
+    on:click={ handleClick } 
+    on:mouseenter={playWiggle}>
+    <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <g>
+        <line id="line3" x1="10" y1="41.5" x2="50" y2="41.5" stroke="#454545"/>
+        <line id="line2" x1="10" y1="29.5" x2="50" y2="29.5" stroke="#454545"/>
+        <line id="line1" x1="10" y1="17.5" x2="50" y2="17.5" stroke="#454545"/>
+      </g>
+    </svg>
     <span class="circle circle-burst"></span>
     <span class="circle circle-crawl"></span>
-  </div>
+  </button>
 </div>
 
 <style>
@@ -60,36 +120,39 @@
   }
 
   li {
-    font-size: clamp(3rem, 5vw, 6rem);
+    font-size: clamp(4rem, 6vw, 7rem);
     font-weight: 600;
     margin-bottom: 1rem;
   }
 
   li a {
-    color: var(--gray)
+    color: var(--gray);
   }
 
   a:hover {
     color: var(--acct);
   }
 
-  div.hamburguesa {
+  button.hamburguesa {
     position: absolute;
     top: 1rem;
     right: 1rem;
+    cursor: pointer;
   }
 
-  @media (min-width: 481px) { 
+  @media (min-width: 660px) { 
     nav {
-      width: 30vw;
       max-width: 60rem;
-      height: 40vh;
       max-height: 60rem;
       position: absolute;
+      padding: 5rem;
+      height: inherit;
+      width: inherit;
+      box-shadow: 0 0 52px -10px rgba(0,0,0,.2)
     }
 
     li {
-      font-size: clamp(1.5rem, 2vw, 4rem);
+      font-size: 2rem;
     }
   }
   

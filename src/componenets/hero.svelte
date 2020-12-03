@@ -5,32 +5,27 @@
 
   gsap.registerPlugin(TextPlugin);
 
-  // prop msg
-  // export let msg = 'who';
+  //reset tl function
+  const resetTL = function() {
+    this.restart().pause();
+  };
+
+  //text animation TLs
+  const desTL = gsap.timeline({onComplete: resetTL, repeat: 1, repeatDelay: 1, yoyo: true, paused: true}),
+        animTL = gsap.timeline({onComplete: resetTL, paused: true}),
+        codeTL = gsap.timeline({onComplete: resetTL, paused: true});
+
+  //speech bubble TL
+  const speechTL = gsap.timeline({delay: 1});
+
 
   const delay = .02,
         duration = .01,
         // define nudge size for 'designer'
-        nudgeAmount = 25,
+        nudgeAmount = 20,
         nudges = {x:0, y:0};
 
   onMount(() => {
-    // text animation TLs
-    const tlc = gsap.timeline({
-    //   scrollTrigger: {
-    //   trigger: "section",
-    //   markers: true,
-    //   start: "top top",
-    //   end: "+=170%",
-    //   scrub: 1,
-    //   pin: true,
-    // }
-  });
-    const desTL = gsap.timeline({repeat: 1, repeatDelay: 1, yoyo: true}),
-          animTL = gsap.timeline({}),
-          codeTL = gsap.timeline({});
-    const speechTL = gsap.timeline({delay: 1});
-
     // animate speech bubble
     speechTL.from('.speech', {
       opacity: 0,
@@ -71,12 +66,11 @@
       transformOrigin: "50%, 50%"
     }, "-=2.2");
 
-    // keep track of nudge count by dimension
+    // track nudge count by dimension
     const nudge = function(dim) {
       nudges[dim]++;
     }
     // word 'designer' nudges up and left, guides show up, color picker appear, color changed, yoyo
-    // want to refactor this to clean it up, DRY it out
     const desSel = ' .designer';
 
     desTL.set('.guide-y-ends', {
@@ -151,7 +145,7 @@
     .to('.guide-y-line', {
       duration,
       height: nudges.y * nudgeAmount,
-    })
+    }).timeScale(2.1);
 
     animTL.to('.animator', {
       delay: .3,
@@ -183,9 +177,12 @@
       scale: 1,
       rotate: 360,
       ease: "elastic.out(1, 0.3)",
-    })
+    }).timeScale(1.7);
 
-    codeTL.to('.code-open', {
+    codeTL.set('.code-tag', {
+      margin: '.4rem',
+    })
+    .to('.code-open', {
       duration: .4,
       text: "&lt;i",
       ease: "none"
@@ -238,9 +235,9 @@
       skewX: 0,
       ease: "ease-out"
     })
-
-    tlc.add(desTL).add(animTL, ">-.5").add(codeTL, ">-.5").timeScale(2);
-
+    .set('.code-tag', {
+      margin: '0',
+    }).timeScale(1.5);
   });
 </script>
 
@@ -284,7 +281,7 @@
   <h1>
     My name is Zach. I’m an integrative 
       <span class="designer-contain">
-        <span class="designer">
+        <span class="word designer" on:mouseenter={() => {desTL.play()}}>
           designer,
         </span>
         <div class="guide-wrap" style="right: 70%;bottom: .3em;">
@@ -297,11 +294,11 @@
             <div class="guide-x-line"></div>
         </div>
       </span> 
-      <span class="animator">
+      <span class="word animator" on:mouseenter={() => {animTL.play()}}>
         animator
       </span> and 
-      <span class="code">
-        <span class="code-open"></span><span class="code-em">front-end developer</span><span class="code-close"></span>
+      <span class="word code" on:mouseenter={() => {codeTL.play()}}>
+        <span class="code-tag code-open"></span><span class="code-em">front-end developer</span><span class="code-tag code-close"></span>
       </span>.
   </h1>
 </section>
@@ -344,19 +341,23 @@
     stroke: var(--acct);
     /* animation: stroke 0.2s linear infinite; */
   }
+
   @keyframes -global-stroke {
     to { 
       stroke-dashoffset: 0;
     }
   }
   
-
-  /* TEXT STYLES */
+  /* TEXT ANIM STYLES */
   h1 span {
     position: relative;
     display: inline-block;
   }
 
+  .word {
+    cursor: pointer;
+  }
+  
   .guide-wrap {
     position: absolute;
     --guides: 2px solid var(--acct);
@@ -397,15 +398,18 @@
     font-size: 5px;
   } */
 
-  .code-open, .code-close {
+  .code-tag {
     font-family:'Courier New', Courier, monospace;
-    color: rgb(193, 89, 214);
-    background-color: rgba(46, 72, 102, 0.9);
+    color: var(--acct);
+    background-color: white;
     font-weight: 500;
     font-size: 35%;
     line-height: 1.5;
     vertical-align: 40%;
     border-radius: 15px;
-    margin: .4rem;
+    margin: 0;
   }
+
+  
+
 </style>
