@@ -43,14 +43,17 @@
     border: var(--border);
     border-radius: 10px;
     width: 48%;
+    height: 25rem;
     overflow: hidden;
     text-align: left;
     margin-bottom: 4%;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 660px) {
     article {
       width: 95%;
+      margin-right: auto;
+      margin-left: auto;
     }
   }
 

@@ -22,7 +22,7 @@
   const delay = .02,
         duration = .01,
         // define nudge size for 'designer'
-        nudgeAmount = 20,
+        nudgeAmount = 7,
         nudges = {x:0, y:0};
 
   onMount(() => {
@@ -339,7 +339,8 @@
   }
   :global(.crawling-line) {
     stroke: var(--acct);
-    /* animation: stroke 0.2s linear infinite; */
+    opacity: 1;
+    animation: stroke 0.2s linear infinite;
   }
 
   @keyframes -global-stroke {

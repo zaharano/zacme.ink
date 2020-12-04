@@ -3,19 +3,14 @@
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { DrawSVGPlugin } from 'gsap/all';
-  import { CustomEase } from "gsap/CustomEase";
-  import { CustomWiggle } from "gsap/CustomWiggle";
   import { GSDevTools } from "gsap/GSDevTools"
+  import DashedCircle from './dashedCircle.svelte';
 
   gsap.registerPlugin(
-    CustomEase, 
-    CustomWiggle, 
     ScrollTrigger, 
     DrawSVGPlugin,
     GSDevTools
   );
-
-  // pin and scrub? removed for build
 
   onMount(() => {
     const tl = gsap.timeline({
@@ -37,7 +32,7 @@
           iconOverlap = '-=.2';
 
     const iconWord = {
-      opacity: 0,
+      autoAlpha: 0,
       duration: .2,
       transformOrigin,
       scale: 5,
@@ -51,39 +46,28 @@
     .from('#magic-icon-wand', {
       x: -20,
       y: 20,
-      opacity: 0,
+      autoAlpha: 0,
       duration: iconDur,
       ease: iconEase,
     })
     .fromTo('.magic-icon-stems', {
       drawSVG: "0% 0%",
-      opacity: 0,
+      autoAlpha: 0,
     }, {
       drawSVG: "0% 100%",
-      opacity: 1,
+      autoAlpha: 1,
       duration: iconDur,
       ease: iconEase,
     })
     .from('.magic-icon-flowers', {
       transformOrigin,
       scale: .1,
-      opacity: 0,
+      autoAlpha: 0,
       stagger: .2,
       duration: iconDur,
       ease: "elastic.out(1, 0.3)",
     }, "-=.1")
-    .from ('#magic-word', iconWord);
-
-    // smashing wiggle
-    // .to('.venn', {
-    //   ease: "wiggle(7)",
-    //   rotate: "5deg",
-    //   x: "15px",
-    //   y: "-8px",
-    // });
-
-    
-
+    .from('#magic-word', iconWord);
 
     // pop-in animation for develop icon
     developIconTL.set('#develop-icon', {
@@ -92,9 +76,9 @@
       y: 30,
     })
     .from('#develop-icon', {
-      opacity: 0, 
-      scaleX: .01,
-      duration: iconDur*2,
+      autoAlpha: 0, 
+      scaleX: 0,
+      duration: iconDur,
       ease: iconEase,
     })
     .from('#develop-icon', {
@@ -103,35 +87,34 @@
       ease: iconEase,
     })
     .from('#develop-icon-open-bracket', {
-      opacity: 0,
+      autoAlpha: 0,
       duration: .01,
       delay: .1,
     })
     .from('#develop-icon-slash', {
-      opacity: 0,
+      autoAlpha: 0,
       duration: .01,
       delay: .2,
     })
     .from('#develop-icon-close-bracket', {
-      opacity: 0,
+      autoAlpha: 0,
       duration: .01,
       delay: .1,
     })
-    .from ('#develop-word', iconWord);
-
+    .from('#develop-word', iconWord);
 
     // pop-in animation for Design icon
     designIconTL.from('#design-icon-ruler', {
       x: -40,
       y: 40,
-      opacity: 0,
+      autoAlpha: 0,
       duration: iconDur,
       ease: iconEase,
     })
     .from('#design-icon-pencil', {
       x: 40,
       y: 40, 
-      opacity: 0,
+      autoAlpha: 0,
       duration: iconDur,
       ease: iconEase,
     }, iconOverlap)
@@ -141,158 +124,151 @@
     animateIconTL
     .set('.animate-icon-line', {
       drawSVG: '0',
-      opacity: 0,
+      autoAlpha: 0,
     }, "0")
     .set('#animate-icon-circle', {
       x: -40,
     })
     .from('#animate-icon-circle', {
-      opacity: 0,
+      autoAlpha: 0,
       duration: iconDur,
       ease: iconEase,
     })
     .to('#animate-icon-circle', {
       x: -50,
+      delay: .1,
       scaleX: .8,
       duration: iconDur,
       ease: iconEase,
     }, "<")
     .from('.animate-icon-line', {
-      opacity: 0,
+      autoAlpha: 0,
       duration: .1,
-    })
+    }, "circleStart")
     .to('#animate-icon-circle', {
       x:0,
       duration: (iconDur*2),
       ease: iconEase,
-    }, "circleStart")
+    })
     .to('.animate-icon-line', {
       drawSVG: "0 100%",
       stagger: .1,
       duration: .3,
-    }, "circleStart")
+    }, "circleStart+=.2")
     .to('#animate-icon-circle', {
       scaleX: 1.2,
       duration: (iconDur/2),
+      ease: "none",
     }, "circleStart")
     .to('#animate-icon-circle', {
       scaleX: 1,
       duration: (iconDur/2),
-    }, `<-=${iconDur}`)
+      ease: "none",
+    }, "circleStart+=.2")
     .from('#animate-icon-ghost2', {
-      opacity: 0,
+      autoAlpha: 0,
       duration: .1,
     }, `circleStart+=${iconDur/3}`)
     .from('#animate-icon-ghost1', {
-      opacity: 0,
+      autoAlpha: 0,
       duration: .1,
     }, `circleStart+=${(iconDur/3)*2}`)
-    .from('#animate-word', iconWord);
+    .from('#animate-word', iconWord)
+    .timeScale(1.4);
 
-    const duration = .8,
-          durPop = 1.2,
-          delay = .3,
-          popOffset = "+=.2",
-          iconDelay = "-=.2";
-
-    tl.fromTo('#orange-1', {
-      opacity: 0,
-      scale: .4,
-      transformOrigin: "50% 50%",
-    }, {
-      duration: 2,
-      opacity: 1,
-      scale: 1,
-      rotate: 360,
-      transformOrigin: "50% 50%",
-      ease: "power1.inOut",
-    })
-    .to('#orange-1', {
-      rotate: 360,
-    })
-    .from('.circle-design', {
-      opacity: 0,
-      duration: durPop,
-      scale: .5,
-      transformOrigin: "50% 50%",
-      ease: "power1.out",
-    }, "-=.4")
-    .add(designIconTL, iconDelay)
-    .to('#orange-1', {
-      scale: 1.4,
-      opacity: 0,
-      ease: 'power1.in',
-      duration: .4,
-    })
-    .from('.circle-animate', {
+    // whole venn circles animation
+    const duration = .6,
+          burstFrom = {
+            // autoAlpha: 0,
+            // scale: 0.1,
+            // transformOrigin,
+          },
+          burstTo = {
+            // duration: 1.2,
+            // autoAlpha: 0,
+            // scale: 1.4,
+            // rotate: 180,
+            // transformOrigin,
+            // ease: "power3.inOut",
+          },
+          oranges = {
+            duration,
+            autoAlpha: 0,
+            scale: .4,
+            transformOrigin,
+            ease: "power2.inOut",
+          },
+          innerCircles = {
+            autoAlpha: 0,
+            duration,
+            scale: .5,
+            transformOrigin,
+            delay: .2,
+            ease: "power2.out",
+          },
+          outerCircleOffset = "-=.7",
+          innerCircleOffset = "-=.6",
+          iconOffset = "-=.2",
+          popOffset = "-=.4",
+          moveOffset = "+=.2";
+    
+    tl.fromTo('#orange-b-1', burstFrom, burstTo)
+    .from('#orange-1', oranges, outerCircleOffset)
+    .from('.circle-design', innerCircles, innerCircleOffset)
+    .add(designIconTL, iconOffset)
+    .fromTo('#orange-b-2', burstFrom, burstTo, popOffset)
+    .from('#orange-2', oranges, outerCircleOffset)
+    .from('.circle-animate', innerCircles, innerCircleOffset)
+    .add(animateIconTL, iconOffset)
+    .fromTo('#orange-b-3', burstFrom, burstTo, popOffset)
+    .from('#orange-3', oranges, outerCircleOffset)
+    .from('.circle-develop', innerCircles, innerCircleOffset)
+    .add(developIconTL, iconOffset)
+    .to('.circle-design-w', {
       duration,
-      opacity: 0,
-    }, popOffset)
-    .from('#animate-set', {
-      duration,
-      opacity: 0,
-    }, "<")
-    .from('.circle-animate', {
-      duration: durPop,
-      scale: .1,
-      transformOrigin,
-      ease: "elastic.out(1, 0.3)",
-    }, "<")
-    .add(animateIconTL, iconDelay)
-    .from('.circle-develop', {
-      duration,
-      opacity: 0,
-    }, popOffset)
-    .from('#develop-set', {
-      duration,
-      opacity: 0
-    }, "<")
-    .from('.circle-develop', {
-      duration: durPop,
-      scale: .1,
-      transformOrigin,
-      ease: "elastic.out(1, 0.3)",
-    }, "<")
-    .add(developIconTL, iconDelay)
-    .to('.circle-design', {
-      duration,
-      delay: 1.2,
+      delay: .4,
       y: 80,
     })
     .to('#design-set', {
       duration,
       y: -8
     }, "<")
-    .to('.circle-animate', {
+    .to('.circle-animate-w', {
       duration,
       y: -80,
       x: 95
-    }, popOffset)
+    }, moveOffset)
     .to('#animate-set', {
       duration,
       y: -20,
       x: 40
     }, "<")
-    .to('.circle-develop', {
+    .to('.circle-develop-w', {
       duration,
       y: -80,
       x: -95
-    }, popOffset)
+    }, moveOffset)
     .to('#develop-set', {
       duration,
       y: -20,
       x: -40
     }, "<")
-    .from('#magic-set', {
-      duration,
-      delay,
-      opacity: 0,
-    })
-    .add(magicIconTL, iconDelay)
-    .timeScale(1.2);
+    .add(magicIconTL);
 
     
+    //slight parallax to delay scroll
+    // gsap.to(".venn", {
+    //   yPercent: 30,
+    //   ease: "none",
+    //   scrollTrigger: {
+    //     trigger: ".venn",
+    //     // start: "top bottom", // the default values
+    //     // end: "bottom top",
+    //     scrub: true
+    //   }, 
+    // });
 
+    // dev slider
     // GSDevTools.create({animation: tl})
   });
 </script>
@@ -302,23 +278,37 @@
   <svg width="836" height="761" viewBox="-50 -50 936 861" fill="none"
     xmlns="http://www.w3.org/2000/svg">
     <rect width="836" height="761" />
-    <g id="venn-total">
-      <circle class="circle-animate whole-animate" id="fill-2" cx="208" vector-effect="non-scaling-stroke" cy="553" r="200" fill="white"/>
-      <circle class="circle-develop whole-develop" id="fill-3" cx="628" vector-effect="non-scaling-stroke" cy="553" r="200" fill="white"/>
-      <circle class="circle-design whole-design" id="fill-1" cx="418" cy="208" vector-effect="non-scaling-stroke" r="200" fill="white"/>
-      <circle class="circle-animate whole-animate" id="line-2" cx="208" vector-effect="non-scaling-stroke" cy="553" r="199.5" stroke="#454545"/>
-      <circle class="whole-animate crawling-line" id="orange-2" vector-effect="non-scaling-stroke" cx="208" cy="553" r="207.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 4"
-      stroke-dashoffset="14px"
-      stroke-width="2"/>
-      <circle class="circle-develop whole-develop" id="line-3" cx="628" vector-effect="non-scaling-stroke" cy="553" r="199.5" stroke="#454545"/>
-      <circle class="whole-develop crawling-line" id="orange-3" vector-effect="non-scaling-stroke" cx="628" cy="553" r="207.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 4"
-      stroke-dashoffset="14px"
-      stroke-width="2"/>
-      <circle class="circle-design whole-design" id="line-1" cx="418" cy="208" vector-effect="non-scaling-stroke" r="199.5" stroke="#454545"/>
-      <circle class="whole-design crawling-line" id="orange-1" vector-effect="non-scaling-stroke" cx="418" cy="208" r="207.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10"
-      stroke-dashoffset="14px"
-      stroke-width="2"/>
-      <g id="design-set" class="whole-design">
+
+    <!-- all the circles -->
+    <g id="venn-total"> 
+      <circle class="circle-design circle-design-w crawlTrigger" id="fill-1" cx="418" cy="208" vector-effect="non-scaling-stroke" r="200" fill="white" data-key="1"/>
+      <circle class="circle-animate circle-animate-w crawlTrigger" id="fill-2" cx="208" vector-effect="non-scaling-stroke" cy="553" r="200" fill="white" data-key="2"/>
+      <circle class="circle-develop circle-develop-w crawlTrigger" id="fill-3" cx="628" vector-effect="non-scaling-stroke" cy="553" r="200" fill="white" data-key="3"/>
+      <circle class="circle-design circle-design-w" id="line-1" cx="418" cy="208" vector-effect="non-scaling-stroke" r="199.5" stroke="#454545"/>
+      <circle class="circle-animate circle-animate-w" id="line-2" cx="208" vector-effect="non-scaling-stroke" cy="553" r="199.5" stroke="#454545"/>
+      <circle class="circle-develop circle-develop-w" id="line-3" cx="628" vector-effect="non-scaling-stroke" cy="553" r="199.5" stroke="#454545"/>
+      <!-- <circle class="bursts crawling-line" id="orange-b-1" vector-effect="non-scaling-stroke" cx="418" cy="208" r="207.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10"
+      stroke-dashoffset="20px" stroke-width="2"/>
+      <circle class="bursts crawling-line" id="orange-b-2" vector-effect="non-scaling-stroke" cx="208" cy="553" r="207.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10"
+      stroke-dashoffset="20px" stroke-width="2"/>
+      <circle class="bursts crawling-line" id="orange-b-3" vector-effect="non-scaling-stroke" cx="628" cy="553" r="207.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10"
+      stroke-dashoffset="20px" stroke-width="2"/> -->
+      <!-- <circle class="circle-design-w crawler" id="orange-1" vector-effect="non-scaling-stroke" cx="418" cy="208" r="207.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10"
+      stroke-dashoffset="20px" stroke-width="2"/> -->
+      <!-- <DashedCircle
+        cx="418" cy="208"
+        id="orange-1"
+        key="0"
+        classes="circle-design-w crawler"
+      />
+      <circle class="circle-animate-w crawler" id="orange-2" vector-effect="non-scaling-stroke" cx="208" cy="553" r="207.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10"
+      stroke-dashoffset="20px" stroke-width="2"/>
+      <circle class="circle-develop-w crawler" id="orange-3" vector-effect="non-scaling-stroke" cx="628" cy="553" r="207.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10"
+      stroke-dashoffset="20px" stroke-width="2"/> -->
+  <!-- end circles -->
+      
+  <!-- design icon -->
+      <g id="design-set">
         <g id="design-icon">
           <g id="design-icon-ruler">
             <path id="Rectangle 6" d="M386.414 193.276L442.276 137.414L451.468 146.607L395.607 202.468L386.414 193.276Z" fill="white" stroke="#454545" stroke-width="2"/>
@@ -353,6 +343,9 @@
           <path d="M478.958 220C479.87 220 480.878 219.976 481.982 219.928C481.982 220.648 481.934 221.188 481.838 221.548C481.334 221.596 480.95 221.728 480.686 221.944C480.422 222.16 480.23 222.532 480.11 223.06C480.014 223.564 479.966 224.32 479.966 225.328V238.036C479.654 238.18 479.162 238.252 478.49 238.252L465.566 223.96V232.6C465.566 233.632 465.626 234.412 465.746 234.94C465.89 235.468 466.118 235.84 466.43 236.056C466.742 236.272 467.198 236.404 467.798 236.452C467.918 236.836 467.978 237.376 467.978 238.072C466.682 238.024 465.614 238 464.774 238C463.646 238 462.554 238.024 461.498 238.072C461.498 237.376 461.558 236.836 461.678 236.452C462.278 236.404 462.722 236.272 463.01 236.056C463.322 235.84 463.538 235.468 463.658 234.94C463.802 234.412 463.874 233.632 463.874 232.6V222.088L463.838 222.052C463.67 221.884 463.454 221.776 463.19 221.728C462.926 221.656 462.422 221.596 461.678 221.548C461.558 221.116 461.498 220.576 461.498 219.928C462.362 219.976 463.202 220 464.018 220C464.762 220 465.518 219.976 466.286 219.928L478.274 233.356V225.328C478.274 224.32 478.202 223.564 478.058 223.06C477.938 222.532 477.722 222.16 477.41 221.944C477.098 221.728 476.63 221.596 476.006 221.548C475.91 220.996 475.862 220.456 475.862 219.928C477.062 219.976 478.094 220 478.958 220Z" fill="#454545"/>
         </g>
       </g>
+<!-- end design icon -->
+
+<!-- magic icon -->
       <g id="magic-set">
         <g id="magic-icon">
           <g id="magic-icon-wand">
@@ -394,7 +387,10 @@
           <path d="M389.75 372.46c.12.39.18.89.18 1.51a109.03 109.03 0 00-8 0c0-.48.07-.98.19-1.5a3.4 3.4 0 001.62-.44c.28-.24.43-.68.43-1.33 0-.17-.05-.69-.15-1.55l-1.11-8.57-6.41 12.85c-.38.15-.85.22-1.4.22l-6.66-13-1.01 7.6c-.07.65-.11 1.2-.11 1.65 0 .94.16 1.59.47 1.95.33.36.9.56 1.69.61.12.39.18.89.18 1.51a74.61 74.61 0 00-6.66 0c0-.62.06-1.12.18-1.5a2.5 2.5 0 001.33-.44c.34-.24.59-.65.76-1.22.19-.6.35-1.48.47-2.63l1-7.92c.03-.17.04-.41.04-.72 0-.82-.17-1.37-.5-1.66-.32-.29-.87-.43-1.66-.43a6.16 6.16 0 01-.18-1.62 50.06 50.06 0 005.22 0l7.02 13.5 6.66-13.5c1.06.05 1.96.07 2.7.07.58 0 1.44-.02 2.6-.07 0 .7-.07 1.24-.19 1.62-.72 0-1.26.17-1.62.5-.36.31-.54.86-.54 1.62 0 .31.01.57.04.76l1.11 8.5c.15 1.03.3 1.78.44 2.26.16.48.38.82.64 1.01.3.2.7.31 1.23.36zM413.02 372.35c.12.36.18.9.18 1.62-.96-.05-2.2-.07-3.71-.07-1.58 0-2.86.03-3.82.07 0-.74.08-1.28.22-1.62.55-.07.94-.17 1.15-.29a.68.68 0 00.36-.6c0-.22-.12-.6-.36-1.12l-.72-1.55c-3.45 0-6.18.06-8.17.18l-.4.93c-.24.56-.36.99-.36 1.3 0 .67.5 1.06 1.48 1.15.14.44.22.97.22 1.62a57.14 57.14 0 00-5.55 0c0-.57.07-1.11.22-1.62.53-.1.93-.3 1.22-.65.29-.35.67-1.06 1.15-2.12l6.2-13.71c.45-.1.93-.15 1.44-.15l6.62 13.75c.53 1.1.97 1.85 1.33 2.23.39.39.82.6 1.3.65zm-7.42-5.04l-2.16-4.53a24.4 24.4 0 01-1.3-3.03c-.19.6-.43 1.2-.71 1.8l-.5 1.08-2.06 4.68h6.73zM426.56 374.15c-2.06 0-3.89-.4-5.47-1.19a9.04 9.04 0 01-3.7-3.3 9.4 9.4 0 01-1.3-4.94 7.8 7.8 0 011.54-4.9 9.57 9.57 0 014.07-3.1c1.68-.69 3.48-1.04 5.4-1.04 1.47 0 2.86.13 4.18.37 1.34.21 2.47.52 3.38.93-.21.91-.32 2.3-.32 4.14-.43.2-1.05.29-1.84.29-.07-1.51-.56-2.58-1.47-3.2a6.47 6.47 0 00-3.71-.94c-1.66 0-3.06.31-4.21.94a6.07 6.07 0 00-2.52 2.52 7.06 7.06 0 00-.83 3.38c0 2.45.63 4.44 1.9 5.97 1.3 1.54 3.14 2.3 5.51 2.3.75 0 1.32 0 1.73-.03.41-.02.83-.1 1.26-.21.39-.1.66-.28.83-.54.17-.3.25-.76.25-1.4v-1.12c0-.7-.06-1.2-.18-1.48a.99.99 0 00-.72-.61c-.36-.12-.95-.2-1.76-.22a5.33 5.33 0 01-.22-1.65c.55.05 1.86.07 3.93.07 2.04 0 3.3-.02 3.78-.07 0 .67-.06 1.22-.18 1.65-.46.03-.78.1-.98.22-.19.1-.32.29-.4.57-.06.27-.1.7-.1 1.3v.9c0 .55.02 1 .07 1.33.07.31.2.65.36 1.01a12.5 12.5 0 01-3.6 1.51c-1.41.36-2.97.54-4.68.54zM441.87 373.97c0-.74.06-1.28.18-1.62.6-.05 1.05-.14 1.33-.29.32-.14.53-.4.65-.75.12-.36.18-.9.18-1.62v-9.61c0-.7-.06-1.23-.18-1.59a1.2 1.2 0 00-.64-.75 3.81 3.81 0 00-1.34-.3c-.12-.35-.18-.9-.18-1.61a131.1 131.1 0 008 0 6.5 6.5 0 01-.15 1.62c-.86.05-1.45.24-1.76.57-.3.34-.44 1.03-.44 2.06v9.6c0 1.04.15 1.74.44 2.1.3.33.9.53 1.76.57.1.36.14.9.14 1.62a126.15 126.15 0 00-8 0zM472.22 357.05c-.24.91-.36 2.28-.36 4.1-.45.22-1.05.33-1.8.33-.07-1.56-.5-2.65-1.3-3.28-.76-.64-1.88-.97-3.34-.97-2.4 0-4.2.66-5.4 1.98a6.96 6.96 0 00-1.8 4.86c0 1.51.31 2.88.93 4.1a7.25 7.25 0 002.74 2.85c1.2.7 2.62 1.05 4.25 1.05a12.84 12.84 0 005.87-1.33c.14.11.27.3.4.53.11.22.18.42.2.62a20.14 20.14 0 01-3.8 1.72c-1.2.36-2.56.54-4.08.54-1.96 0-3.72-.4-5.25-1.19a8.9 8.9 0 01-4.9-8.17c0-1.94.5-3.6 1.48-4.97a9.08 9.08 0 013.89-3.13c1.63-.7 3.38-1.04 5.25-1.04a19.33 19.33 0 017.02 1.4z"/>
         </g>
       </g>
-      <g id="develop-set" class="whole-develop">
+<!-- end magic icon -->
+
+<!-- develop icon -->
+      <g id="develop-set">
         <g id="develop-icon">
           <path id="develop-icon-slash" d="M639.477 513.119L625.597 545.97" stroke="#454545" stroke-width="2"/>
           <rect id="develop-icon-screenbox" x="596.06" y="497" width="73.8806" height="60" rx="4" stroke="#454545" stroke-width="2"/>
@@ -415,7 +411,9 @@
           <path d="M701.457 594.08C702.729 594.08 703.761 593.768 704.553 593.144C705.369 592.52 705.777 591.488 705.777 590.048C705.777 588.68 705.345 587.6 704.481 586.808C703.641 585.992 702.345 585.584 700.593 585.584C700.137 585.584 699.609 585.656 699.009 585.8V597.392C699.009 598.52 699.225 599.3 699.657 599.732C700.089 600.164 700.833 600.404 701.889 600.452C702.009 600.812 702.069 601.352 702.069 602.072C700.725 602.024 699.333 602 697.893 602C696.069 602 694.557 602.024 693.357 602.072C693.357 601.328 693.417 600.788 693.537 600.452C694.377 600.404 694.941 600.212 695.229 599.876C695.541 599.516 695.697 598.82 695.697 597.788V588.176C695.697 587.48 695.637 586.952 695.517 586.592C695.397 586.232 695.181 585.98 694.869 585.836C694.581 585.692 694.137 585.596 693.537 585.548C693.417 585.188 693.357 584.648 693.357 583.928C695.613 583.976 697.089 584 697.785 584L702.105 583.928C704.577 583.928 706.389 584.444 707.541 585.476C708.693 586.508 709.269 587.828 709.269 589.436C709.269 590.588 708.993 591.644 708.441 592.604C707.889 593.564 707.061 594.332 705.957 594.908C704.877 595.484 703.569 595.772 702.033 595.772C701.097 595.772 700.365 595.688 699.837 595.52C699.789 595.184 699.765 594.932 699.765 594.764C699.765 594.452 699.801 594.188 699.873 593.972C700.233 594.044 700.761 594.08 701.457 594.08Z" fill="#454545"/>
         </g>
       </g>
-      <g id="animate-set" class="whole-animate">
+<!-- end develop icon -->
+
+      <g id="animate-set">
         <g id="animate-icon">
           <path id="animate-icon-ghost1" d="M203 512C195.374 515.139 190 522.688 190 531.5C190 540.312 195.374 547.861 203 551" stroke="#454545" stroke-width="2" stroke-linecap="round"/>
           <path id="animate-icon-ghost2" d="M197 512C189.374 515.139 184 522.688 184 531.5C184 540.312 189.374 547.861 197 551" stroke="#454545" stroke-width="2" stroke-linecap="round"/>
@@ -442,12 +440,22 @@
 
 <style>
   section {
-    margin-top: -10%;
+    margin-top: -4%;
   }
 
   svg {
     height: auto;
-    width: 90vw;
+    width: 96vw;
     max-height: 100vh;
+  }
+
+  :global(.crawler) {
+    transition: opacity .1s var(--timing);
+    opacity: 1;
+    stroke: var(--acct);
+  }
+
+  .bursts {
+    display:none
   }
 </style>
