@@ -16,15 +16,15 @@ import Button from "./componenets/button.svelte";
 
 <Header />
 
-<main>
+<main id="main">
 	<Hero />
 	<VennAnimation />
 	<h2>
 		<!-- old text -->
-		<!-- My formal background is in design, but I've been using code to make visuals since scripting geometric plotting on a TI-83 calculator when I was 10. I have a love of side projects, a willingness to take on new challenges, and an appetite for learning new tools and techniques. This makeup has left me with a very versatile set of skills. I enjoy playing with the intersections of these skills to find delightful new ways to communicate. -->
-		Finding joy there in the insections.
+		I have more than 10 years experience working in brand, interactive, and editorial design for a variety of clients. Add a love of side projects, a willingness to take on new challenges, and an appetite for learning new tools and techniques. The result is a very versatile set of skills. I enjoy playing with the intersections of these skills to find delightful new ways to communicate.
 	</h2>
-	<h1>
+	<h2>Here's a bunch of words I know things about:</h2>
+	<h1 id="projects">
 		Projects
 	</h1>
 	<ProjectSection />
@@ -58,7 +58,7 @@ import Button from "./componenets/button.svelte";
 
 	#contact {
 		margin-top: 5rem;
-		margin-bottom: 5rem;
+		margin-bottom: 0;
 		display: flex;
 		align-items: center;
 		justify-content: center;

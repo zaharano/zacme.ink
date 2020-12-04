@@ -11,7 +11,7 @@
       href: "http://www.startrek.com"
   };
 
-  let hide = true;
+  let hide = false;
 
 </script>
 
@@ -22,15 +22,17 @@
   <div style="background-image: url('{img}'" class="background {hide === false ? 'blur' : ''}" /> 
   <div 
     class="infotainer"
-    class:hide={hide}>
+    class:hide>
     <div class="tags">
       {#each tags as tag, i}
-        <h3>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;//&nbsp;&nbsp;{/if}</h3>
+        <span>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;//&nbsp;&nbsp;{/if}</span>
       {/each}
     </div>
-    <h2 class="title">{title}</h2>
-    <p class="body">{body}</p>
-    <div class="bottom" class:hide={hide}>
+    <div class="beats">
+      <h2 class="title">{title}</h2>
+      <p class="body">{body}</p>
+    </div>
+    <div class="bottom" class:hide>
       <Button {...button} />
     </div>
   </div>
@@ -84,6 +86,10 @@
     transition: opacity .2s linear;
     opacity: 1;
     border-bottom: 4px solid var(--gray);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .infotainer.hide {
@@ -92,29 +98,32 @@
 
   h2 {
     font-size: 2rem;
+    margin-bottom: 0rem;
   }
 
-  h3 {
+  .tags span {
     font-size: 1rem;
     display: inline-block;
-    color: var(--acct);
     font-family: 'Vollkorn SC', serif;
     font-variant-caps: small-caps;
     -moz-font-feature-settings: "smcp";
     -webkit-font-feature-settings: "smcp";
     font-feature-settings: "smcp";
     margin-bottom: .5rem;
+  }
 
+  .tags {
+    width: 100%;
   }
 
   .bottom {
+    width: 100%;
     position: relative;
-    bottom: -1rem;
     display: block;
-    transition: transform .2s .2s ease-out;
+    transition: transform .15s .15s ease-out;
   }
 
-  .bottom.hide {
+  .hide .bottom {
     transform: translateY(100px);
   }
 </style>

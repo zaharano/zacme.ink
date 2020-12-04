@@ -2,8 +2,35 @@
   import { onMount } from 'svelte';
   import { gsap } from "gsap";
   import { fly } from 'svelte/transition';
+  import ClickOutside from './clickOutside.svelte'
 
   let open = false;
+  let hamburglar;
+
+  const menu = [
+    {
+      txt: "Home",
+      href: "main"
+    },
+    {
+      txt: "Projects",
+      href: "projects"
+    },
+    {
+      txt: "Contact",
+      href: "contact"
+    }
+  ]
+
+  function menuAct(t) {
+    handleClick();
+    let e = document.getElementById(t);
+    e.scrollIntoView({
+      block: 'start',
+      behavior: 'smooth',
+      inline: 'start'
+    });
+  }
 
   function handleClick(){
     open = !open;
@@ -48,41 +75,29 @@
       transformOrigin: "50% 50%",
     });
   });
-
-  const menu = [
-    {
-      txt: "Home",
-      href: "#"
-    },
-    {
-      txt: "Work",
-      href: "#"
-    },
-    {
-      txt: "Contact",
-      href: "#"
-    }
-  ]
 </script>
 
 <div class="container">
   {#if open}
-    <nav class="menu" transition:fly="{{ y: 50, duration: 120 }}">
-      <ul on:click={handleClick}>
-        {#each menu as {txt,href},i}
-          {#if open}
-            <li in:fly="{{y: -35,duration: 100,delay:i*50+100 }}">
-              <a {href}>{txt}</a>
-            </li>
-          {/if}
-        {/each}
-      </ul>
-    </nav>
+    <ClickOutside on:clickoutside={handleClick} exclude={[hamburglar]}>
+      <nav class="menu" transition:fly="{{ y: 50, duration: 140 }}">
+        <ul>
+          {#each menu as {txt,href},i}
+            {#if open}
+              <li in:fly="{{y: -35,duration: 120,delay:i*50+100 }}">
+                <button on:click={() => menuAct(href)}>{txt}</button>
+              </li>
+            {/if}
+          {/each}
+        </ul>
+      </nav>
+    </ClickOutside>
   {/if}
   <button 
     class="hamburguesa" 
     on:click={ handleClick } 
-    on:mouseenter={playWiggle}>
+    on:mouseenter={playWiggle}
+    bind:this={hamburglar}>
     <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
       xmlns="http://www.w3.org/2000/svg">
       <g>
@@ -119,17 +134,14 @@
     border-radius: 5px;
   }
 
-  li {
+  li button {
+    color: var(--gray);
     font-size: clamp(4rem, 6vw, 7rem);
     font-weight: 600;
     margin-bottom: 1rem;
   }
 
-  li a {
-    color: var(--gray);
-  }
-
-  a:hover {
+  button:hover {
     color: var(--acct);
   }
 
@@ -151,8 +163,8 @@
       box-shadow: 0 0 52px -10px rgba(0,0,0,.2)
     }
 
-    li {
-      font-size: 2rem;
+    li button {
+      font-size: 3rem;
     }
   }
   

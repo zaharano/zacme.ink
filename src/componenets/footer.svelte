@@ -3,7 +3,10 @@
 </script>
 
 <footer>
-  <Button />
+  <h3>MORE OF MY WORK</h3>
+  <ul>
+    <li>Dribble</li>
+  </ul>
 </footer>
 
 <style>

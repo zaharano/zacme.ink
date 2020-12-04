@@ -252,7 +252,7 @@
     >
       <path 
         vector-effect="non-scaling-stroke"
-        class="speech-outer crawling-line"
+        class="speech-outer"
         d="M107.5 282L30.4 274.7C13.4 273.1 0.5 259 0.5 241.8V33.5C0.5 15.3 15.3 0.5 33.4 0.5C35.2 0.5 37 0.6 38.8 0.9L283.8 41.2C299.8 43.8 311.4 57.5 311.4 73.8V265.1C311.4 274 307.9 282.3 301.7 288.5C295.5 294.7 287.2 298.1 278.5 298.1C277.5 298.1 276.4 298 275.3 297.9L166.8 287.6L143.1 349.3L107.5 282Z" 
         stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="10 10"
         stroke-dashoffset="14px"
