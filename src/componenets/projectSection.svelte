@@ -1,6 +1,4 @@
 <script>
-import { each } from "svelte/internal";
-
   import ProjectCard from "./projectCard.svelte";
 
   export let projects = [

@@ -11,7 +11,7 @@
       href: "http://www.startrek.com"
   };
 
-  let hide = false;
+  let hide = true;
 
 </script>
 
@@ -25,7 +25,7 @@
     class:hide>
     <div class="tags">
       {#each tags as tag, i}
-        <span>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;//&nbsp;&nbsp;{/if}</span>
+        <span>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;<em>//</em>&nbsp;&nbsp;{/if}</span>
       {/each}
     </div>
     <div class="beats">
@@ -114,6 +114,7 @@
 
   .tags {
     width: 100%;
+    opacity: .6;
   }
 
   .bottom {

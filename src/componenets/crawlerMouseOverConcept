@@ -1,7 +1,12 @@
    the trick is going to be: 
    component is the background and the dashed circle
 
-   
+   hovering background fires dashed circle
+   But how to get the overlapping firing effect?
+   elements at point mx my but is that too expensive to just do constantly? add a timeout so that it polls every .5 sec or something
+   add to whole svg a mouseenter that starts the listen, mouseleave that turns all off and stops the listen
+
+   add a hover to the hi too?
 
 
     fuction setSpinners(e)

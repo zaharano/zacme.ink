@@ -44,7 +44,7 @@
 
   .header-logo {
     z-index: 8;
-    height: 120px;
+    height: 90px;
     left: 1.3em;
     top: 1em;
     position: relative;
