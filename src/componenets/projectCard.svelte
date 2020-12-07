@@ -2,7 +2,7 @@
   import Button from "./button.svelte";
   
   export let img = "./assets/Enterprise_HD.jpg";
-  export let alt = "The Starship Enterprise";
+  // export let alt = "The Starship Enterprise";
   export let tags = ["these", "are", "voyages"];
   export let title;
   export let body = "Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time?";
