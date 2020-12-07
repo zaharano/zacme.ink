@@ -1,8 +1,8 @@
 <script>
 import Header from "./componenets/header.svelte";
-import ProjectSection from "./componenets/projectSection.svelte";
 import Hero from "./componenets/hero.svelte";
 import VennAnimation from "./componenets/vennAnimation.svelte";
+import ProjectSection from "./componenets/projectSection.svelte";
 import Footer from "./componenets/footer.svelte";
 import Button from "./componenets/button.svelte";
 
@@ -19,14 +19,12 @@ import Button from "./componenets/button.svelte";
 <main id="main">
 	<Hero />
 	<VennAnimation />
-	<h2>
-		<!-- old text -->
-		I have more than 10 years experience working in brand, interactive, and editorial design for a variety of clients. Add a love of side projects, a willingness to take on new challenges, and an appetite for learning new tools and techniques. The result is a very versatile set of skills. I enjoy playing with the intersections of these skills to find delightful new ways to communicate.
-	</h2>
-	<h2>Here's a bunch of words I know things about:</h2>
-	<h1 id="projects">
-		Projects
-	</h1>
+	<section id="bio">
+		<h2>
+			I have more than 10 years experience working in brand, interactive, and editorial design for a variety of clients. Add a love of side projects, a willingness to take on new challenges, and an appetite for learning new tools and techniques. The result is a very versatile set of skills. I enjoy playing with the intersections of these skills to find delightful new ways to communicate.
+		</h2>
+		<h2>Here's a bunch of words I know things about:</h2>
+	</section>
 	<ProjectSection />
 	<section id="contact">
 		<div class="buttonContainer">
@@ -46,7 +44,10 @@ import Button from "./componenets/button.svelte";
 	h2 {
 		margin-left: auto;
 		margin-right: auto;
-		max-width: 1000px;
+	}
+
+	section {
+		max-width: var(--pagewidth);
 	}
 
 	.buttonContainer {

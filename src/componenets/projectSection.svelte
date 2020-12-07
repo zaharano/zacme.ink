@@ -37,6 +37,9 @@
 </script>
 
 <section>
+  <h1 id="projects">
+		Projects
+	</h1>
   {#each projects as project, i}
   <ProjectCard {...project}></ProjectCard>
   {/each} 

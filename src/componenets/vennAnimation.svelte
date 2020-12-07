@@ -18,11 +18,9 @@
     const tl = gsap.timeline({
       scrollTrigger: {
       trigger: ".venn",
-      markers: true,
       start: "-40% top",
     }});
     const designIconTL = gsap.timeline();
-    const designIconWiggle = gsap.timeline();
     const animateIconTL = gsap.timeline();
     const developIconTL = gsap.timeline();
     const magicIconTL = gsap.timeline();
@@ -233,10 +231,10 @@
             delay: .2,
             ease: "power2.out",
           },
-          outerCircleOffset = "-=.7",
+          // outerCircleOffset = "-=.7",
           innerCircleOffset = "-=.6",
           iconOffset = "-=.2",
-          popOffset = "-=.4",
+          // popOffset = "-=.4",
           moveOffset = "+=.2";
     
     // // bursts version
@@ -305,7 +303,7 @@
     // });
 
     // dev slider
-    GSDevTools.create({animation: tl})
+    // GSDevTools.create({animation: tl})
   });
 </script>
 

@@ -79,7 +79,6 @@
     left: 0;
     width: 100%;
     height: 102%;
-    z-index: 2;
     background-color: rgba(255,255,255,.85);
     padding: 5%;
     padding-bottom: 2rem;
