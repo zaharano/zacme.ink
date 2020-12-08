@@ -181,6 +181,7 @@
 
     codeTL.set('.code-tag', {
       margin: '.4rem',
+      autoAlpha: 1,
     })
     .to('.code-open', {
       duration: .4,
@@ -237,6 +238,7 @@
     })
     .set('.code-tag', {
       margin: '0',
+      autoAlpha: 0,
     }).timeScale(1.5);
   });
 </script>
@@ -296,10 +298,12 @@
       </span> 
       <span class="word animator" on:mouseenter={() => {animTL.play()}}>
         animator
-      </span> and 
+      </span> and
       <span class="word code" on:mouseenter={() => {codeTL.play()}}>
-        <span class="code-tag code-open"></span><span class="code-em">front-end developer</span><span class="code-tag code-close"></span>
-      </span>.
+        <span class="code-tag code-open"></span>
+        <span class="code-em">front-end dev.</span>
+        <span class="code-tag code-close"></span>
+      </span>
   </h1>
 </section>
 
@@ -352,11 +356,12 @@
   /* TEXT ANIM STYLES */
   h1 span {
     position: relative;
-    display: inline-block;
+    display: inline;
   }
 
   .word {
     cursor: pointer;
+    display: inline-block;
   }
   
   .guide-wrap {
@@ -399,16 +404,35 @@
     font-size: 5px;
   } */
 
+  .code {
+    position: relative;
+  }
+
+  .code-em {
+    display: inline-block;
+  }
+
   .code-tag {
     font-family:'Courier New', Courier, monospace;
-    color: var(--acct);
-    background-color: white;
+    color: white;
+    background-color: var(--acct);
     font-weight: 500;
-    font-size: 35%;
+    font-size: 45%;
     line-height: 1.5;
     vertical-align: 40%;
     border-radius: 15px;
     margin: 0;
+    position: absolute;
+    top: 10%;
+    visibility: hidden;
+  }
+
+  .code-open {
+    left: -23%;
+  }
+
+  .code-close {
+    right: -25%;
   }
 
   

@@ -114,8 +114,6 @@
 <style>
   .container {
     position: relative;
-    right: 1.3em;
-    top: -1em;
   }
 
   nav {
@@ -139,6 +137,7 @@
     font-size: clamp(4rem, 6vw, 7rem);
     font-weight: 600;
     margin-bottom: 1rem;
+    cursor: pointer;
   }
 
   button:hover {

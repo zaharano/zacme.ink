@@ -36,21 +36,22 @@
 
 </script>
 
-<section>
-  <h1 id="projects">
+<section id="projects">
+  <h1>
 		Projects
-	</h1>
-  {#each projects as project, i}
-  <ProjectCard {...project}></ProjectCard>
-  {/each} 
+  </h1>
+  <div class="projects">
+    {#each projects as project, i}
+    <ProjectCard {...project}></ProjectCard>
+    {/each} 
+  </div>
 </section>
 
 <style>
-  section {
+  .projects {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    max-width: 1000px;
     margin: auto;
   }
 </style>

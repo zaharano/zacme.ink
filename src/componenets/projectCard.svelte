@@ -17,7 +17,8 @@
 
 <article
   on:mouseenter={() => hide = false}
-	on:mouseleave={() => hide = true}
+  on:mouseleave={() => hide = true}
+  on:click={() => hide = !hide}
 >
   <div style="background-image: url('{img}'" class="background {hide === false ? 'blur' : ''}" /> 
   <div 
@@ -51,7 +52,7 @@
     margin-bottom: 4%;
   }
 
-  @media (max-width: 660px) {
+  @media (max-width: 1000px) {
     article {
       width: 95%;
       margin-right: auto;

@@ -5,7 +5,7 @@
   import { DrawSVGPlugin } from 'gsap/all';
   import { GSDevTools } from "gsap/GSDevTools"
   import { Physics2DPlugin } from "gsap/Physics2DPlugin"
-  import DashedCircle from './dashedCircle.svelte';
+  // import DashedCircle from './dashedCircle.svelte';
 
   gsap.registerPlugin(
     ScrollTrigger, 
@@ -203,26 +203,6 @@
 
     // whole venn circles animation
     const duration = .6,
-          burstFrom = {
-            // autoAlpha: 0,
-            // scale: 0.1,
-            // transformOrigin,
-          },
-          burstTo = {
-            // duration: 1.2,
-            // autoAlpha: 0,
-            // scale: 1.4,
-            // rotate: 180,
-            // transformOrigin,
-            // ease: "power3.inOut",
-          },
-          oranges = {
-            duration,
-            autoAlpha: 0,
-            scale: .4,
-            transformOrigin,
-            ease: "power2.inOut",
-          },
           innerCircles = {
             autoAlpha: 0,
             duration,
@@ -231,13 +211,33 @@
             delay: .2,
             ease: "power2.out",
           },
-          // outerCircleOffset = "-=.7",
           innerCircleOffset = "-=.6",
           iconOffset = "-=.2",
-          // popOffset = "-=.4",
           moveOffset = "+=.2";
     
     // // bursts version
+    // const           burstFrom = {
+          //   autoAlpha: 0,
+          //   scale: 0.1,
+          //   transformOrigin,
+          // },
+          // burstTo = {
+          //   duration: 1.2,
+          //   autoAlpha: 0,
+          //   scale: 1.4,
+          //   rotate: 180,
+          //   transformOrigin,
+          //   ease: "power3.inOut",
+          // },
+          // oranges = {
+          //   duration,
+          //   autoAlpha: 0,
+          //   scale: .4,
+          //   transformOrigin,
+          //   ease: "power2.inOut",
+          // },
+          // outerCircleOffset = "-=.7",
+          // popOffset = "-=.4",
     // tl.fromTo('#orange-b-1', burstFrom, burstTo)
     // .from('#orange-1', oranges, outerCircleOffset)
     // .from('.circle-design', innerCircles, innerCircleOffset)
@@ -252,7 +252,7 @@
     // .add(developIconTL, iconOffset)
 
     tl
-    .from('.circle-design', innerCircles, innerCircleOffset)
+    .from('.circle-design', innerCircles)
     .add(designIconTL, iconOffset)
     .from('.circle-animate', innerCircles, innerCircleOffset)
     .add(animateIconTL, iconOffset)
@@ -391,6 +391,12 @@
             <path d="M454.362 298.435C462.768 298.435 459.465 290.007 456.763 285.793H451.96C449.258 290.007 445.956 298.435 454.362 298.435Z" class="petal"/>
             <path d="M468.391 289.665C472.596 282.383 464.095 281.289 459.319 281.653L456.917 285.814C458.99 290.132 464.187 296.947 468.391 289.665Z" class="petal"/>
             <path d="M468.392 273.523C464.187 266.241 458.99 273.056 456.917 277.373L459.32 281.535C464.095 281.898 472.596 280.805 468.392 273.523Z" class="petal"/>
+            <path d="M440.4 289.665C444.604 296.947 449.801 290.132 451.874 285.814L449.472 281.653C444.696 281.289 436.196 282.382 440.4 289.665Z" class="petal"/>
+            <path d="M440.4 273.523C436.196 280.805 444.696 281.898 449.472 281.535L451.875 277.373C449.802 273.056 444.605 266.241 440.4 273.523Z" class="petal"/>
+            <path d="M454.362 265.565C445.956 265.565 449.259 273.572 451.961 277.575H456.764C459.466 273.572 462.768 265.565 454.362 265.565Z" class="petal"/>
+            <path d="M454.362 298.435C462.768 298.435 459.465 290.007 456.763 285.793H451.96C449.258 290.007 445.956 298.435 454.362 298.435Z" class="petal"/>
+            <path d="M468.391 289.665C472.596 282.383 464.095 281.289 459.319 281.653L456.917 285.814C458.99 290.132 464.187 296.947 468.391 289.665Z" class="petal"/>
+            <path d="M468.392 273.523C464.187 266.241 458.99 273.056 456.917 277.373L459.32 281.535C464.095 281.898 472.596 280.805 468.392 273.523Z" class="petal"/>
           </g>
 
           <g class="magic-icon-flowers">
@@ -410,6 +416,12 @@
             <path d="M420.361 268C429.056 268 425.64 259.282 422.845 254.923H417.877C415.082 259.282 411.666 268 420.361 268Z" class="petal"/>
             <path d="M434.872 258.928C439.221 251.396 430.428 250.265 425.489 250.641L423.003 254.945C425.148 259.411 430.523 266.46 434.872 258.928Z" class="petal"/>
             <path d="M434.873 242.232C430.524 234.699 425.148 241.748 423.004 246.215L425.489 250.519C430.429 250.895 439.221 249.764 434.873 242.232Z" class="petal"/>
+            <path d="M405.919 258.928C410.268 266.46 415.643 259.411 417.788 254.945L415.303 250.641C410.363 250.265 401.57 251.396 405.919 258.928Z" class="petal"/>
+            <path d="M405.919 242.231C401.571 249.764 410.363 250.895 415.303 250.519L417.788 246.214C415.644 241.748 410.268 234.699 405.919 242.231Z" class="petal"/>
+            <path d="M420.361 234C411.666 234 415.082 242.282 417.877 246.423H422.845C425.64 242.282 429.056 234 420.361 234Z" class="petal"/>
+            <path d="M420.361 268C429.056 268 425.64 259.282 422.845 254.923H417.877C415.082 259.282 411.666 268 420.361 268Z" class="petal"/>
+            <path d="M434.872 258.928C439.221 251.396 430.428 250.265 425.489 250.641L423.003 254.945C425.148 259.411 430.523 266.46 434.872 258.928Z" class="petal"/>
+            <path d="M434.873 242.232C430.524 234.699 425.148 241.748 423.004 246.215L425.489 250.519C430.429 250.895 439.221 249.764 434.873 242.232Z" class="petal"/>
           </g>
 
           <g class="magic-icon-flowers">
@@ -423,6 +435,12 @@
           </g>
 
           <g id="burst3" class="magic-icon-petalbursts">
+            <path d="M434.512 260.793C439.885 270.098 446.525 261.39 449.174 255.873L446.104 250.556C440.002 250.092 429.14 251.489 434.512 260.793Z" class="petal"/>
+            <path d="M434.513 240.168C429.141 249.473 440.002 250.87 446.104 250.405L449.174 245.088C446.525 239.571 439.885 230.864 434.513 240.168Z" class="petal"/>
+            <path d="M452.353 230C441.612 230 445.832 240.231 449.284 245.346H455.421C458.874 240.231 463.093 230 452.353 230Z" class="petal"/>
+            <path d="M452.352 272C463.093 272 458.874 261.231 455.421 255.846H449.284C445.831 261.231 441.612 272 452.352 272Z" class="petal"/>
+            <path d="M470.278 260.793C475.65 251.489 464.789 250.092 458.687 250.557L455.617 255.873C458.266 261.39 464.906 270.098 470.278 260.793Z" class="petal"/>
+            <path d="M470.279 240.168C464.906 230.864 458.266 239.572 455.617 245.088L458.687 250.405C464.789 250.87 475.651 249.473 470.279 240.168Z" class="petal"/>
             <path d="M434.512 260.793C439.885 270.098 446.525 261.39 449.174 255.873L446.104 250.556C440.002 250.092 429.14 251.489 434.512 260.793Z" class="petal"/>
             <path d="M434.513 240.168C429.141 249.473 440.002 250.87 446.104 250.405L449.174 245.088C446.525 239.571 439.885 230.864 434.513 240.168Z" class="petal"/>
             <path d="M452.353 230C441.612 230 445.832 240.231 449.284 245.346H455.421C458.874 240.231 463.093 230 452.353 230Z" class="petal"/>
@@ -487,6 +505,8 @@
 <style>
   section {
     margin-top: -4%;
+    width: 100%;
+    max-width: initial;
   }
 
   svg {

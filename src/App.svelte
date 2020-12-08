@@ -46,8 +46,11 @@ import Button from "./componenets/button.svelte";
 		margin-right: auto;
 	}
 
-	section {
-		max-width: var(--pagewidth);
+	:global(section) {
+		width: var(--pagewidth);
+		max-width: 1300px;
+		margin-left: auto;
+		margin-right: auto;
 	}
 
 	.buttonContainer {

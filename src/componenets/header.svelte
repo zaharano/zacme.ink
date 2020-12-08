@@ -1,10 +1,14 @@
 <script>
   import Menu from './menu.svelte';
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  let scrolled = false;
 </script>
 
 <header>
   <div class="header-container">
-    <a aria-label=”Home” href="/">
+    <button aria-label=”Home” href="/">
      <svg class="header-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.75 143.68">
        <g id="lines">
          <path vector-effect="non-scaling-stroke" d="M56.06,23.46,34.81,47.1H56.06V72.68H0V49.22L20.34,25.58H0V0H56.06ZM54,1.84H1.69v21.9h22v.92l-22,25.2v21H54V48.94H31.37V48L54,22.82Z" stroke-width="1" />
@@ -19,7 +23,7 @@
          <polygon class="cls-1" points="80.62 141.84 80.62 128.04 77.04 114.51 78.78 114.06 86.14 141.84 109.88 141.84 109.88 72.84 85.22 72.84 85.22 86.64 88.81 100.16 87.06 100.62 79.7 72.84 55.97 72.84 55.97 141.84 80.62 141.84"/>
        </g>
      </svg>
-    </a>
+    </button>
     <Menu />
   </div>
 </header>
@@ -30,23 +34,29 @@
     position: fixed;
     top: 0;
     left: 0;
+    margin: auto;
     z-index: 1;
+    background-color: var(--bg);
+    box-shadow: 10px 0 30px 0 var(--gray);
+  }
+
+  svg {
+    padding: 4px;
   }
   
   .header-container {
-    padding: 1rem;
+    box-sizing: border-box;
+    padding: 2rem;
+    width: 100%;
     max-width: 1600px;
     margin: auto;
     display: flex;
-    align-items: center;
     justify-content: space-between;
   }
 
   .header-logo {
     z-index: 8;
-    height: 90px;
-    left: 1.3em;
-    top: 1em;
+    height: 65px;
     position: relative;
     transition-property: transform, filter;
     transition-duration: .4s;
@@ -65,5 +75,15 @@
 
   .header-logo:hover #inside {
     fill: white;
+  }
+
+  @media (min-width: 650px) {
+    header {
+      background-color: initial;
+      box-shadow: initial;
+    }
+    .header-logo {
+      height: 90px;
+    }
   }
  </style>

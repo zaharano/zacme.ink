@@ -69,10 +69,11 @@ button {
   --gray: rgba(69, 69, 69, 1);
 	--gray-glass: rgba(69, 69, 69, 0.08); 
 	--highlight: #ff3e00;
+	--bg: #FCF3EB;
   --timing: cubic-bezier(0.165, 0.84, 0.44, 1);
   --border: 1px solid var(--gray);
 	--btnHeight: 1.8rem;
-	--pagewidth: 375px;
+	--pagewidth: calc(100% - 3rem);
 }
 
 ::selection {
@@ -88,7 +89,7 @@ html, body {
 body {
 	margin: 0;
 	box-sizing: border-box;	
-	background-color: #FCF3EB;
+	background-color: var(--bg);
 	color: var(--gray);
 	font-size: 22px;
   font-family: 'Vollkorn', serif;
@@ -100,10 +101,6 @@ a {
 	color: var(--acct);
 	text-decoration: none;
 }
-
-/* a:hover {
-	text-decoration: underline;
-} */
 
 h1 {
 	font-size: calc(3.3vw + 1em);
@@ -126,28 +123,8 @@ p {
   margin-bottom: .5em;
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 650px) {
   :root {
-    --pagewidth: 1002px;
-  }
-}
-@media (min-width: 1152px) and (max-width: 1279px) {
-  :root {
-    --pagewidth: 910px;
-  }
-}
-@media (min-width: 1024px) and (max-width: 1151px) {
-  :root {
-    --pagewidth: 820px;
-  }
-}
-@media (min-width: 768px) and (max-width: 1023px) {
-  :root {
-    --pagewidth: 620px;
-  }
-}
-@media (min-width: 667px) and (max-width: 767px) {
-  :root {
-    --pagewidth: 535px;
+    --pagewidth: calc(100% - 250px);
   }
 }
