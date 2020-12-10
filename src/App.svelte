@@ -58,6 +58,7 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 	.buttonContainer {
 		max-width: 20rem;
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 	}
