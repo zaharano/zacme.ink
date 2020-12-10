@@ -114,6 +114,7 @@
 <style>
   .container {
     position: relative;
+    pointer-events: all;
   }
 
   nav {

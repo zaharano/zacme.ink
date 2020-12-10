@@ -1,17 +1,7 @@
 <script>
   import ProjectCard from "./projectCard.svelte";
-
+  import contentStream from "../projectContent.js";
   export let projects = [
-    {
-      img: "./assets/Enterprise_HD.jpg",
-      tags: ["these", "are", "voyages"],
-      title: "Shakar, when the walls fell",
-      body: "Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time? Using the gravitational pull of a star to slingshot back in time?",
-      button: {
-        txt: "Make it so",
-        href: "http://www.startrek.com"
-      }
-    },
     {
       img: "./assets/Enterprise_HD.jpg",
       tags: ["these", "are", "voyages"],
@@ -34,13 +24,17 @@
     }
   ];
 
+  if (contentStream) {
+    projects = contentStream;
+  }
+
 </script>
 
 <section id="projects">
   <h1>
 		Projects
   </h1>
-  <div class="projects">
+  <div class="gallery">
     {#each projects as project, i}
     <ProjectCard {...project}></ProjectCard>
     {/each} 
@@ -48,10 +42,48 @@
 </section>
 
 <style>
-  .projects {
+  /* .gallery {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: auto;
+    margin: auto; minmax(300px, 627px)
+  } */
+
+
+  .gallery {
+    --colsize: minmax(400px, 1fr);
+    display: grid;
+    grid-gap: 2.5vw;
+		grid-template-columns: repeat(auto-fill, var(--colsize));
   }
+  
+  /* @media (min-width: 1000px) {
+    .gallery {
+      grid-template-columns: var(--colsize) var(--colsize);
+    }
+  }
+
+  @media (min-width: 1595px) {
+    .gallery {
+      grid-template-columns: var(--colsize) var(--colsize) var(--colsize);
+    }
+  } */
+/* 
+  :global(.gallery > div) {
+    width: 49%;
+  } */
+
+  /* @media (max-width: 1000px) {
+    :global(.gallery > div) {
+      width: 95%;
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
+
+  @media (min-width: 1595px) {
+    :global(.gallery > div) {
+      width: 32.5%;
+    }
+  } */
 </style>

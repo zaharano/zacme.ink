@@ -1,7 +1,7 @@
 // img: "./assets/Enterprise_HD.jpg", dimensions: 
 // tags: ["an array", "like", "this"], text ends up allcaps
 // title: "A string", keep under 30ch
-// body: "A string", keep under 150ch
+// body: "A string", keep under 130ch
 // button: 
 //   txt: "check it out", no caps
 //   href: "http://www.startrek.com"
@@ -9,7 +9,7 @@
 
 export default [
   {
-    img: "./assets/Enterprise_HD.jpg",
+    img: "./assets/" + "RAC_STYLE.png",
     tags: ["branding", "illustration", "joy"],
     title: "Rent-A-Christmas Style Guide",
     body: "Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time? Using the gravitational pull of a star to slingshot back in time?",

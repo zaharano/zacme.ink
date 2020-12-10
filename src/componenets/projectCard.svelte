@@ -1,8 +1,9 @@
 <script>
   import Button from "./button.svelte";
+  import ClickOutside from "./clickOutside.svelte";
   
   export let img = "./assets/Enterprise_HD.jpg";
-  // export let alt = "The Starship Enterprise";
+  export let alt = "The Starship Enterprise";
   export let tags = ["these", "are", "voyages"];
   export let title;
   export let body = "Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time?";
@@ -13,31 +14,42 @@
 
   let hide = true;
 
+  function hideOff() {
+    hide = false;
+  }
+
+  function hideOn() {
+    hide = true;
+  }
+
 </script>
 
-<article
-  on:mouseenter={() => hide = false}
-  on:mouseleave={() => hide = true}
-  on:click={() => hide = !hide}
->
-  <div style="background-image: url('{img}'" class="background {hide === false ? 'blur' : ''}" /> 
-  <div 
-    class="infotainer"
-    class:hide>
-    <div class="tags">
-      {#each tags as tag, i}
-        <span>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;<em>//</em>&nbsp;&nbsp;{/if}</span>
-      {/each}
+<ClickOutside on:clickoutside={hideOn}>
+  <article
+  on:mouseover={hideOff}
+  on:mouseleave={hideOn}
+  on:click={hideOff}
+  >
+    <img src="{img}" alt="{alt}" class="background {hide === false ? 'blur' : ''}" loading="lazy"/> 
+    <div 
+      class="infotainer"
+      class:hide>
+      <div class="tags">
+        {#each tags as tag, i}
+          <span>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;<em>//</em>&nbsp;&nbsp;{/if}</span>
+        {/each}
+      </div>
+      <div class="beats">
+        <h2 class="title">{title}</h2>
+        <p class="body">{body}</p>
+      </div>
+      <div class="bottom" class:hide>
+        <Button {...button} />
+      </div>
     </div>
-    <div class="beats">
-      <h2 class="title">{title}</h2>
-      <p class="body">{body}</p>
-    </div>
-    <div class="bottom" class:hide>
-      <Button {...button} />
-    </div>
-  </div>
-</article>
+  </article>
+</ClickOutside>
+
 
 <style>
   article {
@@ -45,28 +57,32 @@
     box-sizing: border-box;
     border: var(--border);
     border-radius: 10px;
-    width: 48%;
-    height: 25rem;
+    height: auto;
     overflow: hidden;
     text-align: left;
-    margin-bottom: 4%;
   }
 
-  @media (max-width: 1000px) {
-    article {
-      width: 95%;
-      margin-right: auto;
-      margin-left: auto;
-    }
+  p {
+    margin-bottom: 0;
   }
+
+  /* .background {
+    position: relative;
+    min-height: 105%;
+    min-width: 105%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } */
 
   .background {
     position: relative;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-    top: 0;
-    left: 0;
+    width: 105%;
+    top: 50%;
+    left: 50%;
+    transform: translateY(0%);
+    transform: translateX(-50%);
+    height: auto;
   }
 
   .blur {
@@ -75,17 +91,16 @@
 
   .infotainer {
     box-sizing: border-box;
-    position: relative;
-    top: -102%;
+    position: absolute;
+    top: 0;
     left: 0;
     width: 100%;
-    height: 102%;
+    height: 100%;
     background-color: rgba(255,255,255,.85);
     padding: 5%;
-    padding-bottom: 2rem;
+    padding-bottom: 7%;
     transition: opacity .2s linear;
     opacity: 1;
-    border-bottom: 4px solid var(--gray);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -97,7 +112,7 @@
   }
 
   h2 {
-    font-size: 2rem;
+    font-size: 1.6rem;
     margin-bottom: 0rem;
   }
 
@@ -109,7 +124,10 @@
     -moz-font-feature-settings: "smcp";
     -webkit-font-feature-settings: "smcp";
     font-feature-settings: "smcp";
-    margin-bottom: .5rem;
+  }
+
+  .beats {
+    width: 100%;
   }
 
   .tags {

@@ -1,8 +1,20 @@
 <script>
   import Menu from './menu.svelte';
+  import { onMount } from 'svelte';
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+  onMount(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+      scrub: true,
+      trigger: ".speech",
+      start: "10% top",
+    }});
+    tl.to('.header-bg', {
+      autoAlpha: 1,
+    })
+  });
   let scrolled = false;
 </script>
 
@@ -25,6 +37,7 @@
      </svg>
     </button>
     <Menu />
+    <div class="header-bg"></div>
   </div>
 </header>
 
@@ -36,19 +49,32 @@
     left: 0;
     margin: auto;
     z-index: 1;
-    background-color: var(--bg);
-    box-shadow: 10px 0 30px 0 var(--gray);
+    pointer-events: none;
   }
 
   svg {
     padding: 4px;
   }
+
+  .header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg);
+    box-shadow: 10px 0 30px 0 var(--gray);
+    z-index: -1;
+    visibility: hidden;
+    pointer-events: all;
+    display: inherit;
+  }
   
   .header-container {
     box-sizing: border-box;
-    padding: 2rem;
+    padding: 1rem;
     width: 100%;
-    max-width: 1600px;
+    max-width: 1700px;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -62,6 +88,7 @@
     transition-duration: .4s;
     transition-timing-function: var(--timing);
     filter: drop-shadow(0px 0px 0px var(--acctHide));
+    pointer-events: all;
   }
 
   .header-logo #inside {
@@ -84,6 +111,12 @@
     }
     .header-logo {
       height: 90px;
+    }
+    .header-container {
+      padding: 2rem;
+    }
+    .header-bg {
+      display: none;
     }
   }
  </style>

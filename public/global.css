@@ -73,7 +73,7 @@ button {
   --timing: cubic-bezier(0.165, 0.84, 0.44, 1);
   --border: 1px solid var(--gray);
 	--btnHeight: 1.8rem;
-	--pagewidth: calc(100% - 3rem);
+	--pagewidth: 100%;
 }
 
 ::selection {
@@ -91,7 +91,7 @@ body {
 	box-sizing: border-box;	
 	background-color: var(--bg);
 	color: var(--gray);
-	font-size: 22px;
+	font-size: 18px;
   font-family: 'Vollkorn', serif;
   font-style: normal;
   font-weight: 400;
@@ -104,7 +104,7 @@ a {
 
 h1 {
 	font-size: calc(3.3vw + 1em);
-	font-size: clamp(2rem, 4vw, 5rem);
+	font-size: clamp(2.5rem, 4vw, 5rem);
   font-weight: 600;
 	margin-bottom: 1em;
   line-height: 1.3em;
@@ -112,7 +112,7 @@ h1 {
 
 h2 {
 	font-size: calc(2.3vw + 1em);
-	font-size: clamp(1.5rem, 2.3vw, 3.5rem);
+	font-size: clamp(1.6rem, 1.8vw, 2.4rem);
   font-weight: 400;
 	margin-bottom: 1em;
   line-height: 1.3em;
@@ -123,8 +123,21 @@ p {
   margin-bottom: .5em;
 }
 
+.sc {
+	font-family: 'Vollkorn SC', serif;
+	font-variant-caps: small-caps;
+	-moz-font-feature-settings: "smcp";
+	-webkit-font-feature-settings: "smcp";
+	font-feature-settings: "smcp";
+	font-weight: 600;
+}
+
 @media (min-width: 650px) {
   :root {
     --pagewidth: calc(100% - 250px);
-  }
+	}
+	
+	body {
+		font-size: 22px;
+	}
 }
