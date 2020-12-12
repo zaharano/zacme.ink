@@ -60,6 +60,7 @@
     height: auto;
     overflow: hidden;
     text-align: left;
+    box-shadow: 0 0 30px 0 rgba(0,0,0,.2)
   }
 
   p {
@@ -76,13 +77,9 @@
   } */
 
   .background {
-    position: relative;
-    width: 105%;
-    top: 50%;
-    left: 50%;
-    transform: translateY(0%);
-    transform: translateX(-50%);
-    height: auto;
+    width: 100%;
+    margin-bottom: -6px;
+    transform: scale(105%);
   }
 
   .blur {

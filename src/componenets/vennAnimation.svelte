@@ -504,7 +504,7 @@
 
 <style>
   section {
-    margin-top: -4%;
+    margin-top: -17vh;
     width: 100%;
     max-width: initial;
   }

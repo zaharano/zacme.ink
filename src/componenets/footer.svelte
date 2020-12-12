@@ -19,8 +19,8 @@
   <div>
     <h3 class="sc">more of my work</h3>
     <ul>
-      <li><button>Behance</button></li>
-      <li><button>Dribbble</button></li>
+      <li><a href='https://www.behance.net/zernesque'>Behance</a></li>
+      <li><a href='https://dribbble.com/zernity'>Dribbble</a></li>
     </ul>
   </div>
   <small class="sc">
@@ -55,7 +55,7 @@
     top: -11%;
   }
 
-  li button {
+  li a {
     line-height: 1.4em;
     color: white;
     font-size: 1em;
@@ -68,7 +68,7 @@
     opacity: .6;
   }
 
-  button:hover {
+  a:hover {
     color: var(--acct);
   }
 

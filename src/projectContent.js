@@ -20,21 +20,21 @@ export default [
   },
   {
     img: "./assets/Enterprise_HD.jpg",
-    tags: ["landing pages", "email", "branding"],
-    title: "PEX Card Digital Marketing",
-    body: "Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time?",
-    button: {
-      txt: "let's see it",
-      href: "http://www.startrek.com"
-    }
-  },
-  {
-    img: "./assets/Enterprise_HD.jpg",
     tags: ["illustration", "animation"],
     title: "Rent-A-Christmas Illustrations",
     body: "Thee gravitational pull of a star to slingshot back in time?",
     button: {
       txt: "check it out",
+      href: "http://www.startrek.com"
+    }
+  },
+  {
+    img: "./assets/Enterprise_HD.jpg",
+    tags: ["landing pages", "email", "branding"],
+    title: "PEX Card Digital Marketing",
+    body: "Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time?",
+    button: {
+      txt: "let's see it",
       href: "http://www.startrek.com"
     }
   },

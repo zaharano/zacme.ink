@@ -20,7 +20,7 @@
 
 <header>
   <div class="header-container">
-    <button aria-label=”Home” href="/">
+    <button aria-label=”Home” on:click={() => {document.getElementById('main').scrollIntoView({behavior: 'smooth'})}}>
      <svg class="header-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.75 143.68">
        <g id="lines">
          <path vector-effect="non-scaling-stroke" d="M56.06,23.46,34.81,47.1H56.06V72.68H0V49.22L20.34,25.58H0V0H56.06ZM54,1.84H1.69v21.9h22v.92l-22,25.2v21H54V48.94H31.37V48L54,22.82Z" stroke-width="1" />
