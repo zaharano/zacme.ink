@@ -118,8 +118,6 @@
   }
 
   nav {
-    border: 1px solid var(--gray);
-    border-bottom: 4px solid var(--gray);
     background-color: white;
     position: fixed;
     height: 100vh;
@@ -160,7 +158,9 @@
       padding: 5rem;
       height: inherit;
       width: inherit;
-      box-shadow: 0 0 52px -10px rgba(0,0,0,.2)
+      box-shadow: 0 0 52px -10px rgba(0,0,0,.2);
+      border: 1px solid var(--gray);
+      border-bottom: 4px solid var(--gray);
     }
 
     li button {
