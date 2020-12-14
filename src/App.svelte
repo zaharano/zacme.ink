@@ -13,7 +13,7 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 </script>
 
 <svelte:head>
-	<link href="https://fonts.googleapis.com/css2?family=Vollkorn+SC:wght@600&family=Vollkorn:wght@400;600&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Vollkorn+SC:wght@600&family=Vollkorn:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://use.typekit.net/plt5xkx.css">
 </svelte:head>
 

@@ -500,24 +500,48 @@
       </g>
     </g>
   </svg>
+  <div class="figcapbox">
+    <p class="figcap"><span>figure 1:</span> finding magic in the middle</p>
+  </div>
 </section>
 
 <style>
   section {
-    margin-top: -17vh;
+    /* margin-top: -17vh; */
     width: 100%;
     max-width: initial;
+    
   }
 
   svg {
     height: auto;
     width: 96vw;
     max-height: 100vh;
+    background-size: 30px 30px;
+    background-image: radial-gradient(circle, var(--gray) 1px, rgba(0, 0, 0, 0) 0px);
+    background-attachment: fixed;
+    backface-visibility: hidden;
+
   }
 
-  :global(.crawler) {
-    transition: opacity .1s var(--timing);
-    opacity: 1;
+  .figcapbox {
+    position: relative;
+    top: -100px;
+    left: 30%;
+    display: inline-block;
+  }
+
+  .figcap {
+    font-style: italic;
+    padding: .5rem 1rem;
+    background-color: white;
+    border-radius: 20px;
+    border: var(--border);
+  }
+
+  :global(.orngLine) {
+    /* transition: opacity .1s var(--timing);
+    opacity: 1; */
     stroke: var(--acct);
   }
 
@@ -525,5 +549,11 @@
     fill: var(--acct);
     stroke: var(--gray);
     stroke-width: 2;
+  }
+
+  @media (max-width: 900px) {
+    section {
+      margin-left: -1em;
+    }
   }
 </style>
