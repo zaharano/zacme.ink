@@ -42,6 +42,8 @@
 </section>
 
 <style>
+
+  /* flexbox version */
   /* .gallery {
     display: flex;
     flex-wrap: wrap;
@@ -49,14 +51,6 @@
     margin: auto; minmax(300px, 627px)
   } */
 
-
-  .gallery {
-    --colsize: minmax(400px, 1fr);
-    display: grid;
-    grid-gap: 2.5vw;
-		grid-template-columns: repeat(auto-fill, var(--colsize));
-  }
-  
   /* @media (min-width: 1000px) {
     .gallery {
       grid-template-columns: var(--colsize) var(--colsize);
@@ -86,4 +80,22 @@
       width: 32.5%;
     }
   } */
+
+  /* grid version */
+  .gallery {
+    --colsize: minmax(90vw, 1fr);
+    display: grid;
+    grid-gap: 2.5vw;
+		grid-template-columns: repeat(auto-fill, var(--colsize));
+  }
+
+  @media (min-width: 460px) { 
+    .gallery {
+      --colsize: minmax(375px, 1fr);
+		  grid-template-columns: repeat(auto-fill, var(--colsize));
+
+    }
+  }
+  
+  
 </style>
