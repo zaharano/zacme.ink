@@ -57,6 +57,11 @@ button {
 	font-family: inherit;
 }
 
+*:focus {
+  outline: 2px dashed var(--acct);
+  outline-offset: 2px;
+}
+
 
 :root {
 	--spacer: calc(1% + 2.5px);
