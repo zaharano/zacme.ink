@@ -3,6 +3,7 @@
   import { gsap } from "gsap";
   import { TextPlugin } from "gsap/TextPlugin";
   import { DrawSVGPlugin } from 'gsap/all';
+import { element } from 'svelte/internal';
 
   gsap.registerPlugin(TextPlugin, DrawSVGPlugin);
 
@@ -18,8 +19,6 @@
 
   //speech bubble TL
   const speechTL = gsap.timeline({delay: 1});
-  const lineTL = gsap.timeline({repeat: -1});
-  const startTL = gsap.timeline({delay: 2, repeat: -1})
 
   const delay = .02,
         duration = .01,
@@ -38,7 +37,9 @@
       autoAlpha: 0,
     });
 
-    const ltime = 3;
+    const ltime = 7;
+
+    const lineTL = gsap.timeline({repeat: -1});
 
     lineTL
     .to('.speech-outer-1', {
@@ -71,6 +72,30 @@
     .set('.speech-outer-2', {
       drawSVG: '1% 1%',
     });
+
+    // infinite random yoyo verticle moves for sparkles
+    function randomMove(ele) {
+      gsap.to(ele, {
+        y: `+=${gsap.utils.random(-20,20)}`,
+        duration: gsap.utils.random(2, 4),
+        ease: "power1.inOut",
+        delay: gsap.utils.random(1, 3, .1),
+        yoyo: true,
+        repeat: 1,
+        onComplete: randomMove, 
+        onCompleteParams: [ele]
+      })
+    }
+
+    gsap.utils.toArray(".sparkle").forEach(ele => {
+      randomMove(ele);
+    })
+    
+    // center the stars
+    gsap.set(".sparkle", {xPercent:-50, yPercent:-50});
+    // create 50% constants based on scaled width and height
+    let xTo = .5*document.getElementById('speech-container').offsetWidth;
+    let yTo = .5*document.getElementById('speech-container').offsetHeight;
 
     speechTL.from('.speech', {
       opacity: 0,
@@ -109,7 +134,35 @@
       y: 0,
       ease: "power4.out",
       transformOrigin: "50%, 50%"
-    }, "-=2.2");
+    }, "-=2.2")
+    .to('#s1', {
+      x: xTo * -1.4,
+      y: yTo * -.1,
+      scale: .9,
+      duration: .6,
+      delay: .3,
+      autoAlpha: 1,
+      ease: "power2.out",
+    }, 0)
+    .to('#s2', {
+      x: xTo * -1.2,
+      y: yTo * -.2,
+      scale: .5,
+      duration: .6,
+      delay: .5,
+      autoAlpha: 1,
+      ease: "power2.out",
+    }, 0)
+    .to('#s3', {
+      x: xTo * 1.4,
+      y: yTo * -.8,
+      scale: 1,
+      duration: .6,
+      delay: .7,
+      autoAlpha: 1,
+      ease: "power2.out",
+    }, 0)
+    .add(starTL);
 
 
     // track nudge count by dimension
@@ -290,7 +343,10 @@
 </script>
 
 <section>
-  <div class="speech-container">
+  <div id="speech-container">
+    <img class="sparkle" id="s1" src="./assets/sparkle.svg" alt="a simple sparkle">
+    <img class="sparkle" id="s2" src="./assets/sparkle.svg" alt="a simple sparkle">
+    <img class="sparkle" id="s3" src="./assets/sparkle.svg" alt="a simple sparkle">
     <div class="speech">
       <svg 
         width="100%" 
@@ -391,19 +447,17 @@
     fill: var(--gray);
     font-family: Shackleton, serif;
   }
+
   .speech-inner {
     stroke: var(--gray);
   }
-  :global(.crawling-line) {
-    stroke: var(--acct);
-    opacity: 1;
-    animation: stroke 0.2s linear infinite;
-  }
 
-  @keyframes -global-stroke {
-    to { 
-      stroke-dashoffset: 0;
-    }
+  .sparkle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    visibility: hidden;
+    transform: scale(.05);
   }
   
   /* TEXT ANIM STYLES */
