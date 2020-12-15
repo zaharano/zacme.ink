@@ -75,7 +75,8 @@ import { element } from 'svelte/internal';
 
     // infinite random yoyo verticle moves for sparkles
     function randomMove(ele) {
-      gsap.to(ele, {
+      if (Math.random()>.3) {
+        gsap.to(ele, {
         y: `+=${gsap.utils.random(-20,20)}`,
         duration: gsap.utils.random(2, 4),
         ease: "power1.inOut",
@@ -84,7 +85,18 @@ import { element } from 'svelte/internal';
         repeat: 1,
         onComplete: randomMove, 
         onCompleteParams: [ele]
-      })
+      })} else {
+        gsap.to(ele, {
+        opacity: 0,
+        scale: .1,
+        duration: gsap.utils.random(1, 2),
+        ease: "power1.inOut",
+        delay: gsap.utils.random(1, 3, .1),
+        yoyo: true,
+        repeat: 1,
+        onComplete: randomMove, 
+        onCompleteParams: [ele]
+      })}     
     }
 
     gsap.utils.toArray(".sparkle").forEach(ele => {
@@ -92,7 +104,7 @@ import { element } from 'svelte/internal';
     })
     
     // center the stars
-    gsap.set(".sparkle", {xPercent:-50, yPercent:-50});
+    gsap.set(".sparkle", {transformOrigin: "50% 50%"});
     // create 50% constants based on scaled width and height
     let xTo = .5*document.getElementById('speech-container').offsetWidth;
     let yTo = .5*document.getElementById('speech-container').offsetHeight;
@@ -136,8 +148,6 @@ import { element } from 'svelte/internal';
       transformOrigin: "50%, 50%"
     }, "-=2.2")
     .to('#s1', {
-      x: xTo * -1.4,
-      y: yTo * -.1,
       scale: .9,
       duration: .6,
       delay: .3,
@@ -145,8 +155,6 @@ import { element } from 'svelte/internal';
       ease: "power2.out",
     }, 0)
     .to('#s2', {
-      x: xTo * -1.2,
-      y: yTo * -.2,
       scale: .5,
       duration: .6,
       delay: .5,
@@ -154,16 +162,12 @@ import { element } from 'svelte/internal';
       ease: "power2.out",
     }, 0)
     .to('#s3', {
-      x: xTo * 1.4,
-      y: yTo * -.8,
       scale: 1,
       duration: .6,
       delay: .7,
       autoAlpha: 1,
       ease: "power2.out",
-    }, 0)
-    .add(starTL);
-
+    }, 0);
 
     // track nudge count by dimension
     const nudge = function(dim) {
@@ -454,10 +458,28 @@ import { element } from 'svelte/internal';
 
   .sparkle {
     position: absolute;
-    top: 50%;
-    left: 50%;
     visibility: hidden;
     transform: scale(.05);
+  }
+
+  #speech-container {
+    position: relative;
+  }
+
+  #s1{
+    bottom: 0;
+    left: 0;
+    transform: translate(-90px, -40px)
+  }
+  #s2{
+    bottom: 0;
+    left: 0;
+    transform: translate(-55px, -60px)
+  }
+  #s3{
+    top: 0;
+    right: 0;
+    transform: translate(80px, -20px)
   }
   
   /* TEXT ANIM STYLES */
