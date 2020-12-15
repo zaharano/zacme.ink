@@ -14,3 +14,12 @@
     <p class="figcap"><span>figure 1:</span> finding magic in the middle</p>
   </figcaption>
 </figure>
+
+<style>
+  svg {
+    height: auto;
+    max-height: 80vh;
+    width: 100%;
+    overflow:visible;
+  }
+</style>
