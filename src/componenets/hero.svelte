@@ -148,21 +148,21 @@ import { element } from 'svelte/internal';
       transformOrigin: "50%, 50%"
     }, "-=2.2")
     .to('#s1', {
-      scale: .9,
+      scale: 1.2,
       duration: .6,
       delay: .3,
       autoAlpha: 1,
       ease: "power2.out",
     }, 0)
     .to('#s2', {
-      scale: .5,
+      scale: .7,
       duration: .6,
       delay: .5,
       autoAlpha: 1,
       ease: "power2.out",
     }, 0)
     .to('#s3', {
-      scale: 1,
+      scale: 1.4,
       duration: .6,
       delay: .7,
       autoAlpha: 1,
@@ -394,7 +394,7 @@ import { element } from 'svelte/internal';
   
 
   <h1>
-    My name is Zach. I’m an integrative 
+    My name is Zach. <br>I’m an integrative 
       <span class="designer-contain">
         <span class="word designer" on:mouseenter={() => {desTL.play()}}>
           designer,
@@ -474,7 +474,7 @@ import { element } from 'svelte/internal';
   #s2{
     bottom: 0;
     left: 0;
-    transform: translate(-55px, -60px)
+    transform: translate(-55px, -80px)
   }
   #s3{
     top: 0;
