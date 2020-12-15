@@ -4,6 +4,7 @@ import Hero from "./componenets/hero.svelte";
 import FigureSection from "./componenets/figSection.svelte"
 import VennAnimation from "./componenets/vennAnimation.svelte";
 import ProjectSection from "./componenets/projectSection.svelte";
+import ContactSection from "./componenets/contactSection.svelte";
 import Footer from "./componenets/footer.svelte";
 import Button from "./componenets/button.svelte";
 import FigSection from "./componenets/figSection.svelte";
@@ -25,15 +26,7 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 	<Hero />
 	<FigSection />
 	<ProjectSection />
-	<section id="contact">
-		<h1>Contact Me</h1>
-		<h2>
-			I'm always interested in hearing about new work!
-		</h2>
-		<div class="buttonContainer">
-			<Button txt="get in touch!" href="mailto:z@zaharano.com" />
-		</div>
-	</section>
+	<ContactSection />
 </main>
 <Footer />
 
@@ -49,22 +42,5 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 		max-width: 1400px;
 		margin-left: auto;
 		margin-right: auto;
-	}
-
-	.buttonContainer {
-		max-width: 20rem;
-		display: flex;
-		
-		align-items: center;
-		justify-content: center;
-	}
-
-	#contact {
-		margin-top: 5rem;
-		margin-bottom: 0;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
 	}
 </style>
