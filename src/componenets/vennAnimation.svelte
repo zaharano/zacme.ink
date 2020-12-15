@@ -541,13 +541,6 @@
     right: -100px;
   }
 
-  /* find and remove these */
-  :global(.orngLine) {
-    /* transition: opacity .1s var(--timing);
-    opacity: 1; */
-    stroke: var(--acct);
-  }
-
   .petal {
     fill: var(--acct);
     stroke: var(--gray);
