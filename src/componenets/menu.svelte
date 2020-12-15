@@ -2,7 +2,10 @@
   import { onMount } from 'svelte';
   import { gsap } from "gsap";
   import { fly } from 'svelte/transition';
-  import ClickOutside from './clickOutside.svelte'
+  import ClickOutside from './clickOutside.svelte';
+  import smoothscroll from 'smoothscroll-polyfill';
+
+  smoothscroll.polyfill();
 
   let open = false;
   let hamburglar;
