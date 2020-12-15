@@ -3,7 +3,6 @@
   import { gsap } from "gsap";
   import { TextPlugin } from "gsap/TextPlugin";
   import { DrawSVGPlugin } from 'gsap/all';
-import { element } from 'svelte/internal';
 
   gsap.registerPlugin(TextPlugin, DrawSVGPlugin);
 
