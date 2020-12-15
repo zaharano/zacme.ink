@@ -1,10 +1,12 @@
 <script>
 import Header from "./componenets/header.svelte";
 import Hero from "./componenets/hero.svelte";
+import FigureSection from "./componenets/figSection.svelte"
 import VennAnimation from "./componenets/vennAnimation.svelte";
 import ProjectSection from "./componenets/projectSection.svelte";
 import Footer from "./componenets/footer.svelte";
 import Button from "./componenets/button.svelte";
+import FigSection from "./componenets/figSection.svelte";
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 // make a switch to allow changing this
@@ -21,12 +23,7 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 
 <main id="main">
 	<Hero />
-	<VennAnimation />
-	<section id="bio">
-		<h2>
-			I have a versatile toolbox collected from a decade of varied work and a love of side projects. I enjoy playing with the intersections of some of those tools to find delightful new ways to communicate.
-		</h2>
-	</section>
+	<FigSection />
 	<ProjectSection />
 	<section id="contact">
 		<h1>Contact Me</h1>

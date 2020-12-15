@@ -67,15 +67,6 @@
     margin-bottom: 0;
   }
 
-  /* .background {
-    position: relative;
-    min-height: 105%;
-    min-width: 105%;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  } */
-
   .background {
     width: 100%;
     margin-bottom: -6px;

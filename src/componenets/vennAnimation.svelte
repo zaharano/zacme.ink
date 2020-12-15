@@ -308,8 +308,8 @@
 </script>
 
 <!-- role="img" aria-label="[title + description]" -->
-<section class="venn">
-  <svg width="836" height="761" viewBox="-50 -50 936 861" fill="none" xmlns="http://www.w3.org/2000/svg">
+<figure class="venn">
+  <svg width="836" height="761" viewBox="0 0 836 761" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="836" height="761" />
 
     <!-- all the circles -->
@@ -500,45 +500,48 @@
       </g>
     </g>
   </svg>
-  <div class="figcapbox">
+  <figcaption>
     <p class="figcap"><span>figure 1:</span> finding magic in the middle</p>
-  </div>
-</section>
+  </figcaption>
+</figure>
 
 <style>
-  section {
-    /* margin-top: -17vh; */
-    width: 100%;
-    max-width: initial;
-    
+  :global(figure) {
+    background-size: 25px 25px;
+    background-image: radial-gradient(circle, var(--gray) 1px, rgba(0, 0, 0, 0) 0px);
+    background-attachment: fixed;
+    backface-visibility: hidden;
+    border: var(--border);
+    border-radius: 10px;
+    box-shadow: 0 0 50px 0 rgba(0,0,0,.05);
+    padding: 2rem;
+    position:relative;
   }
 
   svg {
     height: auto;
-    width: 96vw;
-    max-height: 100vh;
-    background-size: 30px 30px;
-    background-image: radial-gradient(circle, var(--gray) 1px, rgba(0, 0, 0, 0) 0px);
-    background-attachment: fixed;
-    backface-visibility: hidden;
-
+    max-height: 80vh;
+    width: 100%;
+    overflow:visible;
   }
 
-  .figcapbox {
-    position: relative;
-    top: -100px;
-    left: 30%;
+  :global(figcaption) {
+    position: absolute;
     display: inline-block;
-  }
-
-  .figcap {
     font-style: italic;
     padding: .5rem 1rem;
+    margin-bottom: none;
     background-color: white;
-    border-radius: 20px;
-    border: var(--border);
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%23333' stroke-width='3' stroke-dasharray='7%2c9' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
+  border-radius: 10px;
   }
 
+  figcaption {
+    top: 10%;
+    right: -100px;
+  }
+
+  /* find and remove these */
   :global(.orngLine) {
     /* transition: opacity .1s var(--timing);
     opacity: 1; */
@@ -549,11 +552,5 @@
     fill: var(--acct);
     stroke: var(--gray);
     stroke-width: 2;
-  }
-
-  @media (max-width: 900px) {
-    section {
-      margin-left: -1em;
-    }
   }
 </style>
