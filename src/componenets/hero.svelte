@@ -36,7 +36,7 @@
       autoAlpha: 0,
     });
 
-    const ltime = 7;
+    const ltime = 4;
 
     const lineTL = gsap.timeline({repeat: -1});
 
@@ -72,7 +72,7 @@
       drawSVG: '1% 1%',
     });
 
-    // infinite random yoyo verticle moves for sparkles
+    // infinite random yoyo verticle moves or blinkies for sparkles
     function randomMove(ele) {
       if (Math.random()>.3) {
         gsap.to(ele, {
@@ -399,6 +399,7 @@
         <div class="guide-wrap" style="right: .1em;bottom: 80%;">
           <div class="guide-x-ends">
             <div class="guide-x-line"></div>
+          </div>
         </div>
       </span> 
       <span class="word animator" on:mouseenter={() => {animTL.play()}}>
@@ -450,7 +451,7 @@
 
   :global(.orngLine) {
     stroke: var(--acct);
-    stroke-width: 10px;
+    stroke-width: 4px;
     stroke-linecap: round;
   }
 

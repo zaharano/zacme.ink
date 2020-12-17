@@ -43,4 +43,25 @@
     width: 35%;
     padding: 2rem;
   }
+
+  p {
+    font-size: calc(1.8vw + 1em);
+	  font-size: clamp(1.6rem, 1.8vw, 2.4rem);
+  }
+
+  @media (max-width: 1100px) {
+    .figrow {
+      flex-direction: column;
+    }
+    .figrow.rev {
+      flex-direction: column;
+    }
+    .figrow > .fig {
+      width: 100%;
+    }
+    .figrow > p {
+      width: 75%;
+      padding: 2rem;
+    }
+  }
 </style>

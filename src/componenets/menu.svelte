@@ -123,8 +123,8 @@
   nav {
     background-color: white;
     position: fixed;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     top: 0;
     right: 0;
     text-align: center;

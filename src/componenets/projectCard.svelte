@@ -56,6 +56,7 @@
     position: relative;
     box-sizing: border-box;
     border: var(--border);
+    border-bottom: 4px solid var(--gray);
     border-radius: 10px;
     height: auto;
     overflow: hidden;
