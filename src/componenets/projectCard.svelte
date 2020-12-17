@@ -30,7 +30,7 @@
   on:mouseleave={hideOn}
   on:click={hideOff}
   >
-    <img src="{img}" alt="{alt}" class="background {hide === false ? 'blur' : ''}" loading="lazy"/> 
+    <img src="{img}" alt="{alt}" class="background {hide === false ? 'blur' : ''}" /> 
     <div 
       class="infotainer"
       class:hide>
