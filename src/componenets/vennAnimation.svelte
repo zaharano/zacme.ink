@@ -33,7 +33,8 @@
     ScrollTrigger.create({
       trigger: "#venn",
       animation: tl,
-      start: "-40% top",
+      start: "top 60%",
+      markers: true,
     })
 
     gsap.set('#venn-fig', {
@@ -76,6 +77,7 @@
     gsap.set('.magic-icon-petalbursts', {
       autoAlpha: 0,
     })
+    gsap.set('#venn', {transformOrigin:"50% 50%"});
 
     magicIconTL.set('#magic-set', {
       y: 90,
@@ -308,7 +310,11 @@
       y: -20,
       x: -40
     }, "<")
-    .add(magicIconTL);
+    .add(magicIconTL)
+    .to('#venn', {
+      scale: 1.25,
+      y: "+=3%"
+    }, "-=1");
 
     
     //slight parallax to delay scroll?
@@ -329,8 +335,8 @@
 </script>
 
 <!-- role="img" aria-label="[title + description]" -->
-<figure id="venn">
-  <svg width="836" height="761" viewBox="0 0 836 761" fill="none" xmlns="http://www.w3.org/2000/svg">
+<figure>
+  <svg id="venn" width="836" height="761" viewBox="0 0 836 761" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="836" height="761" />
 
     <!-- all the circles -->
@@ -556,7 +562,9 @@
     position: absolute;
     display: inline-block;
     font-style: italic;
+    font-size: .8em;
     padding: .5rem 1.4rem;
+    margin-right: 2rem;
     margin-bottom: none;
     background-color: white;
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='20' ry='20' stroke='%23333' stroke-width='3' stroke-dasharray='7%2c9' stroke-dashoffset='0' stroke-linecap='round'/%3e%3c/svg%3e");
@@ -569,20 +577,16 @@
 
   }
 
-  figcaption {
-    right: -10%;
-  }
-
   :global(figcaption > button) {
     margin-left: .6rem;
     border-radius: 5px;
     border: var(--border);
     color: var(--gray);
     box-shadow: 0 0 0 var(--acct);
-    width: 3.5em;
-		height: 3.5em;
+    width: 3em;
+		height: 3em;
 		background: no-repeat 50% 50% url("data:image/svg+xml;charset=utf8,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 0C9 0 7.2.5 5.5 1.5a10.9 10.9 0 00-4 15 11 11 0 0016.9 2.7l.1-.4v-.4l-1.9-1.8-.3-.1h-.4c-.7.7-1.4 1.2-2.3 1.5a7.4 7.4 0 01-9-10.7c.6-1.2 1.6-2 2.7-2.7a7.4 7.4 0 018.8 1l-1.9 1.8a1 1 0 00-.3.8c0 .3.1.5.3.7.2.2.5.3.8.3h6c.2 0 .5 0 .7-.3.2-.2.3-.4.3-.7v-6c0-.2-.1-.5-.3-.7-.2-.2-.5-.3-.8-.3a1 1 0 00-.7.3L18.6 3A11.1 11.1 0 0011 0z' fill='%23454545'/%3E%3C/svg%3E");
-		background-size: 2.2em 2.2em;
+		background-size: 1.9em 1.9em;
     transition-property: transform, box-shadow;
     transition-duration: .4s;
     transition-timing-function: var(--timing);
