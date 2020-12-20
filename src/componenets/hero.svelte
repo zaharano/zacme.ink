@@ -38,39 +38,39 @@
 
     const ltime = 4;
 
-    const lineTL = gsap.timeline({repeat: -1});
+    // const lineTL = gsap.timeline({repeat: -1});
 
-    lineTL
-    .to('.speech-outer-1', {
-      drawSVG: '54% 65%',
-      duration: ltime,
-      ease: 'expo.in',
-      autoAlpha: 1,
-    })
-    .to('.speech-outer-1', {
-      drawSVG: '74% 74%',
-      duration: ltime,
-      ease: "expo.out",
-      autoAlpha: 0,
-    }, ">")
-    .to('.speech-outer-2', {
-      drawSVG: '5% 16%',
-      duration: ltime,
-      ease: 'expo.in',
-      autoAlpha: 1,
-    }, ".5")
-    .to('.speech-outer-2', {
-      drawSVG: '21% 21%',
-      duration: ltime,
-      ease: "expo.out",
-      autoAlpha: 0,
-    }, ">")
-    .set('.speech-outer-1', {
-      drawSVG: '34% 34%',
-    })
-    .set('.speech-outer-2', {
-      drawSVG: '1% 1%',
-    });
+    // lineTL
+    // .to('.speech-outer-1', {
+    //   drawSVG: '54% 65%',
+    //   duration: ltime,
+    //   ease: 'expo.in',
+    //   autoAlpha: 1,
+    // })
+    // .to('.speech-outer-1', {
+    //   drawSVG: '74% 74%',
+    //   duration: ltime,
+    //   ease: "expo.out",
+    //   autoAlpha: 0,
+    // }, ">")
+    // .to('.speech-outer-2', {
+    //   drawSVG: '5% 16%',
+    //   duration: ltime,
+    //   ease: 'expo.in',
+    //   autoAlpha: 1,
+    // }, ".5")
+    // .to('.speech-outer-2', {
+    //   drawSVG: '21% 21%',
+    //   duration: ltime,
+    //   ease: "expo.out",
+    //   autoAlpha: 0,
+    // }, ">")
+    // .set('.speech-outer-1', {
+    //   drawSVG: '34% 34%',
+    // })
+    // .set('.speech-outer-2', {
+    //   drawSVG: '1% 1%',
+    // });
 
     // infinite random yoyo verticle moves or blinkies for sparkles
     function randomMove(ele) {
@@ -100,13 +100,10 @@
 
     gsap.utils.toArray(".sparkle").forEach(ele => {
       randomMove(ele);
-    })
+    });
     
-    // center the stars
-    gsap.set(".sparkle", {transformOrigin: "50% 50%"});
-    // create 50% constants based on scaled width and height
-    let xTo = .5*document.getElementById('speech-container').offsetWidth;
-    let yTo = .5*document.getElementById('speech-container').offsetHeight;
+    // center the stars, set up for open
+    gsap.set(".sparkle", {transformOrigin: "50% 50%", autoAlpha: 0, scale: .05});
 
     speechTL.from('.speech', {
       opacity: 0,
@@ -146,34 +143,23 @@
       ease: "power4.out",
       transformOrigin: "50%, 50%"
     }, "-=2.2")
-    .to('#s1', {
-      scale: 1.2,
+    .to('.sparkle', {
+      scale: 1,
       duration: .6,
       delay: .3,
       autoAlpha: 1,
-      ease: "power2.out",
-    }, 0)
-    .to('#s2', {
-      scale: .7,
-      duration: .6,
-      delay: .5,
-      autoAlpha: 1,
-      ease: "power2.out",
-    }, 0)
-    .to('#s3', {
-      scale: 1.4,
-      duration: .6,
-      delay: .7,
-      autoAlpha: 1,
+      stagger: .2,
       ease: "power2.out",
     }, 0);
+
+    
+    // word 'designer' nudges up and left, guides show up, yoyo
+    const desSel = '.designer';
 
     // track nudge count by dimension
     const nudge = function(dim) {
       nudges[dim]++;
     }
-    // word 'designer' nudges up and left, guides show up, color picker appear, color changed, yoyo
-    const desSel = '.designer';
 
     desTL.set('.guide-y-ends', {
       autoAlpha: 0
@@ -347,9 +333,13 @@
 
 <section>
   <div id="speech-container">
+    <img src="./assets/bitz.svg" alt="some bitz in the sky" id="bitz">
     <img class="sparkle" id="s1" src="./assets/sparkle.svg" alt="a simple sparkle">
     <img class="sparkle" id="s2" src="./assets/sparkle.svg" alt="a simple sparkle">
     <img class="sparkle" id="s3" src="./assets/sparkle.svg" alt="a simple sparkle">
+    <img class="sparkle" id="s4" src="./assets/sparkle.svg" alt="a simple sparkle">
+    <img class="sparkle" id="s5" src="./assets/sparkle.svg" alt="a simple sparkle">
+    <img class="sparkle" id="moon" src="./assets/moon.svg" alt="a simple moon">
     <div class="speech">
       <svg 
         width="100%" 
@@ -422,17 +412,13 @@
     align-items: center;
     justify-content: center;
   }
-
-  h1 {
-    margin-left: auto;
-		margin-right: auto;
-		max-width: 1200px;
-  }
   
   /* SPEECH STYLES */
   .speech {
     /* safari can't handle the clamps!!! */
     width: 30vw;
+    min-width: 250px;
+    max-width: 350px;
     width: clamp(250px, 30vw, 400px);
   }
   .speech-exclaim {
@@ -457,12 +443,17 @@
 
   .sparkle {
     position: absolute;
-    visibility: hidden;
-    transform: scale(.05);
   }
 
   #speech-container {
     position: relative;
+  }
+
+  #bitz {
+    width: 180%;
+    position: absolute;
+    top: -10%;
+    left: -33%;
   }
 
   #s1{
@@ -473,12 +464,30 @@
   #s2{
     bottom: 0;
     left: 0;
-    transform: translate(-55px, -80px)
+    width: 14%;
+    transform: translate(-40px, -90px)
   }
   #s3{
     top: 0;
     right: 0;
-    transform: translate(80px, -20px)
+    width: 25%;
+    transform: translate(110px, -40px)
+  }
+  #s4{
+    top: 0;
+    right: 0;
+    width: 15%;
+    transform: translate(50px, 5px)
+  }
+  #s5{
+    bottom: 0;
+    right: 0;
+    transform: translate(95px, -100px)
+  }
+  #moon{
+    top: 0;
+    left: 0;
+    transform: translate(-80px, -60px)
   }
   
   /* TEXT ANIM STYLES */

@@ -107,15 +107,19 @@ a {
 }
 
 h1 {
-	font-size: calc(3.3vw + 1em);
+	font-size: calc(2.75vw + 1em);
 	font-size: clamp(2.5rem, 4vw, 5rem);
   font-weight: 600;
 	line-height: 1.3em;
 	margin-bottom: .3em;
 }
 
+h1.shed {
+	margin-top: 3rem;
+}
+
 h2 {
-	font-size: calc(2.3vw + 1em);
+	font-size: calc(1vw + 1em);
 	font-size: clamp(1.6rem, 1.8vw, 2.4rem);
   font-weight: 400;
 	margin-bottom: 1em;
@@ -136,7 +140,7 @@ p {
 	letter-spacing: .07em;
 }
 
-@media (min-width: 650px) {
+@media (min-width: 850px) {
   :root {
     --pagewidth: calc(100% - 250px);
 	}
