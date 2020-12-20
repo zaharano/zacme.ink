@@ -63,7 +63,7 @@
     width: 100%;
     height: 100%;
     background-color: var(--bg);
-    box-shadow: 10px 0 30px 0 var(--gray);
+    /* box-shadow: 10px 0 30px 0 var(--gray); */
     z-index: -1;
     visibility: hidden;
     pointer-events: all;
@@ -104,7 +104,7 @@
     fill: white;
   }
 
-  @media (min-width: 650px) {
+  @media (min-width: 850px) {
     header {
       background-color: initial;
       box-shadow: initial;

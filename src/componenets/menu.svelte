@@ -153,7 +153,7 @@
     cursor: pointer;
   }
 
-  @media (min-width: 660px) { 
+  @media (min-width: 760px) { 
     nav {
       max-width: 60rem;
       max-height: 60rem;

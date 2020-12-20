@@ -31,7 +31,7 @@
 </script>
 
 <section id="projects">
-  <h1>
+  <h1 class="shed">
 		Projects
   </h1>
   <div class="gallery">
@@ -97,5 +97,7 @@
     }
   }
   
-  
+  h1 {
+    margin-bottom: .8em;
+  }
 </style>
