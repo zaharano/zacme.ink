@@ -29,6 +29,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10vh;
+    text-align: left;
   }
 
   .figrow.rev {
@@ -45,7 +46,7 @@
   }
 
   p {
-    font-size: calc(1.8vw + 1em);
+    font-size: calc(1vw + 1em);
 	  font-size: clamp(1.6rem, 1.8vw, 2.4rem);
   }
 

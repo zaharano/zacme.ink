@@ -33,7 +33,7 @@
     ScrollTrigger.create({
       animation: abilTL,
       trigger: "#ability",
-      start: "-40% top",
+      start: "top 60%",
     });
 
     sizeListText();
@@ -56,13 +56,18 @@
       opacity: 0,
     }, {
       opacity: 1,
+      duration: 2
     })
     .from('#ability-box', {
       y: -100,
       ease: "bounce.out",
+      duration: 2
     }, "<")
+    .to('#ability-whole', {
+      duration: 2,
+    })
 
-    let abils = gsap.utils.toArray("#ability-feed > span").reverse();
+    let abils = gsap.utils.toArray("#ability-feed > li").reverse();
     abils.forEach((ele, i) => {
       const move = `${100 * (i + 1)}%`;
       abilTL
@@ -78,7 +83,7 @@
       .to('#ability-box', {
         scale: "+=.1",
         ease: "elastic.out"
-      }, '-=.7')
+      }, '-=.4')
       .to('#d-bracket', {
         scaleY: "+=.1"
       }, '<')
@@ -91,39 +96,47 @@
       .to('#b-label', {
         x: "+=5"
       }, '<')
-      .to("#ability-feed > span", {
+      .to("#ability-feed > li", {
         y: move,
         ease: "bounce.out",
         duration: .3,
       }, "-=.4")
     });
 
+    abilTL
+    .to('#wholeg', {
+      x: 100,
+      duration: 2,
+      delay: 1
+    })
+    .timeScale(1.6)
+
   });
 </script>
 
 <figure id="ability">
   <div id="ability-whole">
-    <div class="sc" id="ability-feed">
+    <ul class="sc" id="ability-feed">
       <!-- double span so margin is included in offsetHeight for the move action as the items drop -->
-      <span><span>print production</span></span>
-      <span><span>copy writing</span></span>
-      <span><span>3d models</span></span>
-      <span><span>unity</span></span>
-      <span><span>motion graphics</span></span>
-      <span><span>video</span></span>
-      <span><span>drawn animation</span></span>
-      <span><span>gatsby</span></span>
-      <span><span>react/next</span></span>
-      <span><span>svelte</span></span>
-      <span><span>gsap/d3</span></span>
-      <span><span>html/css/js</span></span>
-      <span><span>prototyping</span></span>
-      <span><span>ux & ui design</span></span>
-      <span><span>illustration</span></span>
-      <span><span>editorial design</span></span>
-      <span><span>branding</span></span>
-      <span><span>creative direction</span></span>
-    </div> 
+      <li><span>print production</span></li>
+      <li><span>copy writing</span></li>
+      <li><span>3d models</span></li>
+      <li><span>unity</span></li>
+      <li><span>motion graphics</span></li>
+      <li><span>video</span></li>
+      <li><span>drawn animation</span></li>
+      <li><span>gatsby</span></li>
+      <li><span>react/next</span></li>
+      <li><span>svelte</span></li>
+      <li><span>gsap/d3</span></li>
+      <li><span>html/css/js</span></li>
+      <li><span>prototyping</span></li>
+      <li><span>ux & ui design</span></li>
+      <li><span>illustration</span></li>
+      <li><span>editorial design</span></li>
+      <li><span>branding</span></li>
+      <li><span>creative direction</span></li>
+    </ul> 
     <svg width="600" height="349" viewBox="0 0 600 349" fill="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="Gradient" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -176,10 +189,6 @@
     overflow: visible;
   }
 
-  figcaption {
-    left: -10%;
-  }
-
   #ability-feed {
     display: flex;
     flex-direction: column;
@@ -195,7 +204,7 @@
     margin-right: 1em;
   }
 
-  #ability-feed > span > span {
+  #ability-feed > li > span {
     display: block;
     background-color: white;
     border: var(--border);
