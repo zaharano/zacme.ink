@@ -1,18 +1,16 @@
 <script>
 import Header from "./componenets/header.svelte";
 import Hero from "./componenets/hero.svelte";
-import FigureSection from "./componenets/figSection.svelte"
-import VennAnimation from "./componenets/vennAnimation.svelte";
 import ProjectSection from "./componenets/projectSection.svelte";
 import ContactSection from "./componenets/contactSection.svelte";
 import Footer from "./componenets/footer.svelte";
-import Button from "./componenets/button.svelte";
 import FigSection from "./componenets/figSection.svelte";
+import FocusVisible from "focus-visible"
+
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 // make a switch to allow changing this
-// implement prop in all components that include motion
-// const { projects } = content;
+// implement store in all components that include motion
 </script>
 
 <svelte:head>

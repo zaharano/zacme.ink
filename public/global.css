@@ -57,9 +57,25 @@ button {
 	font-family: inherit;
 }
 
+
+/* if we must focus, style it */
 *:focus {
   outline: 2px dashed var(--acct);
   outline-offset: 2px;
+}
+
+.js-focus-visible .focus-visible {
+  outline: 2px dashed var(--acct);
+  outline-offset: 2px;
+}
+
+/*
+  This will hide the focus indicator if the element receives focus via the mouse,
+	but it will still show up on keyboard focus.
+	polyfilled
+*/
+.js-focus-visible :focus:not(.focus-visible) {
+  outline: none;
 }
 
 
