@@ -411,6 +411,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
   }
   
   /* SPEECH STYLES */
