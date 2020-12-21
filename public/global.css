@@ -93,7 +93,7 @@ button {
   --timing: cubic-bezier(0.165, 0.84, 0.44, 1);
   --border: 1px solid var(--gray);
 	--btnHeight: 1.8rem;
-	--pagewidth: 100%;
+	--pagewidth: initial;
 }
 
 ::selection {

@@ -31,7 +31,6 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 <style>
 	main {
 		text-align: center;
-		padding: 1em;
 		margin: auto;
 	}
 
@@ -40,5 +39,7 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 		max-width: 1400px;
 		margin-left: auto;
 		margin-right: auto;
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 </style>
