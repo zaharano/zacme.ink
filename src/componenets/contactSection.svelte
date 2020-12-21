@@ -27,6 +27,6 @@
 		flex-direction: column;
 		align-items: center;
     justify-content: center;
-    height: 75vh;
+    height: calc(100vh - 150px);
 	}
 </style>

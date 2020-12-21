@@ -34,7 +34,7 @@
   footer {
     background-color: var(--gray);
     height: 150px;
-    margin-top: 7rem;
+    margin-top: 1rem;
     border-radius: 10px 10px 0 0;
     padding: 2rem;
     color: white;
