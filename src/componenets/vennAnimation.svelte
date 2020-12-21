@@ -66,6 +66,7 @@
       autoAlpha: 0,
       ease: "power4.out",
       duration: 6, 
+      scale: "random(1, 2.5)",
       rotate: "random(200, 600)",
       physics2D: {
         velocity: "random(340, 500)",
