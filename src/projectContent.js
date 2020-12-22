@@ -1,7 +1,7 @@
 // img: "./assets/Enterprise_HD.jpg", dimensions: 
 // tags: ["an array", "like", "this"], text ends up allcaps
 // title: "A string", keep under 30ch
-// body: "A string", keep under 130ch
+// body: "A string", keep under 120ch
 // button: 
 //   txt: "check it out", no caps
 //   href: "http://www.startrek.com"
@@ -12,7 +12,7 @@ export default [
     img: "./assets/" + "gal-RACStyleGuide.png",
     tags: ["branding", "illustration", "joy"],
     title: "Rent-A-Christmas Style Guide",
-    body: "A brand style guide for a Christmas decoration rental company. Lots of original illustration work went into this fun and festive brand.",
+    body: "Lots of original illustration work went into this fun and festive brand guide.",
     button: {
       txt: "check it out",
       href: "http://www.startrek.com"
@@ -20,9 +20,9 @@ export default [
   },
   {
     img: "./assets/gal-RACvalues.png",
-    tags: ["art direction", "illustration", "animation"],
+    tags: ["art direction", "illustration"],
     title: "Rent-A-Christmas Elves",
-    body: "A collection of illustrations for a Christmas decoration rental company, depicting company values and benefits. Featuring lots of elves.",
+    body: "A collection of illustrations depicting company values and benefits. Featuring lots of elves.",
     button: {
       txt: "elves, you say?",
       href: "https://www.behance.net/gallery/109998313/Rent-A-Christmas-Website-Illustrations"
@@ -42,7 +42,7 @@ export default [
     img: "./assets/gal-RACbuses.png",
     tags: ["illustration", "art direction"],
     title: "Rent-A-Christmas Businesses",
-    body: "A collection of illustrations showing types of businesses",
+    body: "A collection of illustrations showing types of businesses.",
     button: {
       txt: "check them out",
       href: "https://www.behance.net/gallery/109991585/Rent-A-Christmas-Business-Illustrations"

@@ -87,7 +87,7 @@
     height: 100%;
     background-color: rgba(255,255,255,.85);
     padding: 5%;
-    padding-bottom: 7%;
+    padding-bottom: 5%;
     transition: opacity .2s linear;
     opacity: 1;
     display: flex;
@@ -101,12 +101,18 @@
   }
 
   h2 {
-    font-size: 1.6rem;
+    font-size: 1.6em;
     margin-bottom: 0rem;
   }
 
+  @media (max-width: 480px) { 
+    h2 {
+      font-size: 1.4em;
+    }
+  }
+
   .tags span {
-    font-size: 1rem;
+    font-size: 1em;
     display: inline-block;
     font-family: 'Vollkorn SC', serif;
     font-variant-caps: small-caps;
@@ -132,6 +138,6 @@
   }
 
   .hide .bottom {
-    transform: translateY(100px);
+    transform: translateY(100%);
   }
 </style>

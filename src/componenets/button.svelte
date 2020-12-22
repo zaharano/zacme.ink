@@ -21,7 +21,7 @@
     width: 100%;
     min-width: 15rem;
     border-radius: 5px;
-    font-size: 1.2rem;
+    font-size: .8em;
     line-height: var(--btnHeight);
     letter-spacing: 2px;
     padding: .6rem 1.8rem;

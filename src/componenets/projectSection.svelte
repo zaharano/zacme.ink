@@ -86,14 +86,15 @@
     --colsize: minmax(90vw, 1fr);
     display: grid;
     grid-gap: 2.5vw;
-		grid-template-columns: repeat(auto-fill, var(--colsize));
+    grid-template-columns: repeat(auto-fill, var(--colsize));
+    font-size: 16px;
   }
 
-  @media (min-width: 460px) { 
+
+  @media (min-width: 480px) { 
     .gallery {
       --colsize: minmax(375px, 1fr);
-		  grid-template-columns: repeat(auto-fill, var(--colsize));
-
+      font-size: 20px;
     }
   }
   

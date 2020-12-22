@@ -65,5 +65,8 @@
       padding: 2rem;
       margin-bottom: 2rem;
     }
+    .figrow:first-of-type > p {
+      padding-top: 0;
+    }
   }
 </style>
