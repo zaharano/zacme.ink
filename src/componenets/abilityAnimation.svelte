@@ -8,7 +8,6 @@
     let newFS = graphW / 30;
     let updateEle = document.getElementById('ability-feed');
     updateEle.style.fontSize = `${newFS}px`;
-    console.log(newFS)
   }
 
   // didn't put the list in the svg because it'd be static layout
