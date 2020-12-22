@@ -63,6 +63,7 @@
     .figrow > p {
       width: 75%;
       padding: 2rem;
+      margin-bottom: 2rem;
     }
   }
 </style>
