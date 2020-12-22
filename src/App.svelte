@@ -6,6 +6,8 @@ import ContactSection from "./componenets/contactSection.svelte";
 import Footer from "./componenets/footer.svelte";
 import FigSection from "./componenets/figSection.svelte";
 import FocusVisible from "focus-visible"
+import LogRocket from 'logrocket';
+LogRocket.init('plkspa/portfolio');
 
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
