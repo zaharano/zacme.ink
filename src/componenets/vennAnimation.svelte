@@ -34,7 +34,6 @@
       trigger: "#venn",
       animation: tl,
       start: "top 60%",
-      markers: true,
     })
 
     gsap.set('#venn-fig', {
@@ -64,9 +63,9 @@
     const show = { autoAlpha: 1 };
     const petalFlyer = {
       autoAlpha: 0,
-      ease: "power4.out",
+      ease: "expo.out",
       duration: 6, 
-      scale: "random(1, 2.5)",
+      scale: "random(1, 3)",
       rotate: "random(200, 600)",
       physics2D: {
         velocity: "random(340, 500)",
@@ -314,7 +313,6 @@
     .add(magicIconTL)
     .to('#venn', {
       scale: 1.25,
-      y: "+=3%"
     }, "-=1");
 
     
