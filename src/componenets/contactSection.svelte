@@ -3,12 +3,12 @@
 </script>
 
 <section id="contact">
-  <h1>Contact Me</h1>
+  <h1 class="shed">Contact Me</h1>
   <h2>
     I'm always interested in hearing about new work!
   </h2>
   <div class="buttonContainer">
-    <Button txt="get in touch!" href="mailto:z@zaharano.com" />
+    <Button txt="get in touch!" href="mailto:hey@zaharano.com" />
   </div>
 </section>
 
