@@ -36,6 +36,13 @@
       autoAlpha: 0,
     });
 
+    gsap.fromTo('#bitz', {
+      autoAlpha: 0,
+    }, {
+      autoAlpha: 1,
+      duration: 3,
+    })
+
     const ltime = 4;
 
     // const lineTL = gsap.timeline({repeat: -1});

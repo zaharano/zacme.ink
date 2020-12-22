@@ -7,10 +7,9 @@ import Footer from "./componenets/footer.svelte";
 import FigSection from "./componenets/figSection.svelte";
 import FocusVisible from "focus-visible"
 
-
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 // make a switch to allow changing this
-// implement store in all components that include motion
+// implement store subscribed to by components that include motion
 </script>
 
 <svelte:head>
