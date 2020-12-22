@@ -119,6 +119,7 @@
     <ul class="sc" id="ability-feed">
       <!-- double span so margin is included in offsetHeight for the move action as the items drop -->
       <li><span>print production</span></li>
+      <li><span>data visualization</span></li>
       <li><span>copy writing</span></li>
       <li><span>3d models</span></li>
       <li><span>unity</span></li>
