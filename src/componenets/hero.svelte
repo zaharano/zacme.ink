@@ -72,35 +72,7 @@
     //   drawSVG: '1% 1%',
     // });
 
-    // infinite random yoyo verticle moves or blinkies for sparkles
-    function randomMove(ele) {
-      if (Math.random()>.3) {
-        gsap.to(ele, {
-        y: `+=${gsap.utils.random(-20,20)}`,
-        duration: gsap.utils.random(2, 4),
-        ease: "power1.inOut",
-        delay: gsap.utils.random(1, 3, .1),
-        yoyo: true,
-        repeat: 1,
-        onComplete: randomMove, 
-        onCompleteParams: [ele]
-      })} else {
-        gsap.to(ele, {
-        opacity: 0,
-        scale: .1,
-        duration: gsap.utils.random(1, 2),
-        ease: "power1.inOut",
-        delay: gsap.utils.random(1, 3, .1),
-        yoyo: true,
-        repeat: 1,
-        onComplete: randomMove, 
-        onCompleteParams: [ele]
-      })}     
-    }
-
-    gsap.utils.toArray(".sparkle").forEach(ele => {
-      randomMove(ele);
-    });
+   
     
     // center the stars, set up for open
     gsap.set(".sparkle", {transformOrigin: "50% 50%", autoAlpha: 0, scale: .05});
@@ -151,6 +123,36 @@
       stagger: .2,
       ease: "power2.out",
     }, 0);
+
+     // infinite random yoyo verticle moves or blinkies for sparkles
+     function randomMove(ele) {
+      if (Math.random()>.3) {
+        gsap.to(ele, {
+        y: `+=${gsap.utils.random(-20,20)}`,
+        duration: gsap.utils.random(2, 4),
+        ease: "power1.inOut",
+        delay: gsap.utils.random(1, 3, .1),
+        yoyo: true,
+        repeat: 1,
+        onComplete: randomMove, 
+        onCompleteParams: [ele]
+      })} else {
+        gsap.to(ele, {
+        opacity: 0,
+        scale: .1,
+        duration: gsap.utils.random(1, 2),
+        ease: "power1.inOut",
+        delay: gsap.utils.random(1, 3, .1),
+        yoyo: true,
+        repeat: 1,
+        onComplete: randomMove, 
+        onCompleteParams: [ele]
+      })}     
+    }
+
+    gsap.utils.toArray(".sparkle").forEach(ele => {
+      randomMove(ele);
+    });
 
     
     // word 'designer' nudges up and left, guides show up, yoyo
