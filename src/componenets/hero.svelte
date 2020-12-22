@@ -40,7 +40,7 @@
       autoAlpha: 0,
     }, {
       autoAlpha: 1,
-      duration: 3,
+      duration: 10,
     })
 
     const ltime = 4;
@@ -129,6 +129,11 @@
       autoAlpha: 1,
       stagger: .2,
       ease: "power2.out",
+      onComplete: () => {
+        gsap.utils.toArray(".sparkle").forEach(ele => {
+          randomMove(ele);
+        });
+      },
     }, 0);
 
      // infinite random yoyo verticle moves or blinkies for sparkles
@@ -156,10 +161,6 @@
         onCompleteParams: [ele]
       })}     
     }
-
-    gsap.utils.toArray(".sparkle").forEach(ele => {
-      randomMove(ele);
-    });
 
     
     // word 'designer' nudges up and left, guides show up, yoyo
