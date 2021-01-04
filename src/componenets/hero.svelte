@@ -40,7 +40,7 @@
       autoAlpha: 0,
     }, {
       autoAlpha: 1,
-      duration: 3,
+      duration: 10,
     })
 
     const ltime = 4;
@@ -79,35 +79,7 @@
     //   drawSVG: '1% 1%',
     // });
 
-    // infinite random yoyo verticle moves or blinkies for sparkles
-    function randomMove(ele) {
-      if (Math.random()>.3) {
-        gsap.to(ele, {
-        y: `+=${gsap.utils.random(-20,20)}`,
-        duration: gsap.utils.random(2, 4),
-        ease: "power1.inOut",
-        delay: gsap.utils.random(1, 3, .1),
-        yoyo: true,
-        repeat: 1,
-        onComplete: randomMove, 
-        onCompleteParams: [ele]
-      })} else {
-        gsap.to(ele, {
-        opacity: 0,
-        scale: .1,
-        duration: gsap.utils.random(1, 2),
-        ease: "power1.inOut",
-        delay: gsap.utils.random(1, 3, .1),
-        yoyo: true,
-        repeat: 1,
-        onComplete: randomMove, 
-        onCompleteParams: [ele]
-      })}     
-    }
-
-    gsap.utils.toArray(".sparkle").forEach(ele => {
-      randomMove(ele);
-    });
+   
     
     // center the stars, set up for open
     gsap.set(".sparkle", {transformOrigin: "50% 50%", autoAlpha: 0, scale: .05});
@@ -157,7 +129,38 @@
       autoAlpha: 1,
       stagger: .2,
       ease: "power2.out",
+      onComplete: () => {
+        gsap.utils.toArray(".sparkle").forEach(ele => {
+          randomMove(ele);
+        });
+      },
     }, 0);
+
+     // infinite random yoyo verticle moves or blinkies for sparkles
+     function randomMove(ele) {
+      if (Math.random()>.3) {
+        gsap.to(ele, {
+        y: `+=${gsap.utils.random(-20,20)}`,
+        duration: gsap.utils.random(2, 4),
+        ease: "power1.inOut",
+        delay: gsap.utils.random(1, 3, .1),
+        yoyo: true,
+        repeat: 1,
+        onComplete: randomMove, 
+        onCompleteParams: [ele]
+      })} else {
+        gsap.to(ele, {
+        opacity: 0,
+        scale: .1,
+        duration: gsap.utils.random(1, 2),
+        ease: "power1.inOut",
+        delay: gsap.utils.random(1, 3, .1),
+        yoyo: true,
+        repeat: 1,
+        onComplete: randomMove, 
+        onCompleteParams: [ele]
+      })}     
+    }
 
     
     // word 'designer' nudges up and left, guides show up, yoyo

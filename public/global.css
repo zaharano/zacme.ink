@@ -166,3 +166,9 @@ p {
 		font-size: 22px;
 	}
 }
+
+@media (max-width: 850px) {
+	:root {
+		--btnHeight: 1.3em;
+	}
+}
