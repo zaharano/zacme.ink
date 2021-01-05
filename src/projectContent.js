@@ -15,7 +15,7 @@ export default [
     body: "Lots of original illustration work went into this fun and festive brand guide.",
     button: {
       txt: "check it out",
-      href: "http://www.startrek.com"
+      href: "https://www.behance.net/gallery/110753107/The-Rent-A-Christmas-Style-Guide"
     }
   },
   {
