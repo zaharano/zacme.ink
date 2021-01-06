@@ -97,8 +97,4 @@
       font-size: 20px;
     }
   }
-  
-  h1 {
-    margin-bottom: .8em;
-  }
 </style>
