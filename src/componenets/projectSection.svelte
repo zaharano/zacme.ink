@@ -62,7 +62,7 @@
       grid-template-columns: var(--colsize) var(--colsize) var(--colsize);
     }
   } */
-/* 
+  /* 
   :global(.gallery > div) {
     width: 49%;
   } */

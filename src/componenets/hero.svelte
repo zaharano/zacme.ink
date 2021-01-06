@@ -424,6 +424,7 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    margin-top: inherit;
   }
   
   /* SPEECH STYLES */

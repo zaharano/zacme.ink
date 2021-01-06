@@ -32,6 +32,10 @@
     text-align: left;
   }
 
+  .figrow:last-of-type {
+    margin-bottom: inherit;
+  }
+
   .figrow.rev {
     flex-direction: row-reverse;
   }

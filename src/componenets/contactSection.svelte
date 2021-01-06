@@ -21,7 +21,7 @@
 	}
 
 	#contact {
-		margin-top: 5rem;
+		margin-top: 0;
 		margin-bottom: 0;
 		display: flex;
 		flex-direction: column;
