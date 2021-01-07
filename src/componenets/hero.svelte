@@ -385,7 +385,7 @@
   </div>
   
 
-  <h1 class="not">
+  <h1>
     My name is Zach. <br>I’m an integrative 
       <span class="designer-contain">
         <span class="word designer" on:mouseenter={() => {desTL.play()}}>
@@ -426,7 +426,7 @@
     margin-top: inherit;
   }
   
-  /* SPEECH STYLES */
+  /* SPEECH BUBBLE */
   .speech {
     /* safari can't handle the clamps!!! */
     width: 30vw;
@@ -434,6 +434,7 @@
     max-width: 350px;
     width: clamp(250px, 30vw, 400px);
   }
+
   .speech-exclaim {
     color: var(--gray);
     font-size: 9rem;
@@ -448,18 +449,13 @@
     stroke: var(--gray);
   }
 
-  :global(.orngLine) {
-    stroke: var(--acct);
-    stroke-width: 4px;
-    stroke-linecap: round;
-  }
-
-  .sparkle {
-    position: absolute;
-  }
-
   #speech-container {
     position: relative;
+  }
+
+  /* GRAPHICS AROUND SPEECH BUBBLE */
+  .sparkle {
+    position: absolute;
   }
 
   #bitz {
@@ -503,7 +499,12 @@
     transform: translate(-80px, -60px)
   }
   
-  /* TEXT ANIM STYLES */
+  /* TEXT + TEXT ANIMATION STYLES */
+  h1 {
+    font-family: inherit;
+    padding: 0 10px;
+  }
+  
   h1 span {
     position: relative;
     display: inline;
@@ -589,4 +590,13 @@
     overflow: visible;
   }
 
+  @media (max-width: 555px) {
+    #bitz {
+      display: none;
+    }
+
+    h1 {
+      padding: 0;
+    }
+  }
 </style>

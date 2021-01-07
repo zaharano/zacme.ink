@@ -131,10 +131,6 @@ h1 {
 	font-family: Shackleton, serif;
 }
 
-h1.not {
-	font-family: inherit;
-}
-
 h2 {
 	font-size: calc(1vw + 1em);
 	font-size: clamp(1.6rem, 1.8vw, 2.4rem);
