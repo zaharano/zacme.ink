@@ -87,14 +87,13 @@
     display: grid;
     grid-gap: 2.5vw;
     grid-template-columns: repeat(auto-fill, var(--colsize));
-    font-size: 16px;
+    font-size: 20px;
   }
 
 
   @media (min-width: 480px) { 
     .gallery {
       --colsize: minmax(375px, 1fr);
-      font-size: 20px;
     }
   }
 </style>
