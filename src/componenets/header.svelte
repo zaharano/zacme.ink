@@ -82,7 +82,7 @@
 
   .header-logo {
     z-index: 8;
-    height: 65px;
+    height: 55px;
     position: relative;
     transition-property: transform, filter;
     transition-duration: .4s;
