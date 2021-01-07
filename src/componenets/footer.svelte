@@ -24,7 +24,7 @@
     </ul>
   </div>
   <small class="sc">
-    Designed and built by Zachary Hamias Rais-Norman – Copyright© 2020 ZACME LLC. It's official.
+    <span>Designed and built by Zachary Hamias Rais-Norman</span> – <span>Copyright© 2020 ZACME LLC. It's official.</span>
     <!-- <span>I made this!</span> -->
   </small>
   
@@ -66,6 +66,10 @@
     font-size: .6em;
     margin-top: 2rem;
     opacity: .6;
+  }
+
+  small > span {
+    display: inline-block;
   }
 
   a:hover {
