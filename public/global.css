@@ -128,11 +128,11 @@ h1 {
   font-weight: 600;
 	line-height: 1.3em;
 	margin-bottom: .3em;
+	font-family: Shackleton, serif;
 }
 
-h1.shed {
-	font-family: Shackleton, serif;
-	margin-bottom: 1em;
+h1.not {
+	font-family: inherit;
 }
 
 h2 {
@@ -144,7 +144,8 @@ h2 {
 }
 
 p {
-  line-height: 1.6em;
+	line-height: 1.6em;
+	margin-bottom: .6em;
 }
 
 .sc {

@@ -385,7 +385,7 @@
   </div>
   
 
-  <h1>
+  <h1 class="not">
     My name is Zach. <br>I’m an integrative 
       <span class="designer-contain">
         <span class="word designer" on:mouseenter={() => {desTL.play()}}>

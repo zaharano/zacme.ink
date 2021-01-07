@@ -31,7 +31,7 @@
 </script>
 
 <section id="projects">
-  <h1 class="shed">
+  <h1>
 		Projects
   </h1>
   <div class="gallery">
