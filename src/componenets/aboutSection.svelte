@@ -1,12 +1,9 @@
 <script>
-
-
+  import SectionHead from './sectionHead.svelte';
 </script>
 
-<section id="about">
-  <h1>
-    About Me
-  </h1>
+<section>
+  <SectionHead id="about" text="About Me" />
   <div id="biorow">
     <div id="imgwrapper">
     </div>

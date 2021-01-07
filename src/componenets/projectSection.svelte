@@ -1,5 +1,6 @@
 <script>
   import ProjectCard from "./projectCard.svelte";
+  import SectionHead from "./sectionHead.svelte";
   import contentStream from "../projectContent.js";
   export let projects = [
     {
@@ -30,10 +31,8 @@
 
 </script>
 
-<section id="projects">
-  <h1>
-		Projects
-  </h1>
+<section>
+  <SectionHead id="projects" text="Projects" />
   <div class="gallery">
     {#each projects as project, i}
     <ProjectCard {...project}></ProjectCard>
