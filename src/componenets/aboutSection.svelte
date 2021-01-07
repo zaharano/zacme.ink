@@ -29,7 +29,7 @@
     text-align: left;
   }
 
-  #about {
+  section {
     display: flex;
 		flex-direction: column;
 		align-items: center;
