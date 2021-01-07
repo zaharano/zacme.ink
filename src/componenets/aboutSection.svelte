@@ -4,22 +4,34 @@
 </script>
 
 <section id="about">
-  <h1 class="shed">
+  <h1>
     About Me
   </h1>
   <div id="biorow">
     <div id="imgwrapper">
-      <img src="./assets/me@2x.jpg" alt="It's-a-me, Zach-a-ry">
     </div>
-    <p>
-      Originally from <em>Oakland</em>, CA, currently living in <em>Brooklyn</em>, NY with my wife and our dog, Frankie! I have a background in editorial and non-profit design work, as well as a fair amount of digital marketing type design-y stuff. After some years of doing all that professionally, I decided to pivot towards my passion for technology and code, something I loved in school but got away from afterwards. Nowadays, I spend my time freelancing and playing with creative coding to find weird ways to bring my ideas to life.
-    </p>
+    <div class="bio">
+      <p>
+        I'm from Oakland, CA (pictured here) and currently living in Brooklyn, NY with my wife and our dog, Frankie. I have a background in editorial and non-profit design, as well as a fair amount of digital marketing type stuff.
+      </p>
+      <p>
+        I have rediscovered my passion for technology and code, something I loved in school but drifted away from afterwards. Nowadays, I spend my time freelancing and playing with creative coding to find weird ways to bring my ideas to life.
+      </p>
+      <p>
+        I enjoy cooking, soccer, going to museums, and trashy genre fiction.
+      </p>
+    </div>
+    
   </div>
 
   
 </section>
 
 <style>
+  p { 
+    text-align: left;
+  }
+
   #about {
     display: flex;
 		flex-direction: column;
@@ -34,8 +46,14 @@
     align-items: center;
   }
 
+  @media (max-width: 900px) {
+    #biorow {
+      flex-direction: column;
+    }
+  }
+
   #biorow > * {
-    width: 45%;
+    min-width: 40%;
   }
 
   #imgwrapper {
@@ -43,13 +61,15 @@
     border-bottom: 4px solid var(--gray);
     border-radius: 10px;
     overflow: hidden;
-    width: auto;
     box-sizing: border-box;
+    margin-right: 3rem;
+    background-image: url("../assets/me@2x.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 500px;
+    align-self: stretch;
+  }
 
-  }
-  
-  img {
-    max-height: 25rem;
-  }
+ 
 
 </style>
