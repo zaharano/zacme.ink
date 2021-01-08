@@ -62,7 +62,7 @@
       flex-direction: column;
     }
     .figrow > .fig {
-      width: 100%;
+      width: 92%;
     }
     .figrow > p {
       width: 75%;

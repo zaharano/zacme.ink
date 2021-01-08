@@ -9,7 +9,7 @@
     I'm always interested in hearing about new work!
   </h2>
   <div class="buttonContainer">
-    <Button txt="get in touch!" href="mailto:hey@zaharano.com" />
+    <Button txt="get in touch!" href="mailto:hey@zacme.ink" />
   </div>
 </section>
 
