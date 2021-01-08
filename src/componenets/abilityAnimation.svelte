@@ -10,9 +10,9 @@
     updateEle.style.fontSize = `${newFS}px`;
   }
 
-  // didn't put the list in the svg because it'd be static layout
+  // couldn't put the list in the svg because would have to position everything
   // so funky times resizing the text, dealing with percent moves, can't use svg masks
-  // in the future, build the svg via JS
+  // in the future, build as svg text w positions via JS?
   window.onresize = sizeListText;
 
   function addFig() {
@@ -68,6 +68,7 @@
 
     let abils = gsap.utils.toArray("#ability-feed > li").reverse();
     abils.forEach((ele, i) => {
+      // this is an incremental move amount for the whole feed applied at end
       const move = `${100 * (i + 1)}%`;
       abilTL
       .to(ele, {
@@ -75,6 +76,7 @@
         duration: 1,
         ease: "power1.inOut",
         x: "-=50vw",
+        autoAlpha: 0,
       })
       // .set(ele, {
       //   display: "none",
@@ -117,7 +119,6 @@
   <div id="ability-whole">
     <ul class="sc" id="ability-feed">
       <!-- double span so margin is included in offsetHeight for the move action as the items drop -->
-      <li><span>print production</span></li>
       <li><span>data visualization</span></li>
       <li><span>copy writing</span></li>
       <li><span>3d models</span></li>
@@ -125,14 +126,16 @@
       <li><span>motion graphics</span></li>
       <li><span>video</span></li>
       <li><span>drawn animation</span></li>
-      <li><span>gatsby</span></li>
       <li><span>react/next</span></li>
       <li><span>svelte</span></li>
       <li><span>gsap/d3</span></li>
+      <li><span>svg/canvas</span></li>
       <li><span>html/css/js</span></li>
       <li><span>prototyping</span></li>
-      <li><span>ux & ui design</span></li>
+      <li><span>ui design</span></li>
+      <li><span>ux research</span></li>
       <li><span>illustration</span></li>
+      <li><span>print production</span></li>
       <li><span>editorial design</span></li>
       <li><span>branding</span></li>
       <li><span>creative direction</span></li>
