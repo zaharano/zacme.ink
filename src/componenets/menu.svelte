@@ -20,6 +20,10 @@
       href: "projects"
     },
     {
+      txt: "About",
+      href: "about"
+    },
+    {
       txt: "Contact",
       href: "contact"
     }

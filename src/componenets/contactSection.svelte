@@ -1,14 +1,15 @@
 <script>
-  import Button from "./button.svelte"
+	import Button from "./button.svelte";
+  import SectionHead from './sectionHead.svelte';
 </script>
 
 <section id="contact">
-  <h1 class="shed">Contact Me</h1>
-  <h2>
+	<SectionHead id="contact" text="Contact Me" />
+	<h2>
     I'm always interested in hearing about new work!
   </h2>
   <div class="buttonContainer">
-    <Button txt="get in touch!" href="mailto:hey@zaharano.com" />
+    <Button txt="get in touch!" href="mailto:hey@zacme.ink" />
   </div>
 </section>
 
@@ -21,7 +22,7 @@
 	}
 
 	#contact {
-		margin-top: 5rem;
+		margin-top: 0;
 		margin-bottom: 0;
 		display: flex;
 		flex-direction: column;
