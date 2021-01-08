@@ -13,7 +13,7 @@
   
   span {
     position: absolute;
-    top: -85px;
+    top: -95px;
   }
 
   @media (min-width: 850px) {
