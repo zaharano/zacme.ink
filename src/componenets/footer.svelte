@@ -3,7 +3,6 @@
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { DrawSVGPlugin } from 'gsap/all';
-  import { GSDevTools } from "gsap/GSDevTools";
   import { Physics2DPlugin } from "gsap/Physics2DPlugin";
 
   onMount(() => {
@@ -20,7 +19,6 @@
     })
 
     // some anim shorteners
-    const show = { autoAlpha: 1 };
     const transformOrigin = "50% 50%";
 
 
@@ -28,7 +26,7 @@
       autoAlpha: 0,
     })
 
-    footflower.set('#burstPetals', show, "<")
+    footflower.set('#burstPetals', { autoAlpha: 1 }, "<")
     .to('#burstPetals > *', {
       ease: "expo.out",
       duration: 6, 
