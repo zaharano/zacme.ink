@@ -3,8 +3,8 @@
   import { gsap } from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   import { DrawSVGPlugin } from 'gsap/all';
-  import { GSDevTools } from "gsap/GSDevTools"
-  import { Physics2DPlugin } from "gsap/Physics2DPlugin"
+  import { GSDevTools } from "gsap/GSDevTools";
+  import { Physics2DPlugin } from "gsap/Physics2DPlugin";
 
   gsap.registerPlugin(
     ScrollTrigger, 
@@ -14,10 +14,7 @@
   );
 
   function addFig() {
-    gsap.fromTo("#venn-fig", {
-      autoAlpha: 0,
-      x: 30,
-    },{
+    gsap.to("#venn-fig", {
       autoAlpha: 1,
       x: 0,
       duration: 1,
@@ -573,7 +570,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-
   }
 
   :global(figcaption > button) {
