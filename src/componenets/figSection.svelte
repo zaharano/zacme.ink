@@ -32,6 +32,10 @@
     text-align: left;
   }
 
+  .figrow:last-of-type {
+    margin-bottom: inherit;
+  }
+
   .figrow.rev {
     flex-direction: row-reverse;
   }
@@ -58,7 +62,7 @@
       flex-direction: column;
     }
     .figrow > .fig {
-      width: 100%;
+      width: 92%;
     }
     .figrow > p {
       width: 75%;

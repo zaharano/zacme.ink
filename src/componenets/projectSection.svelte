@@ -1,5 +1,6 @@
 <script>
   import ProjectCard from "./projectCard.svelte";
+  import SectionHead from "./sectionHead.svelte";
   import contentStream from "../projectContent.js";
   export let projects = [
     {
@@ -30,10 +31,8 @@
 
 </script>
 
-<section id="projects">
-  <h1 class="shed">
-		Projects
-  </h1>
+<section>
+  <SectionHead id="projects" text="Projects" />
   <div class="gallery">
     {#each projects as project, i}
     <ProjectCard {...project}></ProjectCard>
@@ -62,7 +61,7 @@
       grid-template-columns: var(--colsize) var(--colsize) var(--colsize);
     }
   } */
-/* 
+  /* 
   :global(.gallery > div) {
     width: 49%;
   } */
@@ -87,18 +86,13 @@
     display: grid;
     grid-gap: 2.5vw;
     grid-template-columns: repeat(auto-fill, var(--colsize));
-    font-size: 16px;
+    font-size: 20px;
   }
 
 
   @media (min-width: 480px) { 
     .gallery {
       --colsize: minmax(375px, 1fr);
-      font-size: 20px;
     }
-  }
-  
-  h1 {
-    margin-bottom: .8em;
   }
 </style>

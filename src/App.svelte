@@ -5,6 +5,7 @@ import ProjectSection from "./componenets/projectSection.svelte";
 import ContactSection from "./componenets/contactSection.svelte";
 import Footer from "./componenets/footer.svelte";
 import FigSection from "./componenets/figSection.svelte";
+import AboutSection from "./componenets/aboutSection.svelte";
 import FocusVisible from "focus-visible"
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -18,11 +19,11 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 </svelte:head>
 
 <Header  />
-
 <main id="main">
 	<Hero />
 	<FigSection />
 	<ProjectSection />
+	<AboutSection />
 	<ContactSection />
 </main>
 <Footer />
@@ -40,5 +41,6 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").match
 		margin-right: auto;
 		padding-left: 1em;
 		padding-right: 1em;
+		margin-top: 13vh;
 	}
 </style>

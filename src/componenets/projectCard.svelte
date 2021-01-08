@@ -109,6 +109,10 @@
     h2 {
       font-size: 1.4em;
     }
+    
+    article {
+      margin-bottom: 1.5em;
+    }
   }
 
   .tags span {
