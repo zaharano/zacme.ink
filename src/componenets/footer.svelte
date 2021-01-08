@@ -6,43 +6,92 @@
   import { GSDevTools } from "gsap/GSDevTools";
   import { Physics2DPlugin } from "gsap/Physics2DPlugin";
 
-  const flower = gsap.timeline({
-    // onComplete: sway,
+  onMount(() => {
+    const footflower = gsap.timeline({
+      // onComplete: sway,
+      paused: true,
+      delay: .6,
+    });
+
+    ScrollTrigger.create({
+      trigger: "#footer-pile",
+      animation: footflower,
+      start: "100% 90%",
+    })
+
+    // some anim shorteners
+    const show = { autoAlpha: 1 };
+    const transformOrigin = "50% 50%";
+
+
+    gsap.set('#burstPetals', {
+      autoAlpha: 0,
+    })
+
+    footflower.set('#burstPetals', show, "<")
+    .to('#burstPetals > *', {
+      ease: "expo.out",
+      duration: 6, 
+      scale: "random(1, 1.2)",
+      rotate: "random(200, 600)",
+      physics2D: {
+        velocity: "random(200, 300)",
+        gravity: 450,
+        angle: "random(-130, -30)",
+    }})
+    .to('#burstPetals > *', {
+      autoAlpha: 0,
+      duration: 6
+    }, "<")
+    .fromTo('#footer-stem', {
+      drawSVG: "0% 0%",
+      autoAlpha: 0,
+    }, {
+      drawSVG: "0% 100%",
+      autoAlpha: 1,
+    }, "<")
+    .from('#footer-flower_2', {
+      transformOrigin,
+      delay: 1,
+      scale: .1,
+      autoAlpha: 0,
+      ease: "elastic.out(1, 0.3)",
+    }, "<");
   });
 
-  onMount(() => {
-    ScrollTrigger.create({
-      trigger: "footer",
-      animation: flower,
-      start: "top 60%",
-    })
-  });
 </script>
 
 <footer>
-  <svg width="297" height="115" viewBox="0 0 297 115" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g id="footer">
+  <svg id="footer-pile" width="297" height="115" viewBox="0 0 297 115" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g>
       <g id="footer-flower" stroke="#454545" stroke-width="2">
         <path id="footer-stem" d="M142.5 92.5c0-30.4 4-46 17-53.5"/>
         <g id="footer-flower_2">
-          <path d="M156 30.2c-6.3.4-17.6-1-12-10.6 5.4-9.5 12.3-.5 15.1 5.1"/>
+          <path d="M156 30.2c-6.3.4-17.6-1-12-10.6 5.4-9.5 12.3-.5 15.1 5.1" fill="#FFAF66"/>
           <path d="M162 51.2c11 0 6.8-10.4 3.2-15.5H159c-3.5 5.1-7.8 15.5 3.2 15.5z" fill="#FFAF66"/>
           <path d="M143.8 40.6c5.5 9.5 12.3.6 15-5l-3.1-5.5c-6.3-.4-17.4 1-11.9 10.5z" fill="#FFAF66"/>
           <path d="M144 19.6c-5.6 9.5 5.7 11 12 10.6l3.1-5.5c-2.8-5.6-9.7-14.6-15.2-5z" fill="#FFAF66"/>
           <path d="M181.1 41c5.5-9.4-6.2-11.2-12.7-10.9l-3.1 5.4c3 5.9 10.3 15.1 15.8 5.6z" fill="#FFAF66"/>
           <path d="M180.4 19.5c-5.5-9.5-12.3-.6-15 5l3.1 5.4c6.3.5 17.4-1 11.9-10.4z" fill="#FFAF66"/>
           <path d="M162.1 9c-11 0-6.7 10.3-3.1 15.4h6.3C168.8 19.3 173 9 162 9z" fill="#FFAF66"/>
-          <path id="Ellipse 14" d="M166 24.4c3 1.8 4 5.8 2.1 9.2-2 3.3-6 4.4-9 2.7-3-1.8-4-5.9-2.1-9.2 1.9-3.3 6-4.4 9-2.7z" fill="#fff"/>
+          <path d="M166 24.4c3 1.8 4 5.8 2.1 9.2-2 3.3-6 4.4-9 2.7-3-1.8-4-5.9-2.1-9.2 1.9-3.3 6-4.4 9-2.7z" fill="#fff"/>
         </g>
-        <g id="burstPetals" fill="#FFAF66">
-          <path d="M137 85.2c-6.3.4-17.6-1-12-10.6 5.4-9.5 12.3-.5 15.1 5.1"/>
-          <path d="M143 106.2c11 0 6.8-10.4 3.2-15.5H140c-3.5 5.1-7.8 15.5 3.2 15.5z" />
-          <path d="M124.8 95.6c5.5 9.5 12.3.6 15-5l-3.1-5.5c-6.3-.4-17.4 1-11.9 10.5z" />
-          <path d="M125 74.6c-5.6 9.5 5.7 11 12 10.6l3.1-5.5c-2.8-5.6-9.7-14.6-15.2-5z" />
-          <path d="M162.1 96c5.5-9.4-6.2-11.2-12.7-10.9l-3.1 5.4c3 5.9 10.3 15.1 15.8 5.6z" />
-          <path d="M161.4 74.5c-5.5-9.5-12.3-.6-15 5l3.1 5.4c6.3.5 17.4-1 11.9-10.4z" />
-          <path d="M143.1 64c-11 0-6.7 10.3-3.1 15.4h6.3C149.8 74.3 154 64 143 64z" />
-        </g>
+      </g>
+      <g id="burstPetals" fill="#FFAF66" stroke="#454545" stroke-width="2">
+        <path d="M137 85.2c-6.3.4-17.6-1-12-10.6 5.4-9.5 12.3-.5 15.1 5.1"/>
+        <path d="M143 106.2c11 0 6.8-10.4 3.2-15.5H140c-3.5 5.1-7.8 15.5 3.2 15.5z" />
+        <path d="M124.8 95.6c5.5 9.5 12.3.6 15-5l-3.1-5.5c-6.3-.4-17.4 1-11.9 10.5z" />
+        <path d="M125 74.6c-5.6 9.5 5.7 11 12 10.6l3.1-5.5c-2.8-5.6-9.7-14.6-15.2-5z" />
+        <path d="M162.1 96c5.5-9.4-6.2-11.2-12.7-10.9l-3.1 5.4c3 5.9 10.3 15.1 15.8 5.6z" />
+        <path d="M161.4 74.5c-5.5-9.5-12.3-.6-15 5l3.1 5.4c6.3.5 17.4-1 11.9-10.4z" />
+        <path d="M143.1 64c-11 0-6.7 10.3-3.1 15.4h6.3C149.8 74.3 154 64 143 64z" />
+        <path d="M137 85.2c-6.3.4-17.6-1-12-10.6 5.4-9.5 12.3-.5 15.1 5.1"/>
+        <path d="M143 106.2c11 0 6.8-10.4 3.2-15.5H140c-3.5 5.1-7.8 15.5 3.2 15.5z" />
+        <path d="M124.8 95.6c5.5 9.5 12.3.6 15-5l-3.1-5.5c-6.3-.4-17.4 1-11.9 10.5z" />
+        <path d="M125 74.6c-5.6 9.5 5.7 11 12 10.6l3.1-5.5c-2.8-5.6-9.7-14.6-15.2-5z" />
+        <path d="M162.1 96c5.5-9.4-6.2-11.2-12.7-10.9l-3.1 5.4c3 5.9 10.3 15.1 15.8 5.6z" />
+        <path d="M161.4 74.5c-5.5-9.5-12.3-.6-15 5l3.1 5.4c6.3.5 17.4-1 11.9-10.4z" />
+        <path d="M143.1 64c-11 0-6.7 10.3-3.1 15.4h6.3C149.8 74.3 154 64 143 64z" />
       </g>
       <g id="pile" fill="#FFAF66" stroke="#454545" stroke-width="2">
         <path d="M143 106.2c11 0 6.8-10.4 3.2-15.5H140c-3.5 5.1-7.8 15.5 3.2 15.5z"/>
@@ -120,6 +169,7 @@
   svg {
     position: absolute;
     top: -42%;
+    overflow: visible;
   }
 
   li a {
