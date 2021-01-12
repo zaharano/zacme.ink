@@ -26,8 +26,8 @@
     "svelte-click-outside": "^1.0.0",
     "svelte-preprocess": "^4.6.1"
   },
-  "description": "*Looking for a shareable component template? Go here --> [sveltejs/component-template](https://github.com/sveltejs/component-template)*",
+  "description": "This is my portfolio!",
   "main": "rollup.config.js",
-  "author": "zaharano (https://www.zaharano.com/)",
+  "author": "Zach Rais-Norman (https://www.zacme.ink/)",
   "license": "ISC"
 }
