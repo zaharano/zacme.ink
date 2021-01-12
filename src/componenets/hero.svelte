@@ -25,89 +25,42 @@
         nudgeAmount = 7,
         nudges = {x:0, y:0};
 
-  onMount(() => {
-    // animate speech bubble
-    gsap.set('.speech-outer-1', {
-      drawSVG: '34% 34%',
-      autoAlpha: 0,
-    });
-    gsap.set('.speech-outer-2', {
-      drawSVG: '1% 1%',
-      autoAlpha: 0,
-    });
-
+  onMount(() => {    
+    // fade in bitz
     gsap.fromTo('#bitz', {
       autoAlpha: 0,
     }, {
       autoAlpha: 1,
       duration: 10,
     })
-
-    const ltime = 4;
-
-    // const lineTL = gsap.timeline({repeat: -1});
-
-    // lineTL
-    // .to('.speech-outer-1', {
-    //   drawSVG: '54% 65%',
-    //   duration: ltime,
-    //   ease: 'expo.in',
-    //   autoAlpha: 1,
-    // })
-    // .to('.speech-outer-1', {
-    //   drawSVG: '74% 74%',
-    //   duration: ltime,
-    //   ease: "expo.out",
-    //   autoAlpha: 0,
-    // }, ">")
-    // .to('.speech-outer-2', {
-    //   drawSVG: '5% 16%',
-    //   duration: ltime,
-    //   ease: 'expo.in',
-    //   autoAlpha: 1,
-    // }, ".5")
-    // .to('.speech-outer-2', {
-    //   drawSVG: '21% 21%',
-    //   duration: ltime,
-    //   ease: "expo.out",
-    //   autoAlpha: 0,
-    // }, ">")
-    // .set('.speech-outer-1', {
-    //   drawSVG: '34% 34%',
-    // })
-    // .set('.speech-outer-2', {
-    //   drawSVG: '1% 1%',
-    // });
-
    
-    
-    // center the stars, set up for open
+    // center the star origins, set up for open
     gsap.set(".sparkle", {transformOrigin: "50% 50%", autoAlpha: 0, scale: .05});
 
-    speechTL.from('.speech', {
+    speechTL.from('#speech', {
       opacity: 0,
       duration: .2,
     })
-    .from('.speech', {
+    .from('#speech', {
       transformOrigin: "center bottom",
       scale: .3,
       duration: .8,
       ease: "elastic.out(1, 0.3)",
     }, "<")
-    .from('.speech', {
+    .from('#speech', {
       duration: 3,
       transformOrigin: "center bottom",
       rotate: 40,
       ease: "elastic.out(1, 0.12)",
     }, "<")
-    .from('.hi', {
+    .from('#hi', {
       opacity: 0,
       duration: .5,
       scale: .2,
       ease: "power4.out",
       transformOrigin: "50%, 50%"
     }, "-=2.6")
-    .fromTo('.bang', {
+    .fromTo('#bang', {
       opacity: 0,
       scale: .8,
       rotate: 45,
@@ -245,6 +198,7 @@
       height: nudges.y * nudgeAmount,
     }).timeScale(2.1);
 
+    // word animator squishes vertically, horizontally, spins and restores size
     animTL.to('.animator', {
       delay: .3,
       duration: .2,
@@ -277,6 +231,7 @@
       ease: "elastic.out(1, 0.3)",
     }).timeScale(1.7);
 
+    // tags appear around front-end dev, type out i, delete, type out em, skew, delete tags, unskew
     codeTL.set('.code-tag', {
       margin: '.4rem',
       autoAlpha: 1,
@@ -350,33 +305,25 @@
     <img class="sparkle" id="s4" src="./assets/sparkle.svg" alt="a simple sparkle">
     <img class="sparkle" id="s5" src="./assets/sparkle.svg" alt="a simple sparkle">
     <img class="sparkle" id="moon" src="./assets/moon.svg" alt="a simple moon">
-    <div class="speech">
+    <div id="speech">
       <svg 
         width="100%" 
         viewBox="0 0 312 351" 
         fill="none" 
         xmlns="http://www.w3.org/2000/svg"
       >
-        <path 
-          class="speech-outer-1 orngLine"
-          d="M107.5 282L30.4 274.7C13.4 273.1 0.5 259 0.5 241.8V33.5C0.5 15.3 15.3 0.5 33.4 0.5C35.2 0.5 37 0.6 38.8 0.9L283.8 41.2C299.8 43.8 311.4 57.5 311.4 73.8V265.1C311.4 274 307.9 282.3 301.7 288.5C295.5 294.7 287.2 298.1 278.5 298.1C277.5 298.1 276.4 298 275.3 297.9L166.8 287.6L143.1 349.3L107.5 282Z" 
-        />
-        <path 
-          class="speech-outer-2 orngLine"
-          d="M107.5 282L30.4 274.7C13.4 273.1 0.5 259 0.5 241.8V33.5C0.5 15.3 15.3 0.5 33.4 0.5C35.2 0.5 37 0.6 38.8 0.9L283.8 41.2C299.8 43.8 311.4 57.5 311.4 73.8V265.1C311.4 274 307.9 282.3 301.7 288.5C295.5 294.7 287.2 298.1 278.5 298.1C277.5 298.1 276.4 298 275.3 297.9L166.8 287.6L143.1 349.3L107.5 282Z" 
-        />
         <path
           vector-effect="non-scaling-stroke"
-          class="speech-inner"
+          id="speech-inner"
           d="M37.6 8.8C22.3 6.3 8.5 18.1 8.5 33.5V241.8C8.5 254.7 18.3 265.5 31.1 266.7L112.5 274.4L142 330L161.6 279L276.1 290C290.8 291.4 303.5 279.9 303.5 265.1V73.8C303.5 61.6 294.6 51.1 282.6 49.1L37.6 8.8Z" 
           fill="white" 
           stroke-width="1"
         />
-        <g class="speech-exclaim">
-          <text x="50" y="210" class="hi">
+        <g id="speech-exclaim">
+          <text x="50" y="210" id="hi">
             Hi
           </text>
-          <text x="205" y="210" class="bang">
+          <text x="205" y="210" id="bang">
             !
           </text>
         </g>
@@ -427,7 +374,7 @@
   }
   
   /* SPEECH BUBBLE */
-  .speech {
+  #speech {
     /* safari can't handle the clamps!!! */
     width: 30vw;
     min-width: 250px;
@@ -435,7 +382,7 @@
     width: clamp(250px, 30vw, 400px);
   }
 
-  .speech-exclaim {
+  #speech-exclaim {
     color: var(--gray);
     font-size: 9rem;
     /* skew the word */
@@ -445,7 +392,7 @@
     font-family: Shackleton, serif;
   }
 
-  .speech-inner {
+  #speech-inner {
     stroke: var(--gray);
   }
 
