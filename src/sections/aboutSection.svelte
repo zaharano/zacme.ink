@@ -1,5 +1,5 @@
 <script>
-  import SectionHead from './sectionHead.svelte';
+  import SectionHead from '../componenets/sectionHead.svelte';
 </script>
 
 <section>
