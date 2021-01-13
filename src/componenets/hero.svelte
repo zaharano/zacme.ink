@@ -105,8 +105,8 @@
         gsap.to(ele, {
         opacity: 0,
         scale: .1,
-        duration: gsap.utils.random(1, 2),
-        ease: "power1.inOut",
+        duration: .6,
+        ease: "power2.inOut",
         delay: gsap.utils.random(1, 3, .1),
         yoyo: true,
         repeat: 1,
