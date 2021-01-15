@@ -28,16 +28,6 @@ export default [
       href: "https://www.behance.net/gallery/109998313/Rent-A-Christmas-Website-Illustrations"
     }
   },
-  // {
-  //   img: "./assets/Enterprise_HD.jpg",
-  //   tags: ["landing pages", "email", "branding"],
-  //   title: "PEX Card Digital Marketing",
-  //   body: "Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time?",
-  //   button: {
-  //     txt: "let's see it",
-  //     href: "http://www.startrek.com"
-  //   }
-  // },
   {
     img: "./assets/gal-RACbuses.png",
     tags: ["illustration", "art direction"],
@@ -48,26 +38,56 @@ export default [
       href: "https://www.behance.net/gallery/109991585/Rent-A-Christmas-Business-Illustrations"
     }
   },
-  // {
-  //   img: "./assets/Enterprise_HD.jpg",
-  //   tags: ["print", "video", "copywriting"],
-  //   title: "PEX Card Instructionals",
-  //   body: "Thee gravitational pull of a star to slingshot back in time?",
-  //   button: {
-  //     txt: "check it out",
-  //     href: "http://www.startrek.com"
-  //   }
-  // },
-  // {
-  //   img: "./assets/Enterprise_HD.jpg",
-  //   tags: ["print", "video", "copywriting"],
-  //   title: "PEX Card Instructionals",
-  //   body: "Thee gravitational pull of a star to slingshot back in time?",
-  //   button: {
-  //     txt: "check it out",
-  //     href: "http://www.startrek.com"
-  //   }
-  // },
+  {
+    img: "./assets/" + "gal-PEXcard.png",
+    tags: ["print", "plastic", "branding"],
+    title: "Redesigning the PEX Card",
+    body: '3.370" x 2.125" to define a brand',
+    button: {
+      txt: "so many cards",
+      href: "https://www.behance.net/gallery/110978231/Redesigning-the-PEX-Card"
+    }
+  },
+  {
+    img: "./assets/" + "gal-PEXcompsMocks.png",
+    tags: ["shops", "3d"],
+    title: "PEX Mockups",
+    body: "Mocking up and compositing a library of product shots",
+    button: {
+      txt: "who needs photos",
+      href: "https://www.behance.net/gallery/110980207/PEX-Card-Comps-and-Mockups"
+    }
+  },
+  {
+    img: "./assets/" + "gal-PEXvids.png",
+    tags: ["animation", "video", "explainer"],
+    title: "Making PEX more dynamic",
+    body: "Finding every way I can to bring motion to the brand",
+    button: {
+      txt: "check it out",
+      href: "https://www.behance.net/gallery/110976955/Adding-dynamism-to-the-PEX-Brand"
+    }
+  },
+  {
+    img: "./assets/" + "gal-Ghosh.png",
+    tags: ["webdesign", "webflow"],
+    title: "Powering Powering Prosperity",
+    body: "Building a website for a new book",
+    button: {
+      txt: "check it out",
+      href: "https://www.behance.net/gallery/111400489/Tiger-Hill-Capital-Websites"
+    }
+  },
+  {
+    img: "./assets/" + "gal-Ghosh2.png",
+    tags: ["webdesign", "webflow"],
+    title: "Tiger Hill Capital",
+    body: "Homepage for an Investment Management firm–and a place to collect their thoughts.",
+    button: {
+      txt: "check it out",
+      href: "https://www.behance.net/gallery/111400489/Tiger-Hill-Capital-Websites"
+    }
+  },
   {
     img: "./assets/gal-LSFmag.png",
     tags: ["print", "editorial design", "data viz"],
