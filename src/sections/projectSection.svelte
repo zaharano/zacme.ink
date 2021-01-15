@@ -1,6 +1,6 @@
 <script>
-  import ProjectCard from "./projectCard.svelte";
-  import SectionHead from "./sectionHead.svelte";
+  import ProjectCard from "../componenets/projectCard.svelte";
+  import SectionHead from "../componenets/sectionHead.svelte";
   import contentStream from "../projectContent.js";
   export let projects = [
     {

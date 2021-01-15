@@ -1,6 +1,6 @@
 <script>
-  import VennAnimation from './vennAnimation.svelte';
-  import AbilityAnimation from './abilityAnimation.svelte';
+  import VennAnimation from '../componenets/vennAnimation.svelte';
+  import AbilityAnimation from '../componenets/abilityAnimation.svelte';
 </script>
 
 <section>
