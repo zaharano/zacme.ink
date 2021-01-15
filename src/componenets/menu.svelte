@@ -152,7 +152,6 @@
 
   button.hamburguesa {
     position: absolute;
-    top: 1rem;
     right: 1rem;
     cursor: pointer;
   }
@@ -172,6 +171,10 @@
 
     li button {
       font-size: 3rem;
+    }
+
+    button.hamburguesa {
+      top: 1rem;
     }
   }
   

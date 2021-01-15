@@ -34,21 +34,13 @@
     transition-timing-function: var(--timing);
   }
 
-  /* a.button div {
-    position: absolute;
-    pointer-events:none;
-    border-radius: 5px;
-    border: 2px solid black;
-    height: calc(100% - 50px);
-    width: calc(100% - 50px);
-  } */
-
   a:hover {
     transform: translate(3px,-3px);
     box-shadow: -3px 3px 0px var(--acct);
     cursor: pointer;
   }
 
+  /* arrow on right of button */
   a span {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='24' height='6' viewBox='0 0 24 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24 3L19 0.113249V5.88675L24 3ZM0 3.5H19.5V2.5H0V3.5Z' fill='%23454545'/%3E%3C/svg%3E");
     background-position: right center;
@@ -61,7 +53,7 @@
     animation: boing 1500ms linear both;
   }
 
-  /* anim for arrow when hover link button,
+  /* boing anim for arrow when hover link button,
   Generated with Bounce.js. */
   @keyframes boing { 
     0% { transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1); }

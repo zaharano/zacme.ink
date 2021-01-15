@@ -1,11 +1,13 @@
 <script>
 import Header from "./componenets/header.svelte";
-import Hero from "./componenets/hero.svelte";
-import ProjectSection from "./componenets/projectSection.svelte";
-import ContactSection from "./componenets/contactSection.svelte";
 import Footer from "./componenets/footer.svelte";
-import FigSection from "./componenets/figSection.svelte";
-import AboutSection from "./componenets/aboutSection.svelte";
+
+import Hero from "./sections/hero.svelte";
+import ProjectSection from "./sections/projectSection.svelte";
+import ContactSection from "./sections/contactSection.svelte";
+import FigSection from "./sections/figSection.svelte";
+import AboutSection from "./sections/aboutSection.svelte";
+
 import FocusVisible from "focus-visible"
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
