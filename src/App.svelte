@@ -1,18 +1,14 @@
 <script>
-import Header from "./componenets/header.svelte";
-import Footer from "./componenets/footer.svelte";
+	import Header from "./componenets/header.svelte";
+	import Footer from "./componenets/footer.svelte";
 
-import Hero from "./sections/hero.svelte";
-import ProjectSection from "./sections/projectSection.svelte";
-import ContactSection from "./sections/contactSection.svelte";
-import FigSection from "./sections/figSection.svelte";
-import AboutSection from "./sections/aboutSection.svelte";
+	import Hero from "./sections/hero.svelte";
+	import ProjectSection from "./sections/projectSection.svelte";
+	import ContactSection from "./sections/contactSection.svelte";
+	import FigSection from "./sections/figSection.svelte";
+	import AboutSection from "./sections/aboutSection.svelte";
 
-import FocusVisible from "focus-visible"
-
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-// make a switch to allow changing this
-// implement store subscribed to by components that include motion
+	import FocusVisible from "focus-visible"
 </script>
 
 <svelte:head>
