@@ -2,7 +2,7 @@
   import Button from "./button.svelte";
   import ClickOutside from "./clickOutside.svelte";
   import IntersectionObserver from "./intersectionObserver.svelte"
-  import { fade } from "svelte/transition"
+  import { fly } from "svelte/transition"
   
   export let src = "./assets/Enterprise_HD.jpg";
   export let alt = "The Starship Enterprise";
@@ -26,12 +26,12 @@
 </script>
 
 <!-- IntersectionObserver for defer load imgs and animating in tiles -->
-<IntersectionObserver once={true} let:intersecting={intersecting}>
+<IntersectionObserver once={true} let:intersecting top={-300}>
   {#if intersecting}
     <!-- ClickOutside for mobile (pressing outside tile rehides details) -->
     <ClickOutside on:clickoutside={hideOn}>
       <article
-      in:fade="{{ delay: 100, duration: 400 }}"
+      in:fly="{{ y: 100, delay: 100, duration: 800 }}"
       on:mouseover={hideOff}
       on:mouseleave={hideOn}
       on:click={hideOff}
