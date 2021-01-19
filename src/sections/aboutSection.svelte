@@ -1,12 +1,18 @@
 <script>
   import SectionHead from '../componenets/sectionHead.svelte';
+  import IntersectionObserver from '../componenets/intersectionObserver.svelte';
+  import { fade } from "svelte/transition"
 </script>
 
 <section>
   <SectionHead id="about" text="About Me" />
   <div id="biorow">
-    <div id="imgwrapper">
-    </div>
+    <IntersectionObserver once={true} let:intersecting={intersecting}>
+      {#if intersecting}
+        <div in:fade="{{ delay: 100, duration: 400 }}" id="imgwrapper">
+        </div>
+      {/if}
+    </IntersectionObserver>
     <div class="bio">
       <p>
         I'm from Oakland, CA, currently living in Brooklyn, NY with my wife and our doggo. I have a background in editorial and non-profit design, as well as a fair amount of digital marketing type stuff.
