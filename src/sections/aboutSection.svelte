@@ -15,7 +15,7 @@
     </IntersectionObserver>
     <div class="bio">
       <p>
-        I'm from Oakland, CA, currently living in Brooklyn, NY with my wife and our doggo. I have a background in editorial and non-profit design, as well as a fair amount of digital marketing type stuff.
+        I'm from Oakland, CA, currently living in Brooklyn, NY with my wife and our dog. I have a background in editorial and non-profit design, as well as a fair amount of digital marketing type stuff.
       </p>
       <p>
         I have rediscovered my passion for technology and code, pursuits I relished in school but drifted away from afterwards. Nowadays, I spend my time freelancing and playing with creative coding to find weird ways to bring my ideas to life.
