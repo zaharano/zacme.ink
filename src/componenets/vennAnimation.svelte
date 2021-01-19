@@ -527,7 +527,7 @@
     <span>
       <span class='sc'>fig.2:</span> finding <span class='sc'>magic</span> in the middle
     </span>
-    <button class='replay' on:click={() => tl.restart()}>
+    <button class='replay' aria-label='Replay' on:click={() => tl.restart()}>
       
     </button>
   </figcaption>

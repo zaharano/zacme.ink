@@ -175,7 +175,7 @@
     <span>
       <span class='sc'>fig.1:</span> expanding the <span class='sc'>depth</span> and <span class='sc'>breadth</span> of <span class='sc'>ability</span>
     </span>
-    <button class='replay' on:click={() => abilTL.restart()}>
+    <button class='replay' aria-label='Replay' on:click={() => abilTL.restart()}>
     </button>
   </figcaption>
 </figure>
