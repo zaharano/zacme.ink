@@ -1,8 +1,10 @@
 <script>
   import Button from "./button.svelte";
   import ClickOutside from "./clickOutside.svelte";
+  import IntersectionObserver from "./intersectionObserver.svelte"
+  import { fly } from "svelte/transition"
   
-  export let img = "./assets/Enterprise_HD.jpg";
+  export let src = "./assets/Enterprise_HD.jpg";
   export let alt = "The Starship Enterprise";
   export let tags = ["these", "are", "voyages"];
   export let title;
@@ -12,43 +14,48 @@
       href: "http://www.startrek.com"
   };
 
+  // hide the info
   let hide = true;
-
   function hideOff() {
     hide = false;
   }
-
   function hideOn() {
     hide = true;
   }
 
 </script>
 
-<ClickOutside on:clickoutside={hideOn}>
-  <article
-  on:mouseover={hideOff}
-  on:mouseleave={hideOn}
-  on:click={hideOff}
-  >
-    <img src="{img}" alt="{alt}" class="background {hide === false ? 'blur' : ''}" /> 
-    <div 
-      class="infotainer"
-      class:hide>
-      <div class="tags">
-        {#each tags as tag, i}
-          <span>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;<em>//</em>&nbsp;&nbsp;{/if}</span>
-        {/each}
-      </div>
-      <div class="beats">
-        <h2 class="title">{title}</h2>
-        <p class="body">{body}</p>
-      </div>
-      <div class="bottom" class:hide>
-        <Button {...button} />
-      </div>
-    </div>
-  </article>
-</ClickOutside>
+<!-- IntersectionObserver for defer load imgs and animating in tiles -->
+<IntersectionObserver once={true} let:intersecting top={-300}>
+  {#if intersecting}
+    <!-- ClickOutside for mobile (pressing outside tile rehides details) -->
+    <ClickOutside on:clickoutside={hideOn}>
+      <article
+      in:fly="{{ y: 100, delay: 100, duration: 800 }}"
+      on:mouseover={hideOff}
+      on:mouseleave={hideOn}
+      on:click={hideOff}
+      class:hide
+      >
+          <img {src} {alt} class="background" /> 
+        <div class="infotainer">
+          <div class="tags">
+            {#each tags as tag, i}
+              <span>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;<em>//</em>&nbsp;&nbsp;{/if}</span>
+            {/each}
+          </div>
+          <div class="details">
+            <h2 class="title">{title}</h2>
+            <p class="body">{body}</p>
+          </div>
+          <div class="bottom">
+            <Button {...button} />
+          </div>
+        </div>
+      </article>
+    </ClickOutside>
+  {/if}
+</IntersectionObserver>
 
 
 <style>
@@ -64,6 +71,11 @@
     box-shadow: 0 0 30px 0 rgba(0,0,0,.2)
   }
 
+  h2 {
+    font-size: 1.6em;
+    margin-bottom: 0rem;
+  }
+
   p {
     margin-bottom: 0;
   }
@@ -72,10 +84,12 @@
     width: 100%;
     margin-bottom: -6px;
     transform: scale(105%);
+    filter: blur(6px);
+    transition: filter .3s linear;
   }
 
-  .blur {
-    filter: blur(4px);
+  .hide .background {
+    filter: blur(0px);
   }
 
   .infotainer {
@@ -88,31 +102,16 @@
     background-color: rgba(255,255,255,.85);
     padding: 5%;
     padding-bottom: 5%;
-    transition: opacity .2s linear;
-    opacity: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    transition: opacity .3s linear;
+    opacity: 1;
   }
 
-  .infotainer.hide {
+  .hide .infotainer {
     opacity: 0;
-  }
-
-  h2 {
-    font-size: 1.6em;
-    margin-bottom: 0rem;
-  }
-
-  @media (max-width: 480px) { 
-    h2 {
-      font-size: 1.4em;
-    }
-    
-    article {
-      margin-bottom: 1.5em;
-    }
   }
 
   .tags span {
@@ -125,13 +124,13 @@
     font-feature-settings: "smcp";
   }
 
-  .beats {
-    width: 100%;
-  }
-
   .tags {
     width: 100%;
     opacity: .6;
+  }
+
+  .details {
+    width: 100%;
   }
 
   .bottom {
@@ -143,5 +142,15 @@
 
   .hide .bottom {
     transform: translateY(100%);
+  }
+
+  @media (max-width: 480px) { 
+    h2 {
+      font-size: 1.4em;
+    }
+    
+    article {
+      margin-bottom: 1.5em;
+    }
   }
 </style>

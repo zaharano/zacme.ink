@@ -4,15 +4,15 @@
   import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   function sizeListText() {
-    let graphW = document.getElementById('ability').clientWidth;
-    let newFS = graphW / 30;
-    let updateEle = document.getElementById('ability-feed');
-    updateEle.style.fontSize = `${newFS}px`;
+    const graphWidth = document.getElementById('ability').clientWidth;
+    const newFontSize = graphWidth / 30;
+    const updateEle = document.getElementById('ability-feed');
+    updateEle.style.fontSize = `${newFontSize}px`;
   }
 
   // couldn't put the list in the svg because would have to position everything
-  // so funky times resizing the text, dealing with percent moves, can't use svg masks
-  // in the future, build as svg text w positions via JS?
+  // so funky times resizing the text for container, percent moves, can't use svg masks
+  // in the future, build as svg text w positions via JS loop
   window.onresize = sizeListText;
 
   function addFig() {
@@ -63,13 +63,12 @@
       duration: 2
     }, "<")
     .to('#ability-whole', {
-      duration: 2,
+      duration: .5,
     })
+    // last one is just a delay before the abilities start flying
 
     let abils = gsap.utils.toArray("#ability-feed > li").reverse();
-    abils.forEach((ele, i) => {
-      // this is an incremental move amount for the whole feed applied at end
-      const move = `${100 * (i + 1)}%`;
+    abils.forEach((ele) => {
       abilTL
       .to(ele, {
         delay: .1,
@@ -98,7 +97,7 @@
         x: "+=5"
       }, '<')
       .to("#ability-feed > li", {
-        y: move,
+        y: "+=100%",
         ease: "bounce.out",
         duration: .3,
       }, "-=.4")
@@ -118,7 +117,7 @@
 <figure id="ability">
   <div id="ability-whole">
     <ul class="sc" id="ability-feed">
-      <!-- double span so margin is included in offsetHeight for the move action as the items drop -->
+      <!-- double element so margin is included in the 100% move action as the items drop -->
       <li><span>data visualization</span></li>
       <li><span>copy writing</span></li>
       <li><span>3d models</span></li>

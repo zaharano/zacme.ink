@@ -31,7 +31,8 @@
       autoAlpha: 0,
     }, {
       autoAlpha: 1,
-      duration: 10,
+      duration: 5,
+      ease: "linear"
     })
    
     // center the star origins, set up for open
@@ -75,6 +76,15 @@
       ease: "power4.out",
       transformOrigin: "50%, 50%"
     }, "-=2.2")
+    .fromTo('#text', {
+      opacity: 0,
+      y: 20,
+    }, {
+      opacity: 1,
+      y: 0,
+      duration: 2,
+      ease: "power2.out",
+    }, "-=2")
     .to('.sparkle', {
       scale: 1,
       duration: .6,
@@ -87,7 +97,7 @@
           randomMove(ele);
         });
       },
-    }, 0);
+    }, 2);
 
      // infinite random yoyo verticle moves or blinkies for sparkles
      function randomMove(ele) {
@@ -332,7 +342,7 @@
   </div>
   
 
-  <h1>
+  <h1 id="text">
     My name is Zach. <br>I’m an integrative 
       <span class="designer-contain">
         <span class="word designer" on:mouseenter={() => {desTL.play()}}>
