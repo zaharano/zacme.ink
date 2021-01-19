@@ -1,8 +1,9 @@
 <script>
   import Button from "./button.svelte";
   import ClickOutside from "./clickOutside.svelte";
+  import IntersectionObserver from "./intersectionObserver.svelte"
   
-  export let img = "./assets/Enterprise_HD.jpg";
+  export let src = "./assets/Enterprise_HD.jpg";
   export let alt = "The Starship Enterprise";
   export let tags = ["these", "are", "voyages"];
   export let title;
@@ -12,42 +13,45 @@
       href: "http://www.startrek.com"
   };
 
+  // hide the details
   let hide = true;
-
   function hideOff() {
     hide = false;
   }
-
   function hideOn() {
     hide = true;
   }
 
 </script>
 
+<!-- ClickOutside implemented for mobile (pressing outside hides details) -->
 <ClickOutside on:clickoutside={hideOn}>
-  <article
-  on:mouseover={hideOff}
-  on:mouseleave={hideOn}
-  on:click={hideOff}
-  >
-    <img src="{img}" alt="{alt}" class="background {hide === false ? 'blur' : ''}" /> 
-    <div 
-      class="infotainer"
-      class:hide>
-      <div class="tags">
-        {#each tags as tag, i}
-          <span>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;<em>//</em>&nbsp;&nbsp;{/if}</span>
-        {/each}
+  <!-- and then IntersectionObserver for lazyloading imgs and animating in tiles -->
+  <IntersectionObserver once={true} let:intersecting={intersecting}>
+    <article
+    on:mouseover={hideOff}
+    on:mouseleave={hideOn}
+    on:click={hideOff}
+    >
+      <img {src} {alt} class="background {hide === false ? 'blur' : ''}" /> 
+      <div 
+        class="infotainer"
+        class:hide>
+        <div class="tags">
+          {#each tags as tag, i}
+            <span>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;<em>//</em>&nbsp;&nbsp;{/if}</span>
+          {/each}
+        </div>
+        <div class="beats">
+          <h2 class="title">{title}</h2>
+          <p class="body">{body}</p>
+        </div>
+        <div class="bottom" class:hide>
+          <Button {...button} />
+        </div>
       </div>
-      <div class="beats">
-        <h2 class="title">{title}</h2>
-        <p class="body">{body}</p>
-      </div>
-      <div class="bottom" class:hide>
-        <Button {...button} />
-      </div>
-    </div>
-  </article>
+    </article>
+  </IntersectionObserver>
 </ClickOutside>
 
 
