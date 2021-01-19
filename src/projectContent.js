@@ -1,4 +1,5 @@
-// img: "./assets/Enterprise_HD.jpg", dimensions: 
+// src: "./assets/Enterprise_HD.jpg", dimensions: 
+// alt: "The alt tag"
 // tags: ["an array", "like", "this"], text ends up allcaps
 // title: "A string", keep under 30ch
 // body: "A string", keep under 120ch
@@ -9,7 +10,8 @@
 
 export default [
   {
-    img: "./assets/" + "gal-RACStyleGuide.png",
+    src: "./assets/" + "gal-RACStyleGuide.png",
+    alt: "A thumbnail of the RAC Style Guide",
     tags: ["branding", "illustration", "joy"],
     title: "Rent-A-Christmas Style Guide",
     body: "Lots of original illustration work went into this fun and festive brand guide.",
@@ -19,7 +21,8 @@ export default [
     }
   },
   {
-    img: "./assets/gal-RACvalues.png",
+    src: "./assets/gal-RACvalues.png",
+    alt: "A thumbnail of the RAC values illustrations",
     tags: ["art direction", "illustration"],
     title: "Rent-A-Christmas Elves",
     body: "A collection of illustrations depicting company values and benefits. Featuring lots of elves.",
@@ -29,7 +32,8 @@ export default [
     }
   },
   {
-    img: "./assets/gal-RACbuses.png",
+    src: "./assets/gal-RACbuses.png",
+    alt: "A thumbnail of the RAC business illustrations",
     tags: ["illustration", "art direction"],
     title: "Rent-A-Christmas Businesses",
     body: "A collection of illustrations showing types of businesses.",
@@ -39,7 +43,8 @@ export default [
     }
   },
   {
-    img: "./assets/" + "gal-PEXcard.png",
+    src: "./assets/" + "gal-PEXcard.png",
+    alt: "A thumbnail of many PEX card design options",
     tags: ["print", "plastic", "branding"],
     title: "Redesigning the PEX Card",
     body: '3.370" x 2.125" to define a brand',
@@ -49,7 +54,8 @@ export default [
     }
   },
   {
-    img: "./assets/" + "gal-PEXcompsMocks.png",
+    src: "./assets/" + "gal-PEXcompsMocks.png",
+    alt: "A thumbnail example of PEXcard mockups",
     tags: ["shops", "3d"],
     title: "PEX Mockups",
     body: "Mocking up and compositing a library of product shots",
@@ -59,7 +65,8 @@ export default [
     }
   },
   {
-    img: "./assets/" + "gal-PEXvids.png",
+    src: "./assets/" + "gal-PEXvids.png",
+    alt: "A thumbnail from a PEX video explainer",
     tags: ["animation", "video", "explainer"],
     title: "Making PEX more dynamic",
     body: "Finding every way I can to bring motion to the brand",
@@ -69,7 +76,8 @@ export default [
     }
   },
   {
-    img: "./assets/" + "gal-Ghosh.png",
+    src: "./assets/" + "gal-Ghosh.png",
+    alt: "A thumbnail of the Powering Prosperity website",
     tags: ["webdesign", "webflow"],
     title: "Powering Powering Prosperity",
     body: "Building a website for a new book",
@@ -79,7 +87,8 @@ export default [
     }
   },
   {
-    img: "./assets/" + "gal-Ghosh2.png",
+    src: "./assets/" + "gal-Ghosh2.png",
+    alt: "A thumbnail of the Tiger Hill Capital website",
     tags: ["webdesign", "webflow"],
     title: "Tiger Hill Capital",
     body: "Homepage for an Investment Management firm–and a place to collect their thoughts.",
@@ -89,7 +98,8 @@ export default [
     }
   },
   {
-    img: "./assets/gal-LSFmag.png",
+    src: "./assets/gal-LSFmag.png",
+    alt: "A thumbnail showing off LSF magazine pages",
     tags: ["print", "editorial design", "data viz"],
     title: "LSF Magazine",
     body: "Telling the story of biotechnology in a quarterly print magazine.",
@@ -99,7 +109,8 @@ export default [
     }
   },
   {
-    img: "./assets/gal-LSFbook.png",
+    src: "./assets/gal-LSFbook.png",
+    alt: "A thumbnail showing off the Biotech Hall of Fame book",
     tags: ["print", "production", "photo editing"],
     title: "Biotech Hall of Fame",
     body: "A 220-page coffee-table book created for the 25th Annual Biotech Meeting in Laguna Beach.",

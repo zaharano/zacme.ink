@@ -5,9 +5,13 @@
   import ClickOutside from './clickOutside.svelte';
   import smoothscroll from 'smoothscroll-polyfill';
 
+  // in case smoothscroll not supported (lookin @ you Safari)
   smoothscroll.polyfill();
 
   let open = false;
+
+  // this is a ref that gets bound to the hamburger button
+  // for the purpose of the ClickOutside action excluding the button
   let hamburglar;
 
   const menu = [
@@ -39,6 +43,7 @@
     });
   }
 
+  // for some reason couldn't get .reverse.play solution working-this is fine
   function handleClick(){
     open = !open;
     if (open) {
@@ -71,7 +76,7 @@
   }
 
   function playWiggle(){
-
+    // if I want to add a wiggle animation for hamburger mouseover
   }
 
   onMount(() => {
@@ -87,11 +92,11 @@
 <div class="container">
   {#if open}
     <ClickOutside on:clickoutside={handleClick} exclude={[hamburglar]}>
-      <nav class="menu" transition:fly="{{ y: 50, duration: 140 }}">
+      <nav class="menu" transition:fly="{{ y: 50, duration: 180 }}">
         <ul>
           {#each menu as {txt,href},i}
             {#if open}
-              <li in:fly="{{y: -35,duration: 120,delay:i*50+100 }}">
+              <li in:fly="{{y: -35,duration: 140,delay:i*70+100 }}">
                 <button on:click={() => menuAct(href)}>{txt}</button>
               </li>
             {/if}
@@ -103,18 +108,16 @@
   <button 
     class="hamburguesa" 
     on:click={ handleClick } 
-    on:mouseenter={playWiggle}
-    bind:this={hamburglar}>
+    on:mouseenter={ playWiggle }
+    bind:this={ hamburglar }>
     <svg width="60" height="60" viewBox="0 0 60 60" fill="none"
       xmlns="http://www.w3.org/2000/svg">
       <g>
-        <line id="line3" x1="10" y1="41.5" x2="50" y2="41.5" stroke="#454545"/>
-        <line id="line2" x1="10" y1="29.5" x2="50" y2="29.5" stroke="#454545"/>
-        <line id="line1" x1="10" y1="17.5" x2="50" y2="17.5" stroke="#454545"/>
+        <line id="line3" x1="10" y1="41.5" x2="50" y2="41.5" />
+        <line id="line2" x1="10" y1="29.5" x2="50" y2="29.5" />
+        <line id="line1" x1="10" y1="17.5" x2="50" y2="17.5" />
       </g>
     </svg>
-    <span class="circle circle-burst"></span>
-    <span class="circle circle-crawl"></span>
   </button>
 </div>
 
@@ -154,6 +157,10 @@
     position: absolute;
     right: 1rem;
     cursor: pointer;
+  }
+
+  line {
+    stroke: var(--gray);
   }
 
   @media (min-width: 760px) { 
