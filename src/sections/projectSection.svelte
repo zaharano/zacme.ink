@@ -4,7 +4,8 @@
   import contentStream from "../projectContent.js";
   export let projects = [
     {
-      img: "./assets/Enterprise_HD.jpg",
+      src: "./assets/Enterprise_HD.jpg",
+      alt: "The Starship Enterprise",
       tags: ["these", "are", "voyages"],
       title: "Shakar, when the walls fell",
       body: "Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time?",
@@ -14,7 +15,8 @@
       }
     },
     {
-      img: "./assets/Enterprise_HD.jpg",
+      src: "./assets/Enterprise_HD.jpg",
+      alt: "The Starship Enterprise",
       tags: ["these", "are"],
       title: "Shakar",
       body: "Thee gravitational pull of a star to slingshot back in time?",
@@ -35,7 +37,7 @@
   <SectionHead id="projects" text="Projects" />
   <div class="gallery">
     {#each projects as project, i}
-    <ProjectCard {...project}></ProjectCard>
+      <ProjectCard {...project}></ProjectCard>
     {/each} 
   </div>
 </section>
