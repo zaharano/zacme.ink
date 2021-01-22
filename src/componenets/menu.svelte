@@ -107,6 +107,7 @@
   {/if}
   <button 
     class="hamburguesa" 
+    aria-label="menu"
     on:click={ handleClick } 
     on:mouseenter={ playWiggle }
     bind:this={ hamburglar }>
