@@ -66,6 +66,7 @@
     border-bottom: 4px solid var(--gray);
     border-radius: 10px;
     height: auto;
+    min-height: 300px;
     overflow: hidden;
     text-align: left;
     box-shadow: 0 0 30px 0 rgba(0,0,0,.2)
