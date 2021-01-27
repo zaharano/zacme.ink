@@ -97,7 +97,8 @@
 
   .placeholder {
     width: 100%;
-    height: 100%;
+    margin-bottom: -6px;
+    transform: scale(105%);
   }
 
   .imgLoaded {
