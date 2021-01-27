@@ -3,14 +3,13 @@
   export let text = "This is a title!";
 </script>
 
-<h1>{text}<span {id}></span></h1>
-
+<h1>{text}<span {id} /></h1>
 
 <style>
   h1 {
     position: relative;
   }
-  
+
   span {
     position: absolute;
     top: -95px;
