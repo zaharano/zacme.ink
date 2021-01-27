@@ -19,7 +19,7 @@
     justify-content: center;
   }
 
-  #contact {
+  section {
     margin-top: 0;
     margin-bottom: 0;
     display: flex;
