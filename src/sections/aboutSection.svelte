@@ -2,6 +2,7 @@
   import SectionHead from '../componenets/sectionHead.svelte';
   import IntersectionObserver from '../componenets/intersectionObserver.svelte';
   import { fade } from "svelte/transition"
+  import PlaceholderSvg from '../componenets/placeholderSVG.svelte';
 </script>
 
 <section>
@@ -11,6 +12,8 @@
       {#if intersecting}
         <div in:fade="{{ delay: 100, duration: 400 }}" id="imgwrapper">
         </div>
+      {:else}
+        <PlaceholderSvg height=972 width=717 />
       {/if}
     </IntersectionObserver>
     <div class="bio">
