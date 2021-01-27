@@ -1,17 +1,17 @@
 <script>
   import SectionHead from '../componenets/sectionHead.svelte';
   import IntersectionObserver from '../componenets/intersectionObserver.svelte';
-  import { fade } from "svelte/transition"
   import PlaceholderSvg from '../componenets/placeholderSVG.svelte';
+
+  let loaded = false;
 </script>
 
 <section>
   <SectionHead id="about" text="About Me" />
   <div id="biorow">
-    <IntersectionObserver once={true} let:intersecting={intersecting}>
+    <IntersectionObserver once={true} let:intersecting={intersecting} top={500}>
       {#if intersecting}
-        <div in:fade="{{ delay: 100, duration: 400 }}" id="imgwrapper">
-        </div>
+        <div id="imgwrapper"></div>
       {:else}
         <PlaceholderSvg height=972 width=717 />
       {/if}
