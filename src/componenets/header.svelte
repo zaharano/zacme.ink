@@ -8,14 +8,14 @@
     const tl = gsap.timeline({
       scrollTrigger: {
       scrub: true,
-      trigger: ".speech",
+      trigger: "#speech",
       start: "10% top",
+      markers: true,
     }});
     tl.to('.header-bg', {
       autoAlpha: 1,
     })
   });
-  let scrolled = false;
 </script>
 
 <header>
@@ -84,6 +84,7 @@
     z-index: 8;
     height: 55px;
     position: relative;
+    will-change: filter, transform;
     transition-property: transform, filter;
     transition-duration: .4s;
     transition-timing-function: var(--timing);
