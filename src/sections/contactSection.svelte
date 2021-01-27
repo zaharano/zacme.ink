@@ -1,9 +1,9 @@
 <script>
-  import Button from "../componenets/button.svelte";
-  import SectionHead from "../componenets/sectionHead.svelte";
+  import Button from '../componenets/button.svelte';
+  import SectionHead from '../componenets/sectionHead.svelte';
 </script>
 
-<section id="contact">
+<section>
   <SectionHead id="contact" text="Contact Me" />
   <h2>I'm always interested in hearing about new work!</h2>
   <div class="buttonContainer">
