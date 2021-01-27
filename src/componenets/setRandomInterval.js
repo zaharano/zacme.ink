@@ -7,7 +7,8 @@ export default setRandomInterval = (intervalFunction, minDelay, maxDelay) => {
       runInterval();
     };
 
-    const delay = Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
+    const delay =
+      Math.floor(Math.random() * (maxDelay - minDelay + 1)) + minDelay;
 
     timeout = setTimeout(timeoutFunction, delay);
   };
@@ -15,6 +16,8 @@ export default setRandomInterval = (intervalFunction, minDelay, maxDelay) => {
   runInterval();
 
   return {
-    clear() { clearTimeout(timeout) },
+    clear() {
+      clearTimeout(timeout);
+    },
   };
-}
+};

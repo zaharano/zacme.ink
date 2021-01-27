@@ -8,11 +8,12 @@
       alt: "The Starship Enterprise",
       tags: ["these", "are", "voyages"],
       title: "Shakar, when the walls fell",
-      body: "Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time?",
+      body:
+        "Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time?",
       button: {
         txt: "Make it so",
-        href: "http://www.startrek.com"
-      }
+        href: "http://www.startrek.com",
+      },
     },
     {
       src: "./assets/Enterprise_HD.jpg",
@@ -22,28 +23,26 @@
       body: "Thee gravitational pull of a star to slingshot back in time?",
       button: {
         txt: "Make it so",
-        href: "http://www.startrek.com"
-      }
-    }
+        href: "http://www.startrek.com",
+      },
+    },
   ];
 
   if (contentStream) {
     projects = contentStream;
   }
-
 </script>
 
 <section>
   <SectionHead id="projects" text="Projects" />
   <div class="gallery">
     {#each projects as project, i}
-      <ProjectCard {...project}></ProjectCard>
-    {/each} 
+      <ProjectCard {...project} />
+    {/each}
   </div>
 </section>
 
 <style>
-
   /* flexbox version */
   /* .gallery {
     display: flex;
@@ -91,8 +90,7 @@
     font-size: 20px;
   }
 
-
-  @media (min-width: 480px) { 
+  @media (min-width: 480px) {
     .gallery {
       --colsize: minmax(375px, 1fr);
     }
