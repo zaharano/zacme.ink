@@ -1,17 +1,17 @@
 <script>
-  import Button from './button.svelte';
-  import ClickOutside from './clickOutside.svelte';
-  import IntersectionObserver from './intersectionObserver.svelte';
+  import Button from "./button.svelte";
+  import ClickOutside from "./clickOutside.svelte";
+  import IntersectionObserver from "./intersectionObserver.svelte";
 
-  export let src = './assets/Enterprise_HD.jpg';
-  export let alt = 'The Starship Enterprise';
-  export let tags = ['these', 'are', 'voyages'];
+  export let src = "./assets/Enterprise_HD.jpg";
+  export let alt = "The Starship Enterprise";
+  export let tags = ["these", "are", "voyages"];
   export let title;
   export let body =
-    'Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time?';
+    "Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time?";
   export let button = {
-    txt: 'Make it so',
-    href: 'http://www.startrek.com',
+    txt: "Make it so",
+    href: "http://www.startrek.com",
   };
 
   let imgLoaded = false;
@@ -50,10 +50,12 @@
       <div class="infotainer">
         <div class="tags">
           {#each tags as tag, i}
-            <span
-              >{tag}{#if i < tags.length - 1}&nbsp;&nbsp;<em>//</em
-                >&nbsp;&nbsp;{/if}</span
-            >
+            <span>
+              {tag}
+              {#if i < tags.length - 1}
+                &nbsp;&nbsp;<em>//</em>&nbsp;&nbsp;
+              {/if}
+            </span>
           {/each}
         </div>
         <div class="details">
@@ -143,11 +145,11 @@
   .tags span {
     font-size: 1em;
     display: inline-block;
-    font-family: 'Vollkorn SC', serif;
+    font-family: "Vollkorn SC", serif;
     font-variant-caps: small-caps;
-    -moz-font-feature-settings: 'smcp';
-    -webkit-font-feature-settings: 'smcp';
-    font-feature-settings: 'smcp';
+    -moz-font-feature-settings: "smcp";
+    -webkit-font-feature-settings: "smcp";
+    font-feature-settings: "smcp";
   }
 
   .tags {

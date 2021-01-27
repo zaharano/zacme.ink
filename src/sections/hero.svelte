@@ -1,8 +1,8 @@
 <script>
-  import { onMount } from 'svelte';
-  import { gsap } from 'gsap';
-  import { TextPlugin } from 'gsap/TextPlugin';
-  import { DrawSVGPlugin } from 'gsap/all';
+  import { onMount } from "svelte";
+  import { gsap } from "gsap";
+  import { TextPlugin } from "gsap/TextPlugin";
+  import { DrawSVGPlugin } from "gsap/all";
 
   gsap.registerPlugin(TextPlugin, DrawSVGPlugin);
 
@@ -34,67 +34,67 @@
   onMount(() => {
     // fade in bitz
     gsap.fromTo(
-      '#bitz',
+      "#bitz",
       {
         autoAlpha: 0,
       },
       {
         autoAlpha: 1,
         duration: 5,
-        ease: 'linear',
+        ease: "linear",
       }
     );
 
     // center the star origins, set up for open
-    gsap.set('.sparkle', {
-      transformOrigin: '50% 50%',
+    gsap.set(".sparkle", {
+      transformOrigin: "50% 50%",
       autoAlpha: 0,
       scale: 0.05,
     });
 
     speechTL
-      .from('#speech', {
+      .from("#speech", {
         opacity: 0,
         duration: 0.2,
       })
       .from(
-        '#speech',
+        "#speech",
         {
-          transformOrigin: 'center bottom',
+          transformOrigin: "center bottom",
           scale: 0.3,
           duration: 0.8,
-          ease: 'elastic.out(1, 0.3)',
+          ease: "elastic.out(1, 0.3)",
         },
-        '<'
+        "<"
       )
       .from(
-        '#speech',
+        "#speech",
         {
           duration: 3,
-          transformOrigin: 'center bottom',
+          transformOrigin: "center bottom",
           rotate: 40,
-          ease: 'elastic.out(1, 0.12)',
+          ease: "elastic.out(1, 0.12)",
         },
-        '<'
+        "<"
       )
       .from(
-        '#hi',
+        "#hi",
         {
           opacity: 0,
           duration: 0.5,
           scale: 0.2,
-          ease: 'power4.out',
-          transformOrigin: '50%, 50%',
+          ease: "power4.out",
+          transformOrigin: "50%, 50%",
         },
-        '-=2.6'
+        "-=2.6"
       )
       .fromTo(
-        '#bang',
+        "#bang",
         {
           opacity: 0,
           scale: 0.8,
           rotate: 45,
-          transformOrigin: '50%, 50%',
+          transformOrigin: "50%, 50%",
         },
         {
           duration: 0.5,
@@ -103,13 +103,13 @@
           scale: 1.3,
           x: 10,
           y: 0,
-          ease: 'power4.out',
-          transformOrigin: '50%, 50%',
+          ease: "power4.out",
+          transformOrigin: "50%, 50%",
         },
-        '-=2.2'
+        "-=2.2"
       )
       .fromTo(
-        '#text',
+        "#text",
         {
           opacity: 0,
           y: 20,
@@ -118,21 +118,21 @@
           opacity: 1,
           y: 0,
           duration: 2,
-          ease: 'power2.out',
+          ease: "power2.out",
         },
-        '-=2'
+        "-=2"
       )
       .to(
-        '.sparkle',
+        ".sparkle",
         {
           scale: 1,
           duration: 0.6,
           delay: 0.3,
           autoAlpha: 1,
           stagger: 0.2,
-          ease: 'power2.out',
+          ease: "power2.out",
           onComplete: () => {
-            gsap.utils.toArray('.sparkle').forEach((ele) => {
+            gsap.utils.toArray(".sparkle").forEach((ele) => {
               randomMove(ele);
             });
           },
@@ -146,7 +146,7 @@
         gsap.to(ele, {
           y: `+=${gsap.utils.random(-20, 20)}`,
           duration: gsap.utils.random(2, 4),
-          ease: 'power1.inOut',
+          ease: "power1.inOut",
           delay: gsap.utils.random(1, 3, 0.1),
           yoyo: true,
           repeat: 1,
@@ -158,7 +158,7 @@
           opacity: 0,
           scale: 0.1,
           duration: 0.6,
-          ease: 'power2.inOut',
+          ease: "power2.inOut",
           delay: gsap.utils.random(1, 3, 0.1),
           yoyo: true,
           repeat: 1,
@@ -169,7 +169,7 @@
     }
 
     // word 'designer' nudges up and left, guides show up, yoyo
-    const desSel = '.designer';
+    const desSel = ".designer";
 
     // track nudge count by dimension
     const nudge = function (dim) {
@@ -177,77 +177,77 @@
     };
 
     desTL
-      .set('.guide-y-ends', {
+      .set(".guide-y-ends", {
         autoAlpha: 0,
       })
-      .set('.guide-x-ends', {
+      .set(".guide-x-ends", {
         autoAlpha: 0,
       })
       .to(desSel, {
         top: 0,
       })
-      .add(nudge('y'))
+      .add(nudge("y"))
       .to(desSel, {
         duration,
         top: nudges.y * nudgeAmount * -1,
       })
-      .to('.guide-y-line', {
+      .to(".guide-y-line", {
         duration,
         height: nudges.y * nudgeAmount,
       })
-      .to('.guide-y-ends', {
+      .to(".guide-y-ends", {
         autoAlpha: 1,
       })
-      .add(nudge('y'))
+      .add(nudge("y"))
       .to(desSel, {
         delay,
         duration,
         top: nudges.y * nudgeAmount * -1,
       })
-      .to('.guide-y-line', {
+      .to(".guide-y-line", {
         duration,
         height: nudges.y * nudgeAmount,
       })
-      .add(nudge('x'))
+      .add(nudge("x"))
       .to(desSel, {
         delay,
         duration,
         left: nudges.x * nudgeAmount * -1,
       })
-      .to('.guide-x-line', {
+      .to(".guide-x-line", {
         duration,
         width: nudges.x * nudgeAmount,
       })
-      .to('.guide-x-ends', {
+      .to(".guide-x-ends", {
         autoAlpha: 1,
       })
-      .add(nudge('x'))
+      .add(nudge("x"))
       .to(desSel, {
         delay,
         duration,
         left: nudges.x * nudgeAmount * -1,
       })
-      .to('.guide-x-line', {
+      .to(".guide-x-line", {
         duration,
         width: nudges.x * nudgeAmount,
       })
-      .add(nudge('x'))
+      .add(nudge("x"))
       .to(desSel, {
         delay: 0.5,
         duration,
         left: nudges.x * nudgeAmount * -1,
       })
-      .to('.guide-x-line', {
+      .to(".guide-x-line", {
         duration,
         width: nudges.x * nudgeAmount,
       })
-      .add(nudge('y'))
+      .add(nudge("y"))
       .to(desSel, {
         delay: 0.5,
         duration,
         top: nudges.y * nudgeAmount * -1,
       })
-      .to('.guide-y-line', {
+      .to(".guide-y-line", {
         duration,
         height: nudges.y * nudgeAmount,
       })
@@ -255,116 +255,116 @@
 
     // word animator squishes vertically, horizontally, spins and restores size
     animTL
-      .to('.animator', {
+      .to(".animator", {
         delay: 0.3,
         duration: 0.2,
         scaleY: 1.2,
-        ease: 'ease-out',
+        ease: "ease-out",
       })
-      .to('.animator', {
+      .to(".animator", {
         delay: 0.1,
         duration: 1,
         scaleY: 0.5,
-        ease: 'elastic.out(1, 0.3)',
+        ease: "elastic.out(1, 0.3)",
       })
-      .to('.animator', {
+      .to(".animator", {
         delay: 0.1,
         duration: 0.2,
         scaleX: 1.2,
-        ease: 'ease-out',
+        ease: "ease-out",
       })
-      .to('.animator', {
+      .to(".animator", {
         delay: 0.1,
         duration: 1,
         scaleX: 0.5,
-        ease: 'elastic.out(1, 0.3)',
+        ease: "elastic.out(1, 0.3)",
       })
-      .to('.animator', {
+      .to(".animator", {
         delay: 0.2,
         duration: 1,
         scale: 1,
         rotate: 360,
-        ease: 'elastic.out(1, 0.3)',
+        ease: "elastic.out(1, 0.3)",
       })
       .timeScale(1.7);
 
     // tags appear around front-end dev, type out i, delete, type out em, skew, delete tags, unskew
     codeTL
-      .set('.code-tag', {
-        margin: '.4rem',
+      .set(".code-tag", {
+        margin: ".4rem",
         autoAlpha: 1,
       })
-      .to('.code-open', {
+      .to(".code-open", {
         duration: 0.4,
-        text: '&lt;i',
-        ease: 'none',
+        text: "&lt;i",
+        ease: "none",
       })
       .to(
-        '.code-close',
+        ".code-close",
         {
           duration: 0.5,
-          text: '&lt;/i',
-          ease: 'none',
+          text: "&lt;/i",
+          ease: "none",
         },
-        '<'
+        "<"
       )
-      .to('.code-open', {
+      .to(".code-open", {
         delay: 0.4,
         duration: 0.1,
-        text: '&lt;',
-        ease: 'none',
+        text: "&lt;",
+        ease: "none",
       })
       .to(
-        '.code-close',
+        ".code-close",
         {
           duration: 0.1,
-          text: '&lt;/',
-          ease: 'none',
+          text: "&lt;/",
+          ease: "none",
         },
-        '<'
+        "<"
       )
-      .to('.code-open', {
+      .to(".code-open", {
         duration: 0.4,
-        text: '&lt;em&gt;',
-        ease: 'none',
+        text: "&lt;em&gt;",
+        ease: "none",
       })
       .to(
-        '.code-close',
+        ".code-close",
         {
           duration: 0.4,
-          text: '&lt;/em&gt;',
-          ease: 'none',
+          text: "&lt;/em&gt;",
+          ease: "none",
         },
-        '<'
+        "<"
       )
-      .to('.code-em', {
+      .to(".code-em", {
         delay: 0.1,
         duration: 0.1,
         skewX: -20,
-        ease: 'ease-out',
+        ease: "ease-out",
       })
-      .to('.code-open', {
+      .to(".code-open", {
         delay: 1,
         duration: 0.4,
-        text: '',
-        ease: 'none',
+        text: "",
+        ease: "none",
       })
       .to(
-        '.code-close',
+        ".code-close",
         {
           duration: 0.4,
-          text: '',
-          ease: 'none',
+          text: "",
+          ease: "none",
         },
-        '<'
+        "<"
       )
-      .to('.code-em', {
+      .to(".code-em", {
         duration: 0.2,
         skewX: 0,
-        ease: 'ease-out',
+        ease: "ease-out",
       })
-      .set('.code-tag', {
-        margin: '0',
+      .set(".code-tag", {
+        margin: "0",
         autoAlpha: 0,
       })
       .timeScale(1.5);
@@ -626,7 +626,7 @@
   }
 
   .code-tag {
-    font-family: 'Courier New', Courier, monospace;
+    font-family: "Courier New", Courier, monospace;
     color: white;
     background-color: var(--acct);
     font-weight: 500;
