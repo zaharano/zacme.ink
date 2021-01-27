@@ -32,6 +32,7 @@
     transition-property: transform, box-shadow;
     transition-duration: .4s;
     transition-timing-function: var(--timing);
+    will-change: transform, box-shadow;
   }
 
   a:hover {
