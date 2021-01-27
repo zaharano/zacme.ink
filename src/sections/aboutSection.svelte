@@ -1,22 +1,13 @@
 <script>
   import SectionHead from '../componenets/sectionHead.svelte';
   import IntersectionObserver from '../componenets/intersectionObserver.svelte';
-  import PlaceholderSvg from '../componenets/placeholderSVG.svelte';
-
-  let loaded = false;
 </script>
 
 <section>
   <IntersectionObserver once={true} let:intersecting top={500}>
     <SectionHead id="about" text="About Me" />
     <div id="biorow">
-      {#if intersecting}
-        <div id="imgwrapper" />
-      {:else}
-        <div>
-          <PlaceholderSvg height="972" width="717" />
-        </div>
-      {/if}
+      <div id="imgwrapper" />
       <div class="bio">
         <p>
           I'm from Oakland, CA, currently living in Brooklyn, NY with my wife
