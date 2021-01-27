@@ -1,12 +1,13 @@
 <script>
-  import VennAnimation from '../componenets/vennAnimation.svelte';
-  import AbilityAnimation from '../componenets/abilityAnimation.svelte';
+  import VennAnimation from "../componenets/vennAnimation.svelte";
+  import AbilityAnimation from "../componenets/abilityAnimation.svelte";
 </script>
 
 <section>
   <div class="figrow">
     <p>
-      I have a versatile toolbox assembled from a decade of varied work and a love of side projects.
+      I have a versatile toolbox assembled from a decade of varied work and a
+      love of side projects.
     </p>
     <div class="fig">
       <AbilityAnimation />
@@ -15,7 +16,8 @@
 
   <div class="figrow rev">
     <p>
-      I enjoy playing with the intersections of different tools to find delightful new ways to communicate.
+      I enjoy playing with the intersections of different tools to find
+      delightful new ways to communicate.
     </p>
     <div class="fig">
       <VennAnimation />
@@ -51,7 +53,7 @@
 
   p {
     font-size: calc(1vw + 1em);
-	  font-size: clamp(1.6rem, 1.8vw, 2.4rem);
+    font-size: clamp(1.6rem, 1.8vw, 2.4rem);
   }
 
   @media (max-width: 1100px) {

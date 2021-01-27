@@ -7,41 +7,45 @@
 </script>
 
 <section>
-  <SectionHead id="about" text="About Me" />
-  <div id="biorow">
-    <IntersectionObserver once={true} let:intersecting={intersecting} top={500}>
+  <IntersectionObserver once={true} let:intersecting top={500}>
+    <SectionHead id="about" text="About Me" />
+    <div id="biorow">
       {#if intersecting}
-        <div id="imgwrapper"></div>
+        <div id="imgwrapper" />
       {:else}
-        <PlaceholderSvg height=972 width=717 />
+        <div>
+          <PlaceholderSvg height="972" width="717" />
+        </div>
       {/if}
-    </IntersectionObserver>
-    <div class="bio">
-      <p>
-        I'm from Oakland, CA, currently living in Brooklyn, NY with my wife and our dog. I have a background in editorial and non-profit design, as well as a fair amount of digital marketing type stuff.
-      </p>
-      <p>
-        I have rediscovered my passion for technology and code, pursuits I relished in school but drifted away from afterwards. Nowadays, I spend my time freelancing and playing with creative coding to find weird ways to bring my ideas to life.
-      </p>
-      <p>
-        I enjoy cooking, soccer, going to museums, and trashy genre fiction.
-      </p>
+      <div class="bio">
+        <p>
+          I'm from Oakland, CA, currently living in Brooklyn, NY with my wife
+          and our dog. I have a background in editorial and non-profit design,
+          as well as a fair amount of digital marketing type stuff.
+        </p>
+        <p>
+          I have rediscovered my passion for technology and code, pursuits I
+          relished in school but drifted away from afterwards. Nowadays, I spend
+          my time freelancing and playing with creative coding to find weird
+          ways to bring my ideas to life.
+        </p>
+        <p>
+          I enjoy cooking, soccer, going to museums, and trashy genre fiction.
+        </p>
+      </div>
     </div>
-    
-  </div>
-
-  
+  </IntersectionObserver>
 </section>
 
 <style>
-  p { 
+  p {
     text-align: left;
   }
 
   section {
     display: flex;
-		flex-direction: column;
-		align-items: center;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     min-height: 50vh;
   }
@@ -52,7 +56,7 @@
     align-items: center;
   }
 
-  #biorow > * {
+  #biorow > div {
     min-width: 40%;
   }
 
@@ -63,7 +67,7 @@
     overflow: hidden;
     box-sizing: border-box;
     margin-right: 3rem;
-    background-image: url("../assets/me@2x.jpg");
+    background-image: url('../assets/me@2x.jpg');
     background-size: cover;
     background-position: center;
     min-height: 500px;
@@ -88,7 +92,4 @@
       min-height: 300px;
     }
   }
-
- 
-
 </style>

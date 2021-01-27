@@ -17,13 +17,13 @@
     position: absolute;
     pointer-events: none;
     z-index: 2;
-    animation: pop 1000ms ease-in-out forwards
+    animation: pop 1000ms ease-in-out forwards;
   }
 
   @keyframes shine {
     0% {
       transform: scale(0) rotate(0deg);
-    } 
+    }
     50% {
       transform: scale(1) rotate(90deg);
     }
@@ -40,5 +40,4 @@
       transform: rotate(180deg);
     }
   }
-
 </style>
