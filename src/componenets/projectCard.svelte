@@ -2,7 +2,6 @@
   import Button from "./button.svelte";
   import ClickOutside from "./clickOutside.svelte";
   import IntersectionObserver from "./intersectionObserver.svelte"
-  import { fly } from "svelte/transition"
   
   export let src = "./assets/Enterprise_HD.jpg";
   export let alt = "The Starship Enterprise";
@@ -13,6 +12,8 @@
       txt: "Make it so",
       href: "http://www.startrek.com"
   };
+
+  let imgLoaded = false;
 
   // hide the info
   let hide = true;
@@ -26,35 +27,37 @@
 </script>
 
 <!-- IntersectionObserver for defer load imgs and animating in tiles -->
-<IntersectionObserver once={true} let:intersecting top={-300}>
-  {#if intersecting}
-    <!-- ClickOutside for mobile (pressing outside tile rehides details) -->
-    <ClickOutside on:clickoutside={hideOn}>
-      <article
-      in:fly="{{ y: 100, delay: 100, duration: 800 }}"
-      on:mouseover={hideOff}
-      on:mouseleave={hideOn}
-      on:click={hideOff}
-      class:hide
-      >
-          <img {src} {alt} class="background" /> 
-        <div class="infotainer">
-          <div class="tags">
-            {#each tags as tag, i}
-              <span>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;<em>//</em>&nbsp;&nbsp;{/if}</span>
-            {/each}
-          </div>
-          <div class="details">
-            <h2 class="title">{title}</h2>
-            <p class="body">{body}</p>
-          </div>
-          <div class="bottom">
-            <Button {...button} />
-          </div>
+<IntersectionObserver once={true} let:intersecting top={-500}>
+  <!-- ClickOutside for mobile (pressing outside tile rehides details) -->
+  <ClickOutside on:clickoutside={hideOn}>
+    <article
+    on:mouseover={hideOff}
+    on:mouseleave={hideOn}
+    on:click={hideOff}
+    class:imgLoaded
+    class:hide
+    >
+      {#if intersecting}
+        <img {src} {alt} on:load={() => imgLoaded = true} class="background" /> 
+      {:else}
+        <img src="./assets/ph.svg" alt="placeholder" class="placeholder">
+      {/if}
+      <div class="infotainer">
+        <div class="tags">
+          {#each tags as tag, i}
+            <span>{tag}{#if i < tags.length - 1}&nbsp;&nbsp;<em>//</em>&nbsp;&nbsp;{/if}</span>
+          {/each}
         </div>
-      </article>
-    </ClickOutside>
-  {/if}
+        <div class="details">
+          <h2 class="title">{title}</h2>
+          <p class="body">{body}</p>
+        </div>
+        <div class="bottom">
+          <Button {...button} />
+        </div>
+      </div>
+    </article>
+  </ClickOutside>
 </IntersectionObserver>
 
 
@@ -66,10 +69,14 @@
     border-bottom: 4px solid var(--gray);
     border-radius: 10px;
     height: auto;
-    min-height: 300px;
     overflow: hidden;
     text-align: left;
-    box-shadow: 0 0 30px 0 rgba(0,0,0,.2)
+    box-shadow: 0 0 30px 0 rgba(0,0,0,.2);
+    opacity: 0;
+    transform: translateY(100px);
+    transition: opacity .8s, transform .8s;
+    transition-delay: .2s;
+    transition-timing-function: ease-out;
   }
 
   h2 {
@@ -79,6 +86,16 @@
 
   p {
     margin-bottom: 0;
+  }
+
+  .placeholder {
+    width: 100%;
+    height: 100%;
+  }
+
+  .imgLoaded {
+    opacity: 1;
+    transform: translateY(0px);
   }
 
   .background {
