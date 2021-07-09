@@ -1,17 +1,17 @@
 <script>
-  import Button from "./button.svelte";
-  import ClickOutside from "./clickOutside.svelte";
-  import IntersectionObserver from "./intersectionObserver.svelte";
+  import Button from './button.svelte';
+  import ClickOutside from './clickOutside.svelte';
+  import IntersectionObserver from './intersectionObserver.svelte';
 
-  export let src = "./assets/Enterprise_HD.jpg";
-  export let alt = "The Starship Enterprise";
-  export let tags = ["these", "are", "voyages"];
+  export let src = './assets/Enterprise_HD.jpg';
+  export let alt = 'The Starship Enterprise';
+  export let tags = ['these', 'are', 'voyages'];
   export let title;
   export let body =
-    "Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time?";
+    'Communication is not possible. The shuttle has no power. Using the gravitational pull of a star to slingshot back in time?';
   export let button = {
-    txt: "Make it so",
-    href: "http://www.startrek.com",
+    txt: 'Make it so',
+    href: 'http://www.startrek.com',
   };
 
   let imgLoaded = false;
@@ -83,6 +83,7 @@
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
     opacity: 0;
     transform: translateY(100px);
+    will-change: opacity, transform;
     transition: opacity 0.8s, transform 0.8s;
     transition-delay: 0.2s;
     transition-timing-function: ease-out;
@@ -112,6 +113,7 @@
     width: 100%;
     margin-bottom: -6px;
     transform: scale(105%);
+    will-change: filter;
     filter: blur(6px);
     transition: filter 0.3s linear;
   }
@@ -135,7 +137,20 @@
     align-items: center;
     justify-content: space-between;
     transition: opacity 0.3s linear;
+    will-change: opacity;
     opacity: 1;
+    /* 
+    below forces GPU render of blurred background 
+    fixes a stutter on effect in Chrome
+    */
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform: translate3d(0, 0, 0);
+    transform: translateZ(0);
   }
 
   .hide .infotainer {
@@ -145,11 +160,11 @@
   .tags span {
     font-size: 1em;
     display: inline-block;
-    font-family: "Vollkorn SC", serif;
+    font-family: 'Vollkorn SC', serif;
     font-variant-caps: small-caps;
-    -moz-font-feature-settings: "smcp";
-    -webkit-font-feature-settings: "smcp";
-    font-feature-settings: "smcp";
+    -moz-font-feature-settings: 'smcp';
+    -webkit-font-feature-settings: 'smcp';
+    font-feature-settings: 'smcp';
   }
 
   .tags {
