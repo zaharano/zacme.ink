@@ -10,8 +10,7 @@
       <div id="imgwrapper" />
       <div class="bio">
         <p>
-          I'm from Oakland, CA, currently living in Brooklyn, NY with my wife
-          and our dog. I have a background in editorial and non-profit design,
+          I'm from Oakland, CA, currently living in Brooklyn, NY. I have a background in editorial and non-profit design,
           as well as a fair amount of digital marketing type stuff.
         </p>
         <p>
