@@ -1,5 +1,5 @@
 <script>
-  import { onMount } from 'svelte';
+  import { onMount } from "svelte";
 
   export let once = false;
   export let top = 0;
@@ -11,7 +11,7 @@
   let container;
 
   onMount(() => {
-    if (typeof IntersectionObserver !== 'undefined') {
+    if (typeof IntersectionObserver !== "undefined") {
       const rootMargin = `${bottom}px ${left}px ${top}px ${right}px`;
 
       const observer = new IntersectionObserver(
@@ -41,12 +41,12 @@
         bcr.left - left < window.innerWidth;
 
       if (intersecting && once) {
-        window.removeEventListener('scroll', handler);
+        window.removeEventListener("scroll", handler);
       }
     }
 
-    window.addEventListener('scroll', handler);
-    return () => window.removeEventListener('scroll', handler);
+    window.addEventListener("scroll", handler);
+    return () => window.removeEventListener("scroll", handler);
   });
 </script>
 
