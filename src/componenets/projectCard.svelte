@@ -31,9 +31,12 @@
   <!-- ClickOutside for mobile (pressing outside tile rehides details) -->
   <ClickOutside on:clickoutside={hideOn}>
     <article
+      tabindex="0"
       on:mouseover={hideOff}
       on:mouseleave={hideOn}
       on:click={hideOff}
+      on:focus={hideOff}
+      on:blur={hideOn}
       class:imgLoaded
       class:hide
     >
@@ -83,6 +86,7 @@
     box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.2);
     opacity: 0;
     transform: translateY(100px);
+    will-change: opacity, transform;
     transition: opacity 0.8s, transform 0.8s;
     transition-delay: 0.2s;
     transition-timing-function: ease-out;
@@ -112,6 +116,7 @@
     width: 100%;
     margin-bottom: -6px;
     transform: scale(105%);
+    will-change: filter;
     filter: blur(6px);
     transition: filter 0.3s linear;
   }
@@ -135,7 +140,20 @@
     align-items: center;
     justify-content: space-between;
     transition: opacity 0.3s linear;
+    will-change: opacity;
     opacity: 1;
+    /* 
+    below forces GPU render of blurred background 
+    fixes a stutter on effect in Chrome
+    */
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000;
+    transform: translate3d(0, 0, 0);
+    transform: translateZ(0);
   }
 
   .hide .infotainer {
