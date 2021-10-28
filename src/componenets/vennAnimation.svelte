@@ -1,10 +1,10 @@
 <script>
-  import { onMount } from "svelte";
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import { DrawSVGPlugin } from "gsap/all";
-  import { GSDevTools } from "gsap/GSDevTools";
-  import { Physics2DPlugin } from "gsap/Physics2DPlugin";
+  import { onMount } from 'svelte';
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { DrawSVGPlugin } from 'gsap/all';
+  import { GSDevTools } from 'gsap/GSDevTools';
+  import { Physics2DPlugin } from 'gsap/Physics2DPlugin';
 
   gsap.registerPlugin(
     ScrollTrigger,
@@ -14,11 +14,11 @@
   );
 
   function addFig() {
-    gsap.to("#venn-fig", {
+    gsap.to('#venn-fig', {
       autoAlpha: 1,
       x: 0,
       duration: 1,
-      ease: "power1.out",
+      ease: 'power1.out',
     });
   }
 
@@ -28,12 +28,12 @@
 
   onMount(() => {
     ScrollTrigger.create({
-      trigger: "#venn",
+      trigger: '#venn',
       animation: tl,
-      start: "top 60%",
+      start: 'top 60%',
     });
 
-    gsap.set("#venn-fig", {
+    gsap.set('#venn-fig', {
       opacity: 0,
       x: -30,
     });
@@ -43,44 +43,44 @@
     const developIconTL = gsap.timeline();
     const magicIconTL = gsap.timeline();
 
-    const transformOrigin = "50% 50%";
-    const iconEase = "power4.out",
+    const transformOrigin = '50% 50%';
+    const iconEase = 'power4.out',
       iconDur = 0.4,
-      iconOverlap = "-=.2";
+      iconOverlap = '-=.2';
 
     const iconWord = {
       autoAlpha: 0,
       duration: 0.2,
       transformOrigin,
       scale: 5,
-      ease: "power1.out",
+      ease: 'power1.out',
     };
 
     // pop-in animation for magic icon
     const show = { autoAlpha: 1 };
     const petalFlyer = {
       autoAlpha: 0,
-      ease: "expo.out",
+      ease: 'expo.out',
       duration: 6,
-      scale: "random(1, 3)",
-      rotate: "random(200, 600)",
+      scale: 'random(1, 3)',
+      rotate: 'random(200, 600)',
       physics2D: {
-        velocity: "random(340, 500)",
+        velocity: 'random(340, 500)',
         gravity: 350,
-        angle: "random(-160, 50)",
+        angle: 'random(-160, 50)',
       },
     };
 
-    gsap.set(".magic-icon-petalbursts", {
+    gsap.set('.magic-icon-petalbursts', {
       autoAlpha: 0,
     });
-    gsap.set("#venn", { transformOrigin: "50% 50%" });
+    gsap.set('#venn', { transformOrigin: '50% 50%' });
 
     magicIconTL
-      .set("#magic-set", {
+      .set('#magic-set', {
         y: 90,
       })
-      .from("#magic-icon-wand", {
+      .from('#magic-icon-wand', {
         x: -20,
         y: 20,
         autoAlpha: 0,
@@ -88,79 +88,79 @@
         ease: iconEase,
       })
       .fromTo(
-        ".magic-icon-stems",
+        '.magic-icon-stems',
         {
-          drawSVG: "0% 0%",
+          drawSVG: '0% 0%',
           autoAlpha: 0,
         },
         {
-          drawSVG: "0% 100%",
+          drawSVG: '0% 100%',
           autoAlpha: 1,
           duration: iconDur,
           ease: iconEase,
         },
-        "flowers"
+        'flowers'
       )
       .from(
-        ".magic-icon-flowers",
+        '.magic-icon-flowers',
         {
           transformOrigin,
           scale: 0.1,
           autoAlpha: 0,
           stagger: 0.2,
           duration: iconDur,
-          ease: "elastic.out(1, 0.3)",
+          ease: 'elastic.out(1, 0.3)',
         },
-        "-=.1"
+        '-=.1'
       )
-      .set("#burst1", show, "flowers+=.35")
-      .to("#burst1 > *", petalFlyer, "flowers+=.35")
-      .set("#burst2", show, "flowers+=.55")
-      .to("#burst2 > *", petalFlyer, "flowers+=.55")
-      .set("#burst3", show, "flowers+=.75")
-      .to("#burst3 > *", petalFlyer, "flowers+=.75")
-      .from("#magic-word", iconWord, "flowers+=1");
+      .set('#burst1', show, 'flowers+=.35')
+      .to('#burst1 > *', petalFlyer, 'flowers+=.35')
+      .set('#burst2', show, 'flowers+=.55')
+      .to('#burst2 > *', petalFlyer, 'flowers+=.55')
+      .set('#burst3', show, 'flowers+=.75')
+      .to('#burst3 > *', petalFlyer, 'flowers+=.75')
+      .from('#magic-word', iconWord, 'flowers+=1');
 
     // mirp1 mirp3 <.3 milp5 milp1 <.9 micp4 micp2 <1.5
 
     // pop-in animation for develop icon
     developIconTL
-      .set("#develop-icon", {
+      .set('#develop-icon', {
         transformOrigin,
         x: 37,
         y: 30,
       })
-      .from("#develop-icon", {
+      .from('#develop-icon', {
         autoAlpha: 0,
         scaleX: 0,
         duration: iconDur,
         ease: iconEase,
       })
-      .from("#develop-icon", {
+      .from('#develop-icon', {
         scaleY: 0.1,
         duration: iconDur / 2,
         ease: iconEase,
       })
-      .from("#develop-icon-open-bracket", {
+      .from('#develop-icon-open-bracket', {
         autoAlpha: 0,
         duration: 0.01,
         delay: 0.1,
       })
-      .from("#develop-icon-slash", {
+      .from('#develop-icon-slash', {
         autoAlpha: 0,
         duration: 0.01,
         delay: 0.2,
       })
-      .from("#develop-icon-close-bracket", {
+      .from('#develop-icon-close-bracket', {
         autoAlpha: 0,
         duration: 0.01,
         delay: 0.1,
       })
-      .from("#develop-word", iconWord);
+      .from('#develop-word', iconWord);
 
     // pop-in animation for Design icon
     designIconTL
-      .from("#design-icon-ruler", {
+      .from('#design-icon-ruler', {
         x: -40,
         y: 40,
         autoAlpha: 0,
@@ -168,7 +168,7 @@
         ease: iconEase,
       })
       .from(
-        "#design-icon-pencil",
+        '#design-icon-pencil',
         {
           x: 40,
           y: 40,
@@ -178,28 +178,28 @@
         },
         iconOverlap
       )
-      .from("#design-word", iconWord);
+      .from('#design-word', iconWord);
 
     // pop-in animation for Animate icon
     animateIconTL
       .set(
-        ".animate-icon-line",
+        '.animate-icon-line',
         {
-          drawSVG: "0",
+          drawSVG: '0',
           autoAlpha: 0,
         },
-        "0"
+        '0'
       )
-      .set("#animate-icon-circle", {
+      .set('#animate-icon-circle', {
         x: -40,
       })
-      .from("#animate-icon-circle", {
+      .from('#animate-icon-circle', {
         autoAlpha: 0,
         duration: iconDur,
         ease: iconEase,
       })
       .to(
-        "#animate-icon-circle",
+        '#animate-icon-circle',
         {
           x: -50,
           delay: 0.1,
@@ -207,50 +207,50 @@
           duration: iconDur,
           ease: iconEase,
         },
-        "<"
+        '<'
       )
       .from(
-        ".animate-icon-line",
+        '.animate-icon-line',
         {
           autoAlpha: 0,
           duration: 0.1,
         },
-        "circleStart"
+        'circleStart'
       )
-      .to("#animate-icon-circle", {
+      .to('#animate-icon-circle', {
         x: 0,
         duration: iconDur * 2,
         ease: iconEase,
       })
       .to(
-        ".animate-icon-line",
+        '.animate-icon-line',
         {
-          drawSVG: "0 100%",
+          drawSVG: '0 100%',
           stagger: 0.1,
           duration: 0.3,
         },
-        "circleStart+=.2"
+        'circleStart+=.2'
       )
       .to(
-        "#animate-icon-circle",
+        '#animate-icon-circle',
         {
           scaleX: 1.2,
           duration: iconDur / 2,
-          ease: "none",
+          ease: 'none',
         },
-        "circleStart"
+        'circleStart'
       )
       .to(
-        "#animate-icon-circle",
+        '#animate-icon-circle',
         {
           scaleX: 1,
           duration: iconDur / 2,
-          ease: "none",
+          ease: 'none',
         },
-        "circleStart+=.2"
+        'circleStart+=.2'
       )
       .from(
-        "#animate-icon-ghost2",
+        '#animate-icon-ghost2',
         {
           autoAlpha: 0,
           duration: 0.1,
@@ -258,14 +258,14 @@
         `circleStart+=${iconDur / 3}`
       )
       .from(
-        "#animate-icon-ghost1",
+        '#animate-icon-ghost1',
         {
           autoAlpha: 0,
           duration: 0.1,
         },
         `circleStart+=${(iconDur / 3) * 2}`
       )
-      .from("#animate-word", iconWord)
+      .from('#animate-word', iconWord)
       .timeScale(1.4);
 
     // whole venn circles animation
@@ -276,11 +276,11 @@
         scale: 0.5,
         transformOrigin,
         delay: 0.2,
-        ease: "power2.out",
+        ease: 'power2.out',
       },
-      innerCircleOffset = "-=.6",
-      iconOffset = "-=.2",
-      moveOffset = "+=.2";
+      innerCircleOffset = '-=.6',
+      iconOffset = '-=.2',
+      moveOffset = '+=.2';
 
     // // bursts version
     // const           burstFrom = {
@@ -318,27 +318,27 @@
     // .from('.circle-develop', innerCircles, innerCircleOffset)
     // .add(developIconTL, iconOffset)
 
-    tl.from(".circle-design", innerCircles)
+    tl.from('.circle-design', innerCircles)
       .add(designIconTL, iconOffset)
-      .from(".circle-animate", innerCircles, innerCircleOffset)
+      .from('.circle-animate', innerCircles, innerCircleOffset)
       .add(animateIconTL, iconOffset)
-      .from(".circle-develop", innerCircles, innerCircleOffset)
+      .from('.circle-develop', innerCircles, innerCircleOffset)
       .add(developIconTL, iconOffset)
-      .to(".circle-design-w", {
+      .to('.circle-design-w', {
         duration,
         delay: 0.4,
         y: 80,
       })
       .to(
-        "#design-set",
+        '#design-set',
         {
           duration,
           y: -8,
         },
-        "<"
+        '<'
       )
       .to(
-        ".circle-animate-w",
+        '.circle-animate-w',
         {
           duration,
           y: -80,
@@ -347,16 +347,16 @@
         moveOffset
       )
       .to(
-        "#animate-set",
+        '#animate-set',
         {
           duration,
           y: -20,
           x: 40,
         },
-        "<"
+        '<'
       )
       .to(
-        ".circle-develop-w",
+        '.circle-develop-w',
         {
           duration,
           y: -80,
@@ -365,21 +365,21 @@
         moveOffset
       )
       .to(
-        "#develop-set",
+        '#develop-set',
         {
           duration,
           y: -20,
           x: -40,
         },
-        "<"
+        '<'
       )
       .add(magicIconTL)
       .to(
-        "#venn",
+        '#venn',
         {
           scale: 1.25,
         },
-        "-=1"
+        '-=1'
       );
 
     //slight parallax to delay scroll?
@@ -1161,6 +1161,8 @@
       url("data:image/svg+xml;charset=utf8,%3Csvg width='22' height='22' viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 0C9 0 7.2.5 5.5 1.5a10.9 10.9 0 00-4 15 11 11 0 0016.9 2.7l.1-.4v-.4l-1.9-1.8-.3-.1h-.4c-.7.7-1.4 1.2-2.3 1.5a7.4 7.4 0 01-9-10.7c.6-1.2 1.6-2 2.7-2.7a7.4 7.4 0 018.8 1l-1.9 1.8a1 1 0 00-.3.8c0 .3.1.5.3.7.2.2.5.3.8.3h6c.2 0 .5 0 .7-.3.2-.2.3-.4.3-.7v-6c0-.2-.1-.5-.3-.7-.2-.2-.5-.3-.8-.3a1 1 0 00-.7.3L18.6 3A11.1 11.1 0 0011 0z' fill='%23454545'/%3E%3C/svg%3E");
     background-size: 1.9em 1.9em;
     transition-property: transform, box-shadow;
+    /* will-change fixes character jitter after animation */
+    will-change: transform, box-shadow;
     transition-duration: 0.4s;
     transition-timing-function: var(--timing);
   }

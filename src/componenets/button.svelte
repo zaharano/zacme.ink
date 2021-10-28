@@ -1,19 +1,21 @@
 <script>
-  export let href = "http://www.beep.com";
+  export let href = 'http://www.beep.com';
   export let txt = "Let's do it!";
 </script>
 
-<a {href}>{txt}<span /></a>
+<a {href}>
+  <button {href} tabindex="0">{txt}<span /></button>
+</a>
 
 <style>
-  a {
+  button {
     text-decoration: none;
     margin-top: 1rem;
-    font-family: "Vollkorn SC", serif;
+    font-family: 'Vollkorn SC', serif;
     font-variant-caps: small-caps;
-    -moz-font-feature-settings: "smcp";
-    -webkit-font-feature-settings: "smcp";
-    font-feature-settings: "smcp";
+    -moz-font-feature-settings: 'smcp';
+    -webkit-font-feature-settings: 'smcp';
+    font-feature-settings: 'smcp';
     font-weight: 600;
     background: #ffffff;
     border: var(--border);
@@ -35,14 +37,14 @@
     will-change: transform, box-shadow;
   }
 
-  a:hover {
+  button:hover {
     transform: translate(3px, -3px);
     box-shadow: -3px 3px 0px var(--acct);
     cursor: pointer;
   }
 
   /* arrow on right of button */
-  a span {
+  button span {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='24' height='6' viewBox='0 0 24 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M24 3L19 0.113249V5.88675L24 3ZM0 3.5H19.5V2.5H0V3.5Z' fill='%23454545'/%3E%3C/svg%3E");
     background-position: right center;
     background-repeat: no-repeat;
@@ -50,7 +52,7 @@
     height: var(--btnHeight);
   }
 
-  a:hover span {
+  button:hover span {
     animation: boing 1500ms linear both;
   }
 

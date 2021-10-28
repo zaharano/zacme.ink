@@ -1,6 +1,6 @@
 <script>
-  import Button from '../componenets/button.svelte';
-  import SectionHead from '../componenets/sectionHead.svelte';
+  import Button from "../componenets/button.svelte";
+  import SectionHead from "../componenets/sectionHead.svelte";
 </script>
 
 <section>

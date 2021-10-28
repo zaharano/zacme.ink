@@ -1,18 +1,18 @@
 <script>
-  import Menu from './menu.svelte';
-  import { onMount } from 'svelte';
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import Menu from "./menu.svelte";
+  import { onMount } from "svelte";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   onMount(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         scrub: true,
-        trigger: '#speech',
-        start: '10% top',
+        trigger: "#speech",
+        start: "10% top",
       },
     });
-    tl.to('.header-bg', {
+    tl.to(".header-bg", {
       autoAlpha: 1,
     });
   });
@@ -23,7 +23,7 @@
     <button
       aria-label="”Home”"
       on:click={() => {
-        document.getElementById('main').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById("main").scrollIntoView({ behavior: "smooth" });
       }}
     >
       <svg

@@ -1,6 +1,6 @@
 <script>
-  import SectionHead from '../componenets/sectionHead.svelte';
-  import IntersectionObserver from '../componenets/intersectionObserver.svelte';
+  import SectionHead from "../componenets/sectionHead.svelte";
+  import IntersectionObserver from "../componenets/intersectionObserver.svelte";
 </script>
 
 <section>
@@ -58,7 +58,7 @@
     overflow: hidden;
     box-sizing: border-box;
     margin-right: 3rem;
-    background-image: url('../assets/me@2x.jpg');
+    background-image: url("../assets/me@2x.jpg");
     background-size: cover;
     background-position: center;
     min-height: 500px;

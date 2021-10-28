@@ -1,10 +1,10 @@
 <script>
-  import { onMount } from 'svelte';
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  import { DrawSVGPlugin } from 'gsap/all';
-  import { Physics2DPlugin } from 'gsap/Physics2DPlugin';
-  import IntersectionObserver from './intersectionObserver.svelte';
+  import { onMount } from "svelte";
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { DrawSVGPlugin } from "gsap/all";
+  import { Physics2DPlugin } from "gsap/Physics2DPlugin";
+  import IntersectionObserver from "./intersectionObserver.svelte";
 
   onMount(() => {
     const footflower = gsap.timeline({
@@ -14,61 +14,61 @@
     });
 
     ScrollTrigger.create({
-      trigger: '#footer-pile',
+      trigger: "#footer-pile",
       animation: footflower,
-      start: 'top bottom',
+      start: "top bottom",
     });
 
     // some anim shorteners
-    const transformOrigin = '50% 50%';
+    const transformOrigin = "50% 50%";
 
-    gsap.set('#burstPetals', {
+    gsap.set("#burstPetals", {
       autoAlpha: 0,
     });
 
     footflower
-      .set('#burstPetals', { autoAlpha: 1 }, '<')
-      .to('#burstPetals > *', {
-        ease: 'expo.out',
+      .set("#burstPetals", { autoAlpha: 1 }, "<")
+      .to("#burstPetals > *", {
+        ease: "expo.out",
         duration: 6,
-        scale: 'random(1, 1.2)',
-        rotate: 'random(200, 600)',
+        scale: "random(1, 1.2)",
+        rotate: "random(200, 600)",
         physics2D: {
-          velocity: 'random(200, 300)',
+          velocity: "random(200, 300)",
           gravity: 450,
-          angle: 'random(-130, -30)',
+          angle: "random(-130, -30)",
         },
       })
       .to(
-        '#burstPetals > *',
+        "#burstPetals > *",
         {
           autoAlpha: 0,
           duration: 6,
         },
-        '<'
+        "<"
       )
       .fromTo(
-        '#footer-stem',
+        "#footer-stem",
         {
-          drawSVG: '0% 0%',
+          drawSVG: "0% 0%",
           autoAlpha: 0,
         },
         {
-          drawSVG: '0% 100%',
+          drawSVG: "0% 100%",
           autoAlpha: 1,
         },
-        '<'
+        "<"
       )
       .from(
-        '#footer-flower_2',
+        "#footer-flower_2",
         {
           transformOrigin,
           delay: 1,
           scale: 0.1,
           autoAlpha: 0,
-          ease: 'elastic.out(1, 0.3)',
+          ease: "elastic.out(1, 0.3)",
         },
-        '<'
+        "<"
       );
   });
 </script>
