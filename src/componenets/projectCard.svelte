@@ -31,9 +31,12 @@
   <!-- ClickOutside for mobile (pressing outside tile rehides details) -->
   <ClickOutside on:clickoutside={hideOn}>
     <article
+      tabindex="0"
       on:mouseover={hideOff}
       on:mouseleave={hideOn}
       on:click={hideOff}
+      on:focus={hideOff}
+      on:blur={hideOn}
       class:imgLoaded
       class:hide
     >
